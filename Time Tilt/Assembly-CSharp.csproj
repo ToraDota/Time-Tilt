@@ -51,6 +51,8 @@
      <Compile Include="Assets\Scripts\characterMove.cs" />
      <Compile Include="Assets\Scripts\destroyPlayer.cs" />
      <Compile Include="Assets\Scripts\enemyMove.cs" />
+     <Compile Include="Assets\Scripts\leftWrap.cs" />
+     <Compile Include="Assets\Scripts\rightWrap.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
