@@ -4,7 +4,7 @@ using System.Collections;
 public class Flap : MonoBehaviour {
 
     public string flapbutton = "Fire1";
-    public float flapforce = 5.0f;
+    public float flapforce = 2.0f;
     public ForceMode2D forceMode = ForceMode2D.Impulse;
     private bool flap = false;
 
