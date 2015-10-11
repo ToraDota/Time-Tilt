@@ -1,20 +1,20 @@
 ﻿<Properties>
-<<<<<<< HEAD
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\rightWrap.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\enemyMove.cs">
     <Files>
-      <File FileName="Assets\Scripts\rightWrap.cs" Line="7" Column="48" />
-      <File FileName="Assets\Scripts\leftWrap.cs" Line="7" Column="52" />
-      <File FileName="Assets\Scripts\destroyPlayer.cs" Line="1" Column="1" />
-=======
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Flap.cs">
-    <Files>
-      <File FileName="Assets\Scripts\destroyPlayer.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\enemyMove.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Flap.cs" Line="7" Column="31" />
->>>>>>> 8513c9b953caa9ed31ff582d1f429444c7402338
+      <File FileName="Assets\Scripts\enemyMove.cs" Line="17" Column="36" />
     </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State expanded="True">
+          <Node name="Assembly-CSharp" expanded="True">
+            <Node name="Scripts" expanded="True">
+              <Node name="enemyMove.cs" selected="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
