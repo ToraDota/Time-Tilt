@@ -22,6 +22,7 @@ public class enemyMove : MonoBehaviour
 		else
 			transform.Translate (Vector3.right * enemySpeed * Time.deltaTime);
 
+		Physics2D.IgnoreLayerCollision(8,9);
 	}
 
 	//destroy

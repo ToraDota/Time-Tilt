@@ -1,20 +1,11 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\enemyMove.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\OrbSpawn.cs">
     <Files>
-      <File FileName="Assets\Scripts\enemyMove.cs" Line="17" Column="36" />
+      <File FileName="Assets\Scripts\characterMove.cs" Line="31" Column="3" />
+      <File FileName="Assets\Scripts\OrbSpawn.cs" Line="20" Column="1" />
+      <File FileName="Assets\Scripts\enemyMove.cs" Line="25" Column="37" />
     </Files>
-    <Pads>
-      <Pad Id="ProjectPad">
-        <State expanded="True">
-          <Node name="Assembly-CSharp" expanded="True">
-            <Node name="Scripts" expanded="True">
-              <Node name="enemyMove.cs" selected="True" />
-            </Node>
-          </Node>
-        </State>
-      </Pad>
-    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
