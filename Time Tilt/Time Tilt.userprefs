@@ -1,10 +1,11 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\OrbSpawn.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\characterMove.cs">
     <Files>
-      <File FileName="Assets\Scripts\characterMove.cs" Line="31" Column="3" />
-      <File FileName="Assets\Scripts\OrbSpawn.cs" Line="20" Column="1" />
-      <File FileName="Assets\Scripts\enemyMove.cs" Line="25" Column="37" />
+      <File FileName="Assets\Scripts\WallTrigger.cs" Line="31" Column="3" />
+      <File FileName="Assets\Scripts\characterMove.cs" Line="31" Column="2" />
+      <File FileName="Assets\Scripts\OrbSpawn.cs" Line="13" Column="26" />
+      <File FileName="Assets\Scripts\destroyPlayer.cs" Line="8" Column="27" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
