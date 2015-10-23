@@ -18,7 +18,7 @@ public class WallTrigger : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D(Collider2D other) {
-		if (other.tag == "Player" || other.tag == "Enemy") {
+		if (other.tag == "Player" || other.tag == "Enemy" || other.name == "Orb"){
 			if(this.tag == "RightWall")
 			{
 				other.gameObject.transform.position = new Vector3(leftSide.transform.position.x, other.gameObject.transform.position.y, other.gameObject.transform.position.z);
