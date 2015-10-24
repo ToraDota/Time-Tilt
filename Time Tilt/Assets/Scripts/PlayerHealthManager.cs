@@ -40,11 +40,18 @@ public class PlayerHealthManager : MonoBehaviour {
 		}
 	}
 
-	public static void HurtPlayer(int damage){
-		playerHealth -= damage;
-		//Debug.Log("Health " + playerHealth);
-		//Debug.Log ("Lives " + playerLives);
-		//Debug.Log("hit");
+	public static void HurtPlayer(int damage, Collider2D avatar, GameObject enemy){
+		playerHealth -= damage; //actual damage
+
+		//knockback control
+		var player = avatar.GetComponentInParent<PlayerController>();
+		player.knockbackCount = player.knockbackLength;
+		
+		if(avatar.transform.position.x < enemy.gameObject.transform.position.x){
+			player.knockFromRight = true;
+		}
+		else
+			player.knockFromRight = false;
 	}
 
 	public void AddLife(){
