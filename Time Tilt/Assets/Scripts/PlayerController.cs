@@ -23,7 +23,7 @@ public class PlayerController : MonoBehaviour {
 
 	private bool isDiving;
 	public float counterForce;//determines the power of the flap when cancelling a dive
-
+	
 
 	// Use this for initialization
 	void Start () {
@@ -103,7 +103,8 @@ public class PlayerController : MonoBehaviour {
 		if(grounded)
 			isDiving = false;
 
-		if(isDiving){ //Dive Cancel
+		//Dive Cancel
+		if(isDiving){ 
 			if(facingDirection == 0)
 				transform.localEulerAngles = new Vector3 (0, 0, 90);
 			else if(facingDirection == 1)

@@ -5,7 +5,7 @@ public class enemyMove : MonoBehaviour
 {
 
 	public static System.Random rnd = new System.Random ();
-	public static int direction = rnd.Next (0, 2);
+	public static int direction =  1;  //rnd.Next (0, 2);
 	public float enemySpeed = 3f;
 
 	// Use this for initialization
@@ -26,12 +26,12 @@ public class enemyMove : MonoBehaviour
 	}
 
 	//destroy
-	void OnTriggerEnter2D (Collider2D col)
+	/*void OnTriggerEnter2D (Collider2D col)
 	{
 		if (col.name == "Lance") {
 			Destroy (gameObject);
 		}
-	}
+	}*/
 
 
 }
