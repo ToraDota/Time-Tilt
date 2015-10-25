@@ -25,7 +25,7 @@ public class PlayerController : MonoBehaviour {
 	private bool isDiving;
 	public float counterForce;//determines the power of the flap when cancelling a dive
 
-	//for knockback and I state
+	//for knockback and I-state
 	public float knockback;
 	public float knockbackLength;
 	public float knockbackCount;
@@ -37,6 +37,7 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	void FixedUpdate () { //used for physics
+
 		grounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, whatIsGround);
 	}
 	
@@ -51,35 +52,55 @@ public class PlayerController : MonoBehaviour {
 
 		//Face Left
 		if(Input.GetKeyDown (KeyCode.A)){
-			transform.localScale = new Vector3(-0.7628162f, 0.7628162f, 0.7628162f);
+			transform.localScale = new Vector3(-0.7628162f, 1, 0.7628162f);
 			facingDirection = 0;
 		}
 		
 		//Face Right
 		if(Input.GetKeyDown (KeyCode.D)){
-			transform.localScale = new Vector3(0.7628162f, 0.7628162f, 0.7628162f);
+			transform.localScale = new Vector3(0.7628162f, 1, 0.7628162f);
 			facingDirection = 1;
 		}
 	
-		moveVelocity = 0f; // so that every frame you arent pressing something it does not move one way or the other.
+		//moveVelocity = 0f; // so that every frame you arent pressing something it does not move one way or the other.
 
+		//Momentum after landing
+		if(moveVelocity > 0.1f || moveVelocity < -0.1f){
+			if(grounded){
+				if(!Input.GetKey(KeyCode.A) && !Input.GetKey (KeyCode.D)){
+					if(facingDirection == 0){
+						moveVelocity += stopVelocity;
+							//new Vector2(GetComponent<Rigidbody2D>().velocity.x + stopVelocity, GetComponent<Rigidbody2D>().velocity.y);
+					}
+					if(facingDirection == 1){
+						moveVelocity += -stopVelocity;
+						//GetComponent<Rigidbody2D>().velocity = new Vector2(GetComponent<Rigidbody2D>().velocity.x + -stopVelocity, GetComponent<Rigidbody2D>().velocity.y);
+					}
+				}
+			}
+		}
+
+
+		//Air Momentum? Speed up and slow down? 
 		//Movement Left and Right
-		if (Input.GetKey (KeyCode.A) && !Input.GetKey(KeyCode.S)) 
+		if (Input.GetKey (KeyCode.A) && !Input.GetKey(KeyCode.S) && facingDirection == 0) 
 		{
 			//MoveLeft
 			moveVelocity = -speed;
 			//GetComponent<Rigidbody2D>().velocity = new Vector2(-speed, GetComponent<Rigidbody2D>().velocity.y);
 		} 
 
-		if (Input.GetKey (KeyCode.D) && !Input.GetKey(KeyCode.S)) 
+		if (Input.GetKey (KeyCode.D) && !Input.GetKey(KeyCode.S) && facingDirection == 1) 
 		{
 			//MoveRight
 			moveVelocity = speed;
 			//GetComponent<Rigidbody2D>().velocity = new Vector2(speed, GetComponent<Rigidbody2D>().velocity.y);
 		} 
 
+
+		//KnockBack functionality on player
 		if(knockbackCount <=  0){
-			GetComponent<Rigidbody2D>().velocity = new Vector2(moveVelocity, GetComponent<Rigidbody2D>().velocity.y);
+			GetComponent<Rigidbody2D>().velocity = new Vector2(moveVelocity, GetComponent<Rigidbody2D>().velocity.y);//Runs every frame not knocked back for regualr movement control
 		}
 		else{
 			if(knockFromRight){
@@ -91,17 +112,7 @@ public class PlayerController : MonoBehaviour {
 			knockbackCount -= Time.deltaTime;
 		}
 
-		//Momentum after landing
-		if(GetComponent<Rigidbody2D>().velocity.x > 0.2f || GetComponent<Rigidbody2D>().velocity.x < -0.2f && grounded){
-			if(!Input.GetKey(KeyCode.A) && !Input.GetKey (KeyCode.D)){
-				if(facingDirection == 0){
-					GetComponent<Rigidbody2D>().velocity = new Vector2(GetComponent<Rigidbody2D>().velocity.x + stopVelocity, GetComponent<Rigidbody2D>().velocity.y);
-				}
-				else if(facingDirection == 1){
-					GetComponent<Rigidbody2D>().velocity = new Vector2(GetComponent<Rigidbody2D>().velocity.x + -stopVelocity, GetComponent<Rigidbody2D>().velocity.y);
-				}
-			}
-		}
+	
 
 		//Lance Aiming and Dive Bomb
 		if(Input.GetKey (KeyCode.S) && !grounded){
@@ -123,8 +134,10 @@ public class PlayerController : MonoBehaviour {
 		else 
 			transform.localEulerAngles = new Vector3 (0,0,0);
 
-		if(grounded)
+		if(grounded){
 			isDiving = false;
+			//Debug.Log("grounded");
+		}
 
 		//Dive Cancel
 		if(isDiving){ 
@@ -134,7 +147,7 @@ public class PlayerController : MonoBehaviour {
 				transform.localEulerAngles = new Vector3 (0, 0, 270);
 
 			if(Input.GetButtonDown(flapbutton) || Input.GetKeyDown(KeyCode.J) || Input.GetKeyDown (KeyCode.N)){
-				GetComponent<Rigidbody2D>().velocity = new Vector2(GetComponent<Rigidbody2D>().velocity.x, GetComponent<Rigidbody2D>().velocity.y + counterForce);
+				GetComponent<Rigidbody2D>().velocity = new Vector2(GetComponent<Rigidbody2D>().velocity.x, counterForce);
 				isDiving = false;
 			}
 		}
