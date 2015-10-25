@@ -59,6 +59,7 @@
      <Compile Include="Assets\Scripts\LevelOneManager.cs" />
      <Compile Include="Assets\Scripts\LifePickup.cs" />
      <Compile Include="Assets\Scripts\LivesUI.cs" />
+     <Compile Include="Assets\Scripts\Menu.cs" />
      <Compile Include="Assets\Scripts\OrbSpawn.cs" />
      <Compile Include="Assets\Scripts\PlayerBody.cs" />
      <Compile Include="Assets\Scripts\PlayerController.cs" />

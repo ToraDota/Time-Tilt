@@ -60,13 +60,4 @@ public class enemyMove : MonoBehaviour
         Physics2D.IgnoreLayerCollision(8,9);
 	}
 
-	//destroy
-	void OnTriggerEnter2D (Collider2D col)
-	{
-		if (col.name == "Lance") {
-			Destroy (gameObject);
-		}
-	}
-
-
 }
