@@ -54,11 +54,11 @@ public class PlayerHealthManager : MonoBehaviour {
 			player.knockFromRight = false;
 	}
 
-	public void AddLife(){
+	public static void AddLife(){
 		playerLives++;
 	}
 
-	public void RemoveLife(){
+	public static void RemoveLife(){
 		playerLives--;
 	}
 }

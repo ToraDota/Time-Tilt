@@ -46,14 +46,18 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\BulletController.cs" />
      <Compile Include="Assets\Scripts\DamagePlayer.cs" />
      <Compile Include="Assets\Scripts\EnemyDamageToPlayer.cs" />
      <Compile Include="Assets\Scripts\EnemyDrops.cs" />
      <Compile Include="Assets\Scripts\EnemyHealthManager.cs" />
      <Compile Include="Assets\Scripts\EnemyStomp.cs" />
+     <Compile Include="Assets\Scripts\Gun1Pickup.cs" />
+     <Compile Include="Assets\Scripts\Gun2Pickup.cs" />
      <Compile Include="Assets\Scripts\HealthUI.cs" />
      <Compile Include="Assets\Scripts\LevelManager.cs" />
      <Compile Include="Assets\Scripts\LevelOneManager.cs" />
+     <Compile Include="Assets\Scripts\LifePickup.cs" />
      <Compile Include="Assets\Scripts\LivesUI.cs" />
      <Compile Include="Assets\Scripts\OrbSpawn.cs" />
      <Compile Include="Assets\Scripts\PlayerBody.cs" />
