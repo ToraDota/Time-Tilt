@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour {
 	public Transform groundCheck;
 	public float groundCheckRadius;
 	public LayerMask whatIsGround;
-	private bool grounded;
+	public bool grounded;
 
 	public string flapbutton; //Fire1
 	public float flapforce; 
@@ -31,8 +31,7 @@ public class PlayerController : MonoBehaviour {
 	public float knockback;
 	public float knockbackLength;
 	public float knockbackCount;
-	public bool knockFromRight;
-
+	public int knockFromWhere; // 0 - left, 1 - right, 2 - up, 3 - down;
 
 	//Gun control vars
 	public int gunNumber; //used to check what gun is active and enabled
@@ -71,13 +70,13 @@ public class PlayerController : MonoBehaviour {
 
 		//Face Left
 		if(Input.GetKeyDown (KeyCode.A)){
-			transform.localScale = new Vector3(-0.7628162f, 1, 0.7628162f);
+			transform.localScale = new Vector3(-0.7628162f, 1f, 0.7628162f);
 			facingDirection = 0;
 		}
 		
 		//Face Right
 		if(Input.GetKeyDown (KeyCode.D)){
-			transform.localScale = new Vector3(0.7628162f, 1, 0.7628162f);
+			transform.localScale = new Vector3(0.7628162f, 1f, 0.7628162f);
 			facingDirection = 1;
 		}
 
@@ -116,13 +115,20 @@ public class PlayerController : MonoBehaviour {
 		//KnockBack functionality on player
 		if(knockbackCount <=  0){
 			GetComponent<Rigidbody2D>().velocity = new Vector2(moveVelocity, GetComponent<Rigidbody2D>().velocity.y);//Runs every frame not knocked back for regualr movement control
+			//knockFromWhere = -1;
 		}
-		else{
-			if(knockFromRight){
+		else {
+			if(knockFromWhere == 0){
 				GetComponent<Rigidbody2D>().velocity = new Vector2(-knockback, GetComponent<Rigidbody2D>().velocity.y);
 			}
-			if(!knockFromRight){
+			if(knockFromWhere == 1){
 				GetComponent<Rigidbody2D>().velocity = new Vector2(knockback, GetComponent<Rigidbody2D>().velocity.y);
+			}
+			if(knockFromWhere == 2){ //top
+				GetComponent<Rigidbody2D>().velocity = new Vector2(GetComponent<Rigidbody2D>().velocity.x, -knockback);
+			}
+			if(knockFromWhere == 3){ //bottom
+				GetComponent<Rigidbody2D>().velocity = new Vector2(GetComponent<Rigidbody2D>().velocity.x, knockback);
 			}
 			knockbackCount -= Time.deltaTime;
 		}
@@ -203,7 +209,6 @@ public class PlayerController : MonoBehaviour {
 				gunNumber = 0;
 			}
 		}
-
 	}
 
 	public void EquipWhatGun(int gun){ //sets what is enabled; no firing functionality

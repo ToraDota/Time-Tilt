@@ -14,7 +14,8 @@ public class enemyMove : MonoBehaviour
     private Transform myTransform;
     public static System.Random rnd = new System.Random ();
 	public static int direction =  1;  //rnd.Next (0, 2);
-	public float enemySpeed = 3f; 
+	public float enemySpeed = 3f;
+
 
     void Awake()
     {
@@ -56,6 +57,8 @@ public class enemyMove : MonoBehaviour
                 GetComponent<Rigidbody2D>().AddForce(Vector2.up * flapforce, forceMode);
             }
         }
+
+
 
         Physics2D.IgnoreLayerCollision(8,9);
 	}

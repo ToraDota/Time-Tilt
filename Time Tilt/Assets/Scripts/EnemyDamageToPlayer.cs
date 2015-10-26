@@ -19,6 +19,11 @@ public class EnemyDamageToPlayer : MonoBehaviour {
 	//This is on the enemies Lance
 	void OnTriggerEnter2D (Collider2D other)
 	{
+
+		//GameObject collider = other.gameObject;
+		//GameObject parentOfOther = other.transform.parent.gameObject;
+
+		//put this on enemy bullets? just have this be else 
 			if(other.name == "Body"){
 				PlayerHealthManager.HurtPlayer(2, other, gameObject);
 				//Debug.Log("Body");

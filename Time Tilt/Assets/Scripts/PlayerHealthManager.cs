@@ -46,12 +46,35 @@ public class PlayerHealthManager : MonoBehaviour {
 		//knockback control
 		var player = avatar.GetComponentInParent<PlayerController>();
 		player.knockbackCount = player.knockbackLength;
-		
-		if(avatar.transform.position.x < enemy.gameObject.transform.position.x){
-			player.knockFromRight = true;
+
+//		if(Mathf.Abs(avatar.transform.parent.position.x) - Mathf.Abs(enemy.gameObject.transform.parent.position.x)
+//		   >  //if this is true then perform x bounces; else do y bounces
+//		   Mathf.Abs(avatar.transform.parent.position.y) - Mathf.Abs(enemy.gameObject.transform.parent.position.y))
+
+		if(player.grounded && Mathf.Abs (player.GetComponent<Rigidbody2D>().velocity.x) == Mathf.Abs(player.GetComponent<Rigidbody2D>().velocity.y)){
+			if(avatar.transform.position.x < enemy.gameObject.transform.position.x){
+				player.knockFromWhere = 0;
+			}
+			else{
+				player.knockFromWhere = 1;
+			}
 		}
-		else
-			player.knockFromRight = false;
+		if(!player.grounded){ 
+			if(avatar.transform.position.y < enemy.gameObject.transform.position.y){
+				player.knockFromWhere = 2;
+			}
+			else{
+				player.knockFromWhere = 3;
+			}
+		}
+		if(!player.grounded && Mathf.Abs (player.GetComponent<Rigidbody2D>().velocity.x) + 2 > Mathf.Abs(player.GetComponent<Rigidbody2D>().velocity.y)){
+			if(avatar.transform.position.x < enemy.gameObject.transform.position.x){
+				player.knockFromWhere = 0;
+			}
+			else{
+				player.knockFromWhere = 1;
+			}
+		}
 	}
 
 	public static void AddLife(){

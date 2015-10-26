@@ -21,23 +21,33 @@ public class PlayerLance : MonoBehaviour {
 
 	void OnTriggerEnter2D (Collider2D other)
 	{
-		if(other.tag == "EnemyBody"){
+		if(other.name == "EnemyBody"){
 			other.GetComponentInParent<EnemyHealthManager>().HurtEnemy(bodyDamage);//GetComponenetInParent grabs the actual enemy game object rather than the individual hit boxes
+			other.GetComponentInParent<EnemyHealthManager>().knockBackEnemySides(other, gameObject);
+			//EnemyHealthManager.HurtEnemy(bodyDamage);
 			//Debug.Log("Enemy Body");
 		}
 		
-		else if(other.tag == "EnemyHead"){
+		else if(other.name == "EnemyHead"){
 			other.GetComponentInParent<EnemyHealthManager>().HurtEnemy(headDamage);
+			//EnemyHealthManager.HurtEnemy(headDamage);
 			//Debug.Log("Enemy Head");
 		}
 		
-		else if(other.tag == "EnemyBottom"){
+		else if(other.name == "EnemyBottom"){
 			other.GetComponentInParent<EnemyHealthManager>().HurtEnemy(headDamage);
+			other.GetComponentInParent<EnemyHealthManager>().knockBackEnemySides(other, gameObject);
+			//call function for top and bottom knockback here
+			//EnemyHealthManager.HurtEnemy(bottomDamage);
 			//Debug.Log ("Enemy Bottom");
 		}
-		else if(other.tag == "EnemyLance"){
+		else if(other.name == "EnemyLance"){
 			//bounce back happens here
+			other.GetComponentInParent<EnemyHealthManager>().knockBackEnemySides(other, gameObject);
 		}
+		else
+			return;
+
 	}
 
 }

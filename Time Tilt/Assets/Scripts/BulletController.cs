@@ -7,6 +7,7 @@ public class BulletController : MonoBehaviour {
 	public int thisBulletDamage;
 
 	private PlayerController player;
+	private EnemyHealthManager enemy;
 
 	private int directionWhenFired;
 
@@ -55,8 +56,12 @@ public class BulletController : MonoBehaviour {
 		//ignore side things
 		//ignore orbs
 		//
+
 		if(other.tag == "Enemy"){
 			other.GetComponentInParent<EnemyHealthManager>().HurtEnemy(thisBulletDamage);
+			//Make separete function for bullet knockback?
+			//other.GetComponentInParent<EnemyHealthManager>().knockBackEnemySides(player.GetComponent<Collider2D>(), gameObject);
+			//EnemyHealthManager.HurtEnemy(thisBulletDamage);
 			Destroy (gameObject);
 
 		}
