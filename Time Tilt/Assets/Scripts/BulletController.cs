@@ -65,7 +65,7 @@ public class BulletController : MonoBehaviour {
 			Destroy (gameObject);
 
 		}
-		if(other.tag == "TopWall" || other.tag == "Platform"){
+		if(other.tag == "TopWall" || other.tag == "Platform" || other.tag == "Hazard"){
 			Destroy (gameObject);
 		}
 	}

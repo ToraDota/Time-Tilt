@@ -5,11 +5,15 @@ using UnityEngine.UI;
 public class HealthUI : MonoBehaviour {
 
 	private int healthCount;
+
+	public Slider healthBar;
 	
-	Text text;
+	//Text text;
 	
 	void Start(){
-		text = GetComponent<Text>();
+		//text = GetComponent<Text>();
+
+		healthBar = GetComponent<Slider>();
 		
 		healthCount = PlayerHealthManager.playerHealth;
 	}
@@ -21,7 +25,9 @@ public class HealthUI : MonoBehaviour {
 
 		healthCount = PlayerHealthManager.playerHealth;
 
-		text.text = "" + healthCount;
+		healthBar.value = healthCount;
+
+		//text.text = "" + healthCount;
 	}
 	
 	public void ResetHealthCounter(){

@@ -38,6 +38,7 @@ public class PlayerController : MonoBehaviour {
 	public GameObject gun1;
 	public GameObject gun2;
 	public int bulletCounter; //current amount of bullets. When zero set gunNumber to zero; Set from pickup 
+	public int currentMaxBullets;
 	public GameObject bullet;
 	public GameObject strongBullet;
 	public Transform firepoint;
@@ -47,11 +48,17 @@ public class PlayerController : MonoBehaviour {
 
 	public float gun2FireRate;
 	private float gun2NextFire;
+
+	private Gun1Pickup gun1PickUp;
+	private Gun2Pickup gun2PickUp;
 	
 	// Use this for initialization
 	void Start () {
 		isDiving = false;
 		gunNumber = 0;
+
+//		gun1PickUp = GetComponent<
+//		gun2PickUp = FindObjectOfType<Gun2Pickup>();
 	}
 
 	void FixedUpdate () { //used for physics

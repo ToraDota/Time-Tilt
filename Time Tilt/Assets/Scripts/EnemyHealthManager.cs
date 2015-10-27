@@ -9,12 +9,13 @@ public class EnemyHealthManager : MonoBehaviour {
 	public GameObject gun1;
 	public GameObject gun2;
 	public GameObject life;
+	public GameObject health;
 
-	public float orbChance;
-	public float gun1Chance;
-	public float gun2Chance;
 	public float lifeChance;
-
+	public float gun2Chance;
+	public float gun1Chance;
+	public float healthChance;
+	public float orbChance;
 
 	private int chanceNumber; //used as RNG for dropping items
 
@@ -27,7 +28,7 @@ public class EnemyHealthManager : MonoBehaviour {
 	void Update () {
 		if(enemyHealth <= 0){
 			//Instantiate (orb, new Vector2(gameObject.transform.position.x, gameObject.transform.position.y), Quaternion.identity);
-			chanceNumber = Random.Range (0,99); //100 values can be rolled for here.
+			chanceNumber = Random.Range (1,100); //100 values can be rolled for here.
 			DropSomething(chanceNumber);
 			Destroy (gameObject);
 		}
@@ -51,18 +52,23 @@ public class EnemyHealthManager : MonoBehaviour {
 			enemy.knockFromRight = false;
 	}
 
-	public void DropSomething(int chanceNumber){ 
-		if(chanceNumber < gun2Chance){ //lowest chance - start with 10 percent; 0-9. Gun2
+	public void DropSomething(int chanceNumber){  
+		//example of how chance values are determined: gun2Chance - life chance aka (15 - 5) = 10 => gun2Chance is 10% to drop
+		//gun1Chance - gun2Chance = 15 so gun1Chance is 15%
+		if(chanceNumber <= lifeChance){ //Lives 5% 1-5
+			Instantiate (life, new Vector2(gameObject.transform.position.x, gameObject.transform.position.y), Quaternion.identity);
+		}
+		else if(chanceNumber > lifeChance && chanceNumber <= gun2Chance){ // gun2 - 10% 6 - 15
 			Instantiate (gun2, new Vector2(gameObject.transform.position.x, gameObject.transform.position.y), Quaternion.identity);
 		}
-		else if(chanceNumber >= gun2Chance && chanceNumber < gun1Chance){ // 25% 10-34 Gun1
+		else if(chanceNumber > gun2Chance && chanceNumber <= gun1Chance){ // gun1 - 15% 16 - 30
 			Instantiate (gun1, new Vector2(gameObject.transform.position.x, gameObject.transform.position.y), Quaternion.identity);
 		}
-		else if(chanceNumber >= gun1Chance && chanceNumber < orbChance){ // 35-84
-			Instantiate (orb, new Vector2(gameObject.transform.position.x, gameObject.transform.position.y), Quaternion.identity);
+		else if(chanceNumber > gun1Chance && chanceNumber <= healthChance){ // Health - 25% 31 - 55
+			Instantiate (health, new Vector2(gameObject.transform.position.x, gameObject.transform.position.y), Quaternion.identity);
 		}
-		else if(chanceNumber >= orbChance){
-			Instantiate (life, new Vector2(gameObject.transform.position.x, gameObject.transform.position.y), Quaternion.identity);
+		else if(chanceNumber > healthChance && chanceNumber <= orbChance){ //Scorbs  45 % 55 - 99
+			Instantiate (orb, new Vector2(gameObject.transform.position.x, gameObject.transform.position.y), Quaternion.identity);
 		}
 	}
 }

@@ -46,6 +46,7 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\BulletBar.cs" />
      <Compile Include="Assets\Scripts\BulletController.cs" />
      <Compile Include="Assets\Scripts\DamagePlayer.cs" />
      <Compile Include="Assets\Scripts\EnemyController.cs" />
@@ -62,7 +63,9 @@
      <Compile Include="Assets\Scripts\LifePickup.cs" />
      <Compile Include="Assets\Scripts\LivesUI.cs" />
      <Compile Include="Assets\Scripts\Menu.cs" />
+     <Compile Include="Assets\Scripts\NonLethalHazard.cs" />
      <Compile Include="Assets\Scripts\OrbSpawn.cs" />
+     <Compile Include="Assets\Scripts\PauseMenu.cs" />
      <Compile Include="Assets\Scripts\PlayerBody.cs" />
      <Compile Include="Assets\Scripts\PlayerController.cs" />
      <Compile Include="Assets\Scripts\PlayerHealthManager.cs" />
@@ -71,7 +74,6 @@
      <Compile Include="Assets\Scripts\ScoreOrbs.cs" />
      <Compile Include="Assets\Scripts\WallTrigger.cs" />
      <Compile Include="Assets\Scripts\characterMove.cs" />
-     <Compile Include="Assets\Scripts\destroyPlayer.cs" />
      <Compile Include="Assets\Scripts\enemyMove.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
