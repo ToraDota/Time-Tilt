@@ -5,7 +5,6 @@ public class Gun2Pickup : MonoBehaviour {
 
 	public int pointsWorth;
 	public int bullets;
-	public AudioClip powerup;
 
 	// Use this for initialization
 	void Start () {
@@ -19,7 +18,9 @@ public class Gun2Pickup : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D other){
 		if(other.tag == "Player"){
-
+			GetComponent<AudioSource>().Play ();
+			GetComponent<Renderer>().enabled = false;
+			GetComponent<Collider2D>().enabled = false;
 			var player = other.GetComponent<PlayerController>();
 
 			ScoreManager.UpScore(pointsWorth);
@@ -35,7 +36,7 @@ public class Gun2Pickup : MonoBehaviour {
 			else{
 				player.bulletCounter = bullets;
 			}
-			Destroy (gameObject);
+			Destroy (gameObject,.5f);
 		}
 
 	}

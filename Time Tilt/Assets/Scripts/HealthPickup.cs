@@ -7,6 +7,9 @@ public class HealthPickup : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		GetComponent<AudioSource>().Play ();
+		GetComponent<Renderer>().enabled = false;
+		GetComponent<Collider2D>().enabled = false;
 		health = FindObjectOfType<PlayerHealthManager>();
 	}
 	
@@ -21,7 +24,7 @@ public class HealthPickup : MonoBehaviour {
 			if(PlayerHealthManager.playerHealth < health.maxPlayerHealth){
 				PlayerHealthManager.playerHealth++;
 			}
-			Destroy (gameObject);
+			Destroy (gameObject,.5f);
 		}
 	}
 }

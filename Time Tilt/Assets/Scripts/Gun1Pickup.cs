@@ -18,6 +18,9 @@ public class Gun1Pickup : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D other){
 		if(other.tag == "Player"){
+			GetComponent<AudioSource>().Play ();
+			GetComponent<Renderer>().enabled = false;
+			GetComponent<Collider2D>().enabled = false;
 			var player = other.GetComponent<PlayerController>();
 
 			ScoreManager.UpScore(pointsWorth);
@@ -36,7 +39,7 @@ public class Gun1Pickup : MonoBehaviour {
 				player.bulletCounter = bullets;
 
 			}
-			Destroy (gameObject);
+			Destroy (gameObject,.5f);
 		}
 	}
 }
