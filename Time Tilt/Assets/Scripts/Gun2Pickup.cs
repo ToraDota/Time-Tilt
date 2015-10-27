@@ -5,6 +5,7 @@ public class Gun2Pickup : MonoBehaviour {
 
 	public int pointsWorth;
 	public int bullets;
+	public AudioClip powerup;
 
 	// Use this for initialization
 	void Start () {
@@ -18,6 +19,7 @@ public class Gun2Pickup : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D other){
 		if(other.tag == "Player"){
+
 			var player = other.GetComponent<PlayerController>();
 
 			ScoreManager.UpScore(pointsWorth);

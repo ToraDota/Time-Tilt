@@ -224,6 +224,7 @@ public class LevelManager : MonoBehaviour {
 //		rendLance.enabled = true;
 //		rendBottom.enabled = true;
 //		rendBody.enabled = true;
+		GetComponent<AudioSource>().Play ();
 		body.SetActive(true);
 		head.SetActive(true);
 		lance.SetActive(true);

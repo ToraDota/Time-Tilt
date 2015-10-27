@@ -197,6 +197,7 @@ public class PlayerController : MonoBehaviour {
 				if(Input.GetKeyDown (KeyCode.K) && Time.time > gun1NextFire){ //semi auto
 					gun1NextFire = Time.time + gun1FireRate;
 					Instantiate (strongBullet, firepoint.position, firepoint.rotation);
+					GetComponent<AudioSource>().Play ();
 					bulletCounter--;
 				}
 			}
@@ -209,6 +210,7 @@ public class PlayerController : MonoBehaviour {
 				if(Input.GetKey (KeyCode.K) && Time.time > gun2NextFire){ //rapid fire
 					gun2NextFire = Time.time + gun2FireRate;
 					Instantiate (bullet, firepoint.position, firepoint.rotation);
+					GetComponent<AudioSource>().Play ();
 					bulletCounter--;
 				}
 			}
