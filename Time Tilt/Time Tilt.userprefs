@@ -1,12 +1,9 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\LevelManager.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\EnemyDamageToPlayer.cs">
     <Files>
-      <File FileName="Assets\Scripts\LevelManager.cs" Line="202" Column="37" />
-      <File FileName="Assets\Scripts\Gun2Pickup.cs" Line="32" Column="32" />
-      <File FileName="Assets\Scripts\HealthPickup.cs" Line="12" Column="46" />
-      <File FileName="Assets\Scripts\LifePickup.cs" Line="22" Column="47" />
-      <File FileName="Assets\Scripts\Gun1Pickup.cs" Line="23" Column="47" />
+      <File FileName="Assets\Scripts\LevelManager.cs" Line="57" Column="2" />
+      <File FileName="Assets\Scripts\EnemyDamageToPlayer.cs" Line="47" Column="5" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

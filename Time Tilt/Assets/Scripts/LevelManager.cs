@@ -55,6 +55,9 @@ public class LevelManager : MonoBehaviour {
 	public string levelToLoad;
 	public float timeTillNextLevel;
 
+	public GameObject waveCompleteAudio;
+	public GameObject deathAudio;
+
 		
 	// Use this for initialization
 	void Start () {
@@ -62,6 +65,7 @@ public class LevelManager : MonoBehaviour {
 		health = FindObjectOfType<PlayerHealthManager>();
 		hasWaveStarted = false;
 		waveCompleted = false;
+
 	}
 	
 	// Update is called once per frame
@@ -89,6 +93,7 @@ public class LevelManager : MonoBehaviour {
 				//end the wave - some graphic might want to pop up here - just enable then disable it from the EndWave function
 				Debug.Log("Wave Completed");
 				waveCompleted = true;
+				waveCompleteAudio.GetComponent<AudioSource>().Play();
 				CallEndWave (); //called once, as the last enemy dies
 			}
 			break;
@@ -96,6 +101,7 @@ public class LevelManager : MonoBehaviour {
 			if(!hasWaveStarted){
 				//DestroyPlatform(platform1);
 				CreateHazard(platform1);
+
 			}
 
 			if(enemiesToSpawn[1] > 1 && Time.time > nextEnemySpawn){ //spawns in enemies
@@ -111,12 +117,14 @@ public class LevelManager : MonoBehaviour {
 				//end the wave
 				Debug.Log("Wave Completed");
 				waveCompleted = true;
+				waveCompleteAudio.GetComponent<AudioSource>().Play();
 				CallEndWave (); //called once, as the last enemy dies
 			}
 			break;
 		case 3:
 			if(!hasWaveStarted){
 				DestroyPlatform(platform2);
+
 			}
 
 			if(enemiesToSpawn[2] > 1 && Time.time > nextEnemySpawn){ //spawns in enemies
@@ -132,6 +140,7 @@ public class LevelManager : MonoBehaviour {
 				//end the wave
 				Debug.Log("Wave Completed");
 				waveCompleted = true;
+				waveCompleteAudio.GetComponent<AudioSource>().Play();
 				CallEndWave (); //called once, as the last enemy dies
 			}
 			break;
@@ -139,6 +148,7 @@ public class LevelManager : MonoBehaviour {
 			if(!hasWaveStarted){
 				//DestroyPlatform(platform3);
 				CreateHazard(platform3);
+
 			}
 
 			if(enemiesToSpawn[3] > 1 && Time.time > nextEnemySpawn){ //spawns in enemies
@@ -154,12 +164,14 @@ public class LevelManager : MonoBehaviour {
 				//end the wave
 				Debug.Log("Wave Completed");
 				waveCompleted = true;
+				waveCompleteAudio.GetComponent<AudioSource>().Play();
 				CallEndWave (); //called once, as the last enemy dies
 			}
 			break;
 		case 5:
 			if(!hasWaveStarted){
 				DestroyPlatform(platform1);
+
 			}
 
 			if(enemiesToSpawn[4] > 1 && Time.time > nextEnemySpawn){ //spawns in enemies
@@ -175,6 +187,7 @@ public class LevelManager : MonoBehaviour {
 				//end the wave
 				Debug.Log("Wave Completed");
 				waveCompleted = true;
+				waveCompleteAudio.GetComponent<AudioSource>().Play();
 				CallEndWave (); //called once, as the last enemy dies
 			}
 			break;
@@ -197,6 +210,7 @@ public class LevelManager : MonoBehaviour {
 
 	public IEnumerator Respawn(){
 		//Debug.Log ("Dead");
+		deathAudio.GetComponent<AudioSource>().Play ();
 		player.enabled = false;
 		player.GetComponent<Renderer>().enabled = false;
 		player.GetComponent<Rigidbody2D>().velocity = Vector2.zero; //haults movement
@@ -224,7 +238,7 @@ public class LevelManager : MonoBehaviour {
 //		rendLance.enabled = true;
 //		rendBottom.enabled = true;
 //		rendBody.enabled = true;
-		GetComponent<AudioSource>().Play ();
+		GetComponent<AudioSource>().Play(); // play respawn sound
 		body.SetActive(true);
 		head.SetActive(true);
 		lance.SetActive(true);
