@@ -30,7 +30,7 @@ public class Menu : MonoBehaviour {
 
     public void StartLevel()
     {
-        Application.LoadLevel(1);
+        Application.LoadLevel("prototype");
     }
 
     public void ExitGame()
@@ -40,6 +40,12 @@ public class Menu : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+		if(Input.GetKeyDown(KeyCode.J) || Input.GetKeyDown(KeyCode.U)|| Input.GetKeyDown(KeyCode.Alpha1)){
+			StartLevel();
+		}
+
+		if(Input.GetKeyDown (KeyCode.Escape)){
+			ExitGame ();
+		}
 	}
 }

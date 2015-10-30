@@ -20,11 +20,9 @@ public class NonLethalHazard : MonoBehaviour {
 	void OnTriggerEnter2D (Collider2D other)
 	{
 		if(other.tag == "Player"){
-			PlayerHealthManager.HurtPlayer(hazardDamage, other, gameObject);
+			PlayerHealthManager.HurtPlayer(hazardDamage);
+			PlayerHealthManager.BouncePlayer(other, gameObject);
 		}
 
-		if(other.tag == "Enemy"){
-			other.GetComponentInParent<EnemyHealthManager>().HurtEnemy(hazardDamage);
-		}
 	}
 }

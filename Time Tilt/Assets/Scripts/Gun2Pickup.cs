@@ -8,7 +8,7 @@ public class Gun2Pickup : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
+		GetComponent<AudioSource>().Play ();
 	}
 	
 	// Update is called once per frame
@@ -18,12 +18,10 @@ public class Gun2Pickup : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D other){
 		if(other.tag == "Player"){
-			GetComponent<AudioSource>().Play ();
-			GetComponent<Renderer>().enabled = false;
-			GetComponent<Collider2D>().enabled = false;
 			var player = other.GetComponent<PlayerController>();
 
 			ScoreManager.UpScore(pointsWorth);
+
 			
 			if(player.gunNumber > 2){
 				//Ignores this object and just destroys it
@@ -36,7 +34,7 @@ public class Gun2Pickup : MonoBehaviour {
 			else{
 				player.bulletCounter = bullets;
 			}
-			Destroy (gameObject,.5f);
+			Destroy (gameObject);
 		}
 
 	}

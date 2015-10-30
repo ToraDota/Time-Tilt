@@ -27,6 +27,8 @@ public class EnemyController : MonoBehaviour {
 	public float flapForce;
 	public ForceMode2D forceMode = ForceMode2D.Impulse;
 
+	private Animator anim;
+
 
 	// Use this for initialization
 	void Start () {
@@ -37,6 +39,8 @@ public class EnemyController : MonoBehaviour {
 		}
 		else
 			facingRight = true;
+
+		anim = GetComponent<Animator>();
 	}
 
 	void FixedUpdate () { //used for physics
@@ -46,18 +50,19 @@ public class EnemyController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
-		if(knockbackCount <=  0){
+		if(knockbackCount <=  0){ //Regular movement
+			anim.SetBool("knockedBack", false);
 			if(facingRight){ //move right
-				this.transform.localScale = new Vector3(-0.8068709f, 0.8068709f, 0.8068709f);
+				this.transform.localScale = new Vector3(-1f, 1f, 1f);
 				GetComponent<Rigidbody2D>().velocity = new Vector2 (enemySpeed, GetComponent<Rigidbody2D>().velocity.y);
 			}
 			else{ //move left
-				transform.localScale = new Vector3(0.8068709f, 0.8068709f, 0.8068709f);
+				transform.localScale = new Vector3(1f, 1f, 1f);
 				GetComponent<Rigidbody2D>().velocity = new Vector2 (-enemySpeed, GetComponent<Rigidbody2D>().velocity.y);
 			}
 		}
 		else{
+			anim.SetBool("knockedBack", true);
 			if(knockFromRight){
 				GetComponent<Rigidbody2D>().velocity = new Vector2(-knockback, GetComponent<Rigidbody2D>().velocity.y);
 			}
@@ -70,22 +75,30 @@ public class EnemyController : MonoBehaviour {
 		//change depending on what it hits. Random the direction on start up those
 
 		if(grounded){ //run something to attempt to flap. Run this every few second while grounded, or atleast only allow it to be thought about.
-			//GetComponent<Rigidbody2D>().velocity = new Vector2(GetComponent<Rigidbody2D>().velocity.x, flapForce);
+			anim.SetBool("isGrounded", true); // move animation along the ground should play
+
 			if(Time.time > timeTillNextAction){
 				timeTillNextAction = Time.time + actionRate;
-				int random = Random.Range(0,3);
-				if(random >  1){
+				int random = Random.Range(0,5);
+				if(random >  2){
 					GetComponent<Rigidbody2D>().velocity = new Vector2(GetComponent<Rigidbody2D>().velocity.x, flapForce);
+					anim.SetBool("isFlapping", true);
 				}
+				else
+					anim.SetBool ("isFlapping", false);
 			}
 		}
 		if(!grounded){
+			anim.SetBool ("isGrounded", false);
 			if(Time.time > inAirNextAction){
 				inAirNextAction = Time.time + inAirActionRate;
-				int random = Random.Range(0,3); //toy with this
+				int random = Random.Range(0,4); //toy with this
 				if(random >  1){
 					GetComponent<Rigidbody2D>().velocity = new Vector2(GetComponent<Rigidbody2D>().velocity.x, flapForce);
+					anim.SetBool("isFlapping", true);
 				}
+				else
+					anim.SetBool ("isFlapping", false);
 			}
 		}
 	}
@@ -96,7 +109,7 @@ public class EnemyController : MonoBehaviour {
 		}
 		if(other.tag == "Enemy"){
 			facingRight = !facingRight;
-			other.GetComponent<EnemyHealthManager>().knockBackEnemySides(other, gameObject);
+			other.GetComponent<EnemyHealthManager>().knockBackEnemySides(other, gameObject.transform);
 		}
 	}
 	

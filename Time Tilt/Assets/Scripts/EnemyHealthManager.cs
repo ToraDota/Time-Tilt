@@ -19,33 +19,48 @@ public class EnemyHealthManager : MonoBehaviour {
 
 	private int chanceNumber; //used as RNG for dropping items
 
+	public float recoveryRate;
+	private float takeDamageAgain; //how long until they can be hit again
+	public bool recovering;
+
 	// Use this for initialization
 	void Start () {
-	
+		recovering = false;
+		takeDamageAgain = 0;
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		if(enemyHealth <= 0){
 			//Instantiate (orb, new Vector2(gameObject.transform.position.x, gameObject.transform.position.y), Quaternion.identity);
+			GetComponent<AudioSource>().Play ();
 			chanceNumber = Random.Range (1,100); //100 values can be rolled for here.
 			DropSomething(chanceNumber);
 			Destroy (gameObject);
 		}
+
+		if(recovering == true && Time.time > takeDamageAgain){
+			recovering = false;
+		}
+
 	}
 
 	public void HurtEnemy(int damage){
-		enemyHealth -= damage;
 
+		if(recovering == false){
+			enemyHealth -= damage;
+			takeDamageAgain = Time.time + recoveryRate;
+			recovering = true;
+		}
 		//enemy bounce back here. probably clean up enemy movement then do this.
 		//Debug.Log("Enemy Health " + enemyHealth);
 	}
 
-	public void knockBackEnemySides(Collider2D avatar, GameObject player){ //collider is whatever triggers this to occur //player is the player character controller
+	public void knockBackEnemySides(Collider2D avatar, Transform playerPosition){ //collider is whatever triggers this to occur //player is the player character controller
 		var enemy = avatar.GetComponentInParent<EnemyController>(); //might need to getcomponent instead
 		enemy.knockbackCount = enemy.knockbackLength;
 		
-		if(avatar.transform.position.x < player.gameObject.transform.position.x){ //can add plus or minus a few values to add leeway 
+		if(avatar.transform.position.x < playerPosition.position.x){ //can add plus or minus a few values to add leeway 
 			enemy.knockFromRight = true;
 		}
 		else

@@ -6,16 +6,25 @@ public class HealthUI : MonoBehaviour {
 
 	private int healthCount;
 
+	private int maxHealth;
+
 	public Slider healthBar;
+
+	private PlayerHealthManager healthManager;
 	
 	//Text text;
 	
 	void Start(){
 		//text = GetComponent<Text>();
+		healthManager = FindObjectOfType<PlayerHealthManager>();
 
 		healthBar = GetComponent<Slider>();
 		
 		healthCount = PlayerHealthManager.playerHealth;
+
+		maxHealth = healthManager.maxPlayerHealth;
+
+		healthBar.maxValue = maxHealth;
 	}
 	
 	void Update(){

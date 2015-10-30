@@ -9,12 +9,6 @@ public class LevelManager : MonoBehaviour {
 	public float respawnDelay;
 	public Transform respawnLocation;
 
-	//Individual Sprite Renders; Uncessessary upon sprite implementation most likely;
-	public Renderer rendHead;
-	public Renderer rendBottom;
-	public Renderer rendLance;
-	public Renderer rendBody;
-
 	public GameObject body;
 	public GameObject head;
 	public GameObject lance;
@@ -44,6 +38,7 @@ public class LevelManager : MonoBehaviour {
 
 	//tracks the amount of enemies left needed to spawn per wave
 	public int[] enemiesToSpawn;
+	public bool anEnemyHasSpawned;
 	
 	//Platforms to possibly destroyed. Insert empty object to destroy to fill slot if 4 aren't going to be used. 
 	public GameObject platform1;
@@ -55,9 +50,8 @@ public class LevelManager : MonoBehaviour {
 	public string levelToLoad;
 	public float timeTillNextLevel;
 
-	public GameObject waveCompleteAudio;
-	public GameObject deathAudio;
-
+	private int oldRnd;
+	private int rnd;
 		
 	// Use this for initialization
 	void Start () {
@@ -65,7 +59,8 @@ public class LevelManager : MonoBehaviour {
 		health = FindObjectOfType<PlayerHealthManager>();
 		hasWaveStarted = false;
 		waveCompleted = false;
-
+		anEnemyHasSpawned = false;
+		CallDelayLevelStart();
 	}
 	
 	// Update is called once per frame
@@ -75,11 +70,6 @@ public class LevelManager : MonoBehaviour {
 
 		switch(waveCount){
 		case 1:
-			//Debug.Log (enemiesToSpawn[0]);
-			if(!hasWaveStarted){
-				//no platforms to change in wave 1
-			}
-
 			if(enemiesToSpawn[0] > 1 && Time.time > nextEnemySpawn){ //spawns in enemies
 				nextEnemySpawn = Time.time + enemySpawnRate;
 				CallSpawnEnemy();
@@ -87,111 +77,105 @@ public class LevelManager : MonoBehaviour {
 
 			if(enemyCount.Length > 0){
 				hasWaveStarted = true;
+				anEnemyHasSpawned = true;
 			}
 
-			if(enemyCount.Length < 1 && hasWaveStarted && !waveCompleted){
+			if(enemyCount.Length < 1 && hasWaveStarted && !waveCompleted && anEnemyHasSpawned){
 				//end the wave - some graphic might want to pop up here - just enable then disable it from the EndWave function
 				Debug.Log("Wave Completed");
 				waveCompleted = true;
-				waveCompleteAudio.GetComponent<AudioSource>().Play();
 				CallEndWave (); //called once, as the last enemy dies
 			}
 			break;
 		case 2:
 			if(!hasWaveStarted){
-				//DestroyPlatform(platform1);
 				CreateHazard(platform1);
-
+				hasWaveStarted = true;
 			}
 
-			if(enemiesToSpawn[1] > 1 && Time.time > nextEnemySpawn){ //spawns in enemies
+			if(enemiesToSpawn[1] > 1 && Time.time > nextEnemySpawn ){ //spawns in enemies
 				nextEnemySpawn = Time.time + enemySpawnRate;
 				CallSpawnEnemy();
 			}
-			
+
 			if(enemyCount.Length > 0){
-				hasWaveStarted = true;
+				anEnemyHasSpawned = true;
 			}
 			
-			if(enemyCount.Length < 1 && hasWaveStarted && !waveCompleted){
+			if(enemyCount.Length < 1 && hasWaveStarted && !waveCompleted && anEnemyHasSpawned){
 				//end the wave
-				Debug.Log("Wave Completed");
+				//Debug.Log("Wave Completed");
 				waveCompleted = true;
-				waveCompleteAudio.GetComponent<AudioSource>().Play();
 				CallEndWave (); //called once, as the last enemy dies
 			}
 			break;
 		case 3:
 			if(!hasWaveStarted){
 				DestroyPlatform(platform2);
-
+				hasWaveStarted = true;
 			}
 
 			if(enemiesToSpawn[2] > 1 && Time.time > nextEnemySpawn){ //spawns in enemies
 				nextEnemySpawn = Time.time + enemySpawnRate;
 				CallSpawnEnemy();
 			}
-			
+
 			if(enemyCount.Length > 0){
-				hasWaveStarted = true;
+				anEnemyHasSpawned = true;
 			}
 			
-			if(enemyCount.Length < 1 && hasWaveStarted && !waveCompleted){
+			if(enemyCount.Length < 1 && hasWaveStarted && !waveCompleted && anEnemyHasSpawned){
 				//end the wave
-				Debug.Log("Wave Completed");
+				//Debug.Log("Wave Completed");
 				waveCompleted = true;
-				waveCompleteAudio.GetComponent<AudioSource>().Play();
 				CallEndWave (); //called once, as the last enemy dies
 			}
 			break;
 		case 4:
 			if(!hasWaveStarted){
-				//DestroyPlatform(platform3);
 				CreateHazard(platform3);
-
+				hasWaveStarted = true;
 			}
 
 			if(enemiesToSpawn[3] > 1 && Time.time > nextEnemySpawn){ //spawns in enemies
 				nextEnemySpawn = Time.time + enemySpawnRate;
 				CallSpawnEnemy();
 			}
-			
+
 			if(enemyCount.Length > 0){
-				hasWaveStarted = true;
+				anEnemyHasSpawned = true;
 			}
 			
-			if(enemyCount.Length < 1 && hasWaveStarted && !waveCompleted){
+			if(enemyCount.Length < 1 && hasWaveStarted && !waveCompleted && anEnemyHasSpawned){
 				//end the wave
-				Debug.Log("Wave Completed");
+				//Debug.Log("Wave Completed");
 				waveCompleted = true;
-				waveCompleteAudio.GetComponent<AudioSource>().Play();
 				CallEndWave (); //called once, as the last enemy dies
 			}
 			break;
 		case 5:
 			if(!hasWaveStarted){
-				DestroyPlatform(platform1);
-
+				DestroyPlatform(platform4);
+				hasWaveStarted = true;
 			}
 
 			if(enemiesToSpawn[4] > 1 && Time.time > nextEnemySpawn){ //spawns in enemies
 				nextEnemySpawn = Time.time + enemySpawnRate;
 				CallSpawnEnemy();
 			}
-			
+
 			if(enemyCount.Length > 0){
-				hasWaveStarted = true;
+				anEnemyHasSpawned = true;
 			}
 			
-			if(enemyCount.Length < 1 && hasWaveStarted && !waveCompleted){
+			if(enemyCount.Length < 1 && hasWaveStarted && !waveCompleted && anEnemyHasSpawned){
 				//end the wave
-				Debug.Log("Wave Completed");
+				//Debug.Log("Wave Completed");
 				waveCompleted = true;
-				waveCompleteAudio.GetComponent<AudioSource>().Play();
 				CallEndWave (); //called once, as the last enemy dies
 			}
 			break;
-		default: //once reaching this the next level is called
+		case 6: //once reaching this the next level is called
 				if(!hasWaveStarted && !waveCompleted)
 				{
 				CallNextLevel();
@@ -199,9 +183,7 @@ public class LevelManager : MonoBehaviour {
 				waveCompleted = true;
 				}
 			break;
-
 		}
-	
 	}
 
 	public void RespawnPlayer(){
@@ -210,14 +192,9 @@ public class LevelManager : MonoBehaviour {
 
 	public IEnumerator Respawn(){
 		//Debug.Log ("Dead");
-		deathAudio.GetComponent<AudioSource>().Play ();
 		player.enabled = false;
 		player.GetComponent<Renderer>().enabled = false;
 		player.GetComponent<Rigidbody2D>().velocity = Vector2.zero; //haults movement
-//		rendHead.enabled = false;
-//		rendLance.enabled = false;
-//		rendBottom.enabled = false;
-//		rendBody.enabled = false;
 		body.SetActive(false);
 		head.SetActive(false);
 		lance.SetActive(false);
@@ -227,17 +204,14 @@ public class LevelManager : MonoBehaviour {
 		//Debug.Log ("Waiting to Respawn");
 		yield return new WaitForSeconds (respawnDelay);
 		player.transform.position = respawnLocation.transform.position;
+		GetComponent<AudioSource>().Play ();//plays on respawn
 		player.enabled = true;
 		player.GetComponent<Renderer>().enabled = true;
 		player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
 		player.knockbackCount = 0;
-		player.knockFromWhere = 0;
+		player.knockFromWhere = -1;
 		player.bulletCounter = 0;
 		player.gunNumber = 0;
-//		rendHead.enabled = true;
-//		rendLance.enabled = true;
-//		rendBottom.enabled = true;
-//		rendBody.enabled = true;
 		GetComponent<AudioSource>().Play(); // play respawn sound
 		body.SetActive(true);
 		head.SetActive(true);
@@ -257,15 +231,20 @@ public class LevelManager : MonoBehaviour {
 	}
 	public IEnumerator SpawnEnemy(){
 		yield return new WaitForSeconds (spawnDelay);
-		int rnd = Random.Range(0,3);
-		if(rnd == 0){
+		oldRnd = rnd;
+		rnd = Random.Range(0,3); //0 1 or 2
+		if(rnd == 0 && oldRnd != 0){
 			enemySpawnHere = spawnPoint1;
 		}
-		else if(rnd == 1){
+		else if(rnd == 1 && oldRnd != 1){
 			enemySpawnHere = spawnPoint2;
 		}
-		else
+		else if(rnd == 2 && oldRnd != 2){
 			enemySpawnHere = spawnPoint3;
+		}
+		else
+			enemySpawnHere = spawnPoint1;
+
 		Instantiate (enemy, enemySpawnHere.position, enemySpawnHere.rotation);
 		Debug.Log ("Enemy Spawned");
 		enemiesToSpawn[waveCount - 1]--;
@@ -279,6 +258,8 @@ public class LevelManager : MonoBehaviour {
 		Debug.Log ("New Wave Starting");
 		hasWaveStarted = false;
 		waveCompleted = false;
+		anEnemyHasSpawned = false;
+		PlayerHealthManager.playerHealth = health.maxPlayerHealth;
 		waveCount++;
 	}
 
@@ -288,7 +269,6 @@ public class LevelManager : MonoBehaviour {
 	public IEnumerator NextLevel(){ //calls the next level
 		yield return new WaitForSeconds (timeTillNextLevel);
 		Application.LoadLevel(levelToLoad);
-
 	}
 
 	public void DestroyPlatform(GameObject plat){
@@ -298,6 +278,15 @@ public class LevelManager : MonoBehaviour {
 	public void CreateHazard (GameObject plat){
 		Instantiate (hazard, plat.transform.position, plat.transform.rotation);
 		plat.SetActive(false);
+	}
+
+	public void CallDelayLevelStart(){
+		StartCoroutine("DelayLevelStart");
+	}
+
+	public IEnumerator DelayLevelStart(){
+		yield return new WaitForSeconds(5.0f);
+		waveCount = 1;
 	}
 
 }

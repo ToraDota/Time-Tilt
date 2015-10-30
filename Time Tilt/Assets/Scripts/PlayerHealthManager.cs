@@ -13,6 +13,11 @@ public class PlayerHealthManager : MonoBehaviour {
 
 	public bool isDead;
 
+
+	public static float takeDamageAgain; //how long until they can be hit again
+	public static bool recovering;
+
+
 	// Use this for initialization
 	void Start () {
 		levelManager = FindObjectOfType<LevelManager>();
@@ -22,6 +27,9 @@ public class PlayerHealthManager : MonoBehaviour {
 		playerLives = initialLives;
 
 		isDead = false;
+
+		recovering = false;
+		takeDamageAgain = 0;
 	}
 	
 	// Update is called once per frame
@@ -30,45 +38,68 @@ public class PlayerHealthManager : MonoBehaviour {
 			if(playerHealth <= 0){ 
 				playerHealth = 0;
 				levelManager.RespawnPlayer(); //player dies and respawns from the same function
+				GetComponent<AudioSource>().Play (); //plays death sound effect
 				RemoveLife ();
 				isDead = true;
 			}
 		}
 		else if (playerLives == -1 && !isDead){
-			Debug.Log ("Game Over");//Run some sort of function from the level manager to remove character. Game over should run somewhere in the level Manager not here.
+			//Debug.Log ("Game Over");//Run some sort of function from the level manager to remove character. Game over should run somewhere in the level Manager not here.
+			Application.LoadLevel("Menu");
 			isDead = true;
+		}
+
+		if(recovering == true && Time.time > takeDamageAgain){
+			recovering = false;
 		}
 	}
 
-	public static void HurtPlayer(int damage, Collider2D avatar, GameObject enemy){
-		playerHealth -= damage; //actual damage
+	public static void HurtPlayer(int damage){
 
+		var player = FindObjectOfType<PlayerController>();
+
+		if(recovering == false){
+			playerHealth -= damage; //actual damage
+			takeDamageAgain = Time.time +  player.recoveryRate;
+			recovering = true;
+		}
+			
+	}
+
+	public static void BouncePlayer(Collider2D avatar, GameObject enemy){
 		//knockback control
 		var player = avatar.GetComponentInParent<PlayerController>();
 		player.knockbackCount = player.knockbackLength;
 
-//		if(Mathf.Abs(avatar.transform.parent.position.x) - Mathf.Abs(enemy.gameObject.transform.parent.position.x)
-//		   >  //if this is true then perform x bounces; else do y bounces
-//		   Mathf.Abs(avatar.transform.parent.position.y) - Mathf.Abs(enemy.gameObject.transform.parent.position.y))
-
-		if(player.grounded && Mathf.Abs (player.GetComponent<Rigidbody2D>().velocity.x) == Mathf.Abs(player.GetComponent<Rigidbody2D>().velocity.y)){
-			if(avatar.transform.position.x < enemy.gameObject.transform.position.x){
+		if(player.grounded == true){
+			if(player.gameObject.transform.position.x < enemy.gameObject.transform.position.x){
 				player.knockFromWhere = 0;
 			}
-			else{
+			if(player.gameObject.transform.position.x > enemy.gameObject.transform.position.x){
 				player.knockFromWhere = 1;
 			}
 		}
-		if(!player.grounded){ 
-			if(avatar.transform.position.y < enemy.gameObject.transform.position.y){
+		
+		else if(player.grounded == true && player.GetComponent<Rigidbody2D>().velocity.x == player.GetComponent<Rigidbody2D>().velocity.y){ //Not moving
+			if(player.gameObject.transform.position.x < enemy.gameObject.transform.position.x){
+				player.knockFromWhere = 0;
+			}
+			if(player.gameObject.transform.position.x > enemy.gameObject.transform.position.x){
+				player.knockFromWhere = 1;
+			}
+		}
+
+		else if(player.grounded == false){ 
+			if(player.transform.position.y < enemy.gameObject.transform.position.y){
 				player.knockFromWhere = 2;
 			}
-			else{
+			if(player.transform.position.y > enemy.gameObject.transform.position.y){
 				player.knockFromWhere = 3;
 			}
 		}
-		if(!player.grounded && Mathf.Abs (player.GetComponent<Rigidbody2D>().velocity.x) + 2 > Mathf.Abs(player.GetComponent<Rigidbody2D>().velocity.y)){
-			if(avatar.transform.position.x < enemy.gameObject.transform.position.x){
+
+		else if(player.grounded == false && Mathf.Abs (player.GetComponent<Rigidbody2D>().velocity.x) + 2 > Mathf.Abs(player.GetComponent<Rigidbody2D>().velocity.y)){
+			if(player.transform.position.x < enemy.gameObject.transform.position.x){
 				player.knockFromWhere = 0;
 			}
 			else{

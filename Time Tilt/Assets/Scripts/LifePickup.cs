@@ -8,6 +8,7 @@ public class LifePickup : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		GetComponent<AudioSource>().Play ();
 	}
 	
 	// Update is called once per frame
@@ -17,14 +18,9 @@ public class LifePickup : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D other){
 		if(other.tag == "Player"){
-			GetComponent<AudioSource>().Play ();
-			GetComponent<Renderer>().enabled = false;
-			GetComponent<Collider2D>().enabled = false;
 			PlayerHealthManager.AddLife();
-
 			ScoreManager.UpScore(pointsWorth);
-
-			Destroy (gameObject,.5f);
+			Destroy (gameObject);
 		}
 	}
 }

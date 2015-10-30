@@ -23,7 +23,7 @@ public class PlayerLance : MonoBehaviour {
 	{
 		if(other.name == "EnemyBody"){
 			other.GetComponentInParent<EnemyHealthManager>().HurtEnemy(bodyDamage);//GetComponenetInParent grabs the actual enemy game object rather than the individual hit boxes
-			other.GetComponentInParent<EnemyHealthManager>().knockBackEnemySides(other, gameObject);
+			other.GetComponentInParent<EnemyHealthManager>().knockBackEnemySides(other, gameObject.transform);
 			GetComponent<AudioSource>().Play ();
 			//EnemyHealthManager.HurtEnemy(bodyDamage);
 			//Debug.Log("Enemy Body");
@@ -31,22 +31,21 @@ public class PlayerLance : MonoBehaviour {
 		
 		else if(other.name == "EnemyHead"){
 			other.GetComponentInParent<EnemyHealthManager>().HurtEnemy(headDamage);
+			other.GetComponentInParent<EnemyHealthManager>().knockBackEnemySides(other, gameObject.transform);
 			GetComponent<AudioSource>().Play ();
 			//EnemyHealthManager.HurtEnemy(headDamage);
 			//Debug.Log("Enemy Head");
 		}
 		
 		else if(other.name == "EnemyBottom"){
-			other.GetComponentInParent<EnemyHealthManager>().HurtEnemy(headDamage);
-			other.GetComponentInParent<EnemyHealthManager>().knockBackEnemySides(other, gameObject);
+			other.GetComponentInParent<EnemyHealthManager>().HurtEnemy(bottomDamage);
+			other.GetComponentInParent<EnemyHealthManager>().knockBackEnemySides(other, gameObject.transform);
 			GetComponent<AudioSource>().Play ();
-			//call function for top and bottom knockback here
-			//EnemyHealthManager.HurtEnemy(bottomDamage);
 			//Debug.Log ("Enemy Bottom");
 		}
 		else if(other.name == "EnemyLance"){
 			//bounce back happens here
-			other.GetComponentInParent<EnemyHealthManager>().knockBackEnemySides(other, gameObject);
+			other.GetComponentInParent<EnemyHealthManager>().knockBackEnemySides(other, gameObject.transform);
 			GetComponent<AudioSource>().Play ();
 		}
 		else

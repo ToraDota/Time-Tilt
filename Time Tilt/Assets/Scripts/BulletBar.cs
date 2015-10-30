@@ -17,21 +17,28 @@ public class BulletBar : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		player = FindObjectOfType<PlayerController>();
+
+		bulletBar.gameObject.SetActive(true);
+		bulletBar.value = 0;
+
+		//bulletBarOn = false;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if(player.gunNumber == 0 && bulletBarOn){
-			bulletBar.gameObject.SetActive(false);
-			bulletBarOn = false;
+		if(player.gunNumber == 0){
+			bulletBar.value = 0;
+			//bulletBar.gameObject.SetActive(false);
+			//bulletBarOn = false;
 		}
-		else if(player.gunNumber > 0 && bulletBarOn == false){
+		else if(player.gunNumber == 1){
+			//bulletBar.gameObject.SetActive(true);
+			bulletBar.maxValue = 5;
+			bulletBar.value = player.bulletCounter;
+		}
+		else if(player.gunNumber == 2){
 			bulletBar.gameObject.SetActive(true);
-			bulletBarOn = true;
-			maxBullets = player.bulletCounter;
-		}
-		else{
-			bulletBar.maxValue = maxBullets;
+			bulletBar.maxValue = 10;
 			bulletBar.value = player.bulletCounter;
 		}
 	}
