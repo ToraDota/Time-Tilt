@@ -7,6 +7,7 @@ public class BulletController : MonoBehaviour {
 	public int thisBulletDamage;
 
 	private PlayerController player;
+	private PlayerController2 player2;
 	private EnemyHealthManager enemy;
 
 	private int directionWhenFired;
@@ -18,29 +19,54 @@ public class BulletController : MonoBehaviour {
 
 	private Transform playerPosition;
 
+	public static bool firedFromPlayer1;
+
 	// Use this for initialization
 	void Start () {
 
-		player = FindObjectOfType<PlayerController>();
+		if (firedFromPlayer1) {
+			player = FindObjectOfType<PlayerController> ();
 
-		firedFromWhere = player.facingDirection; //0 left 1 right
+			firedFromWhere = player.facingDirection; //0 left 1 right
 
-		playerPosition = player.transform;
+			playerPosition = player.transform;
 
+			if(player.transform.localScale.x < 0 && !player.facingUp && !player.facingDown){ //player is facing left so the object should fire left & player is not facing up or down
+				speed = -speed;
+				directionWhenFired = 1;
+			}
+			else if(player.transform.localScale.x > 0 && !player.facingUp && !player.facingDown){
+				directionWhenFired = 1;
+			}
+			else if(player.facingDown){
+				speed = -speed;
+				directionWhenFired = 2;
+			}
+			else if(player.facingUp){
+				directionWhenFired = 2;
+			}
+		} 
+		else {
+			player2 = FindObjectOfType<PlayerController2> ();
 
-		if(player.transform.localScale.x < 0 && !player.facingUp && !player.facingDown){ //player is facing left so the object should fire left & player is not facing up or down
-			speed = -speed;
-			directionWhenFired = 1;
-		}
-		else if(player.transform.localScale.x > 0 && !player.facingUp && !player.facingDown){
-			directionWhenFired = 1;
-		}
-		else if(player.facingDown){
-			speed = -speed;
-			directionWhenFired = 2;
-		}
-		else if(player.facingUp){
-			directionWhenFired = 2;
+			firedFromWhere = player2.facingDirection; //0 left 1 right
+			
+			playerPosition = player2.transform;
+
+			if(player2.transform.localScale.x < 0 && !player2.facingUp && !player2.facingDown){ //player is facing left so the object should fire left & player is not facing up or down
+				speed = -speed;
+				directionWhenFired = 1;
+			}
+			else if(player2.transform.localScale.x > 0 && !player2.facingUp && !player2.facingDown){
+				directionWhenFired = 1;
+			}
+			else if(player2.facingDown){
+				speed = -speed;
+				directionWhenFired = 2;
+			}
+			else if(player2.facingUp){
+				directionWhenFired = 2;
+			}
 		}
 	}
 	

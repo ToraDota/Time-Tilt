@@ -367,5 +367,4 @@ public class LevelManager : MonoBehaviour {
 		yield return new WaitForSeconds(5.0f);
 		waveCount = 1;
 	}
-
 }
