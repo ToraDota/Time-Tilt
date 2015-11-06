@@ -41,5 +41,27 @@ public class Gun1Pickup : MonoBehaviour {
 			} 
 			Destroy (gameObject);
 		}
+
+		if(other.tag == "Player2"){
+			var player = other.GetComponent<PlayerController2>();
+			
+			ScoreManager.UpScore(pointsWorth);
+			
+			if(player.gunNumber > 1){
+				//Ignores this object and just destroys it
+				Destroy (gameObject);
+			}
+			else if(player.gunNumber < 1){
+				
+				player.gunNumber = 1;
+				player.bulletCounter = bullets;
+				
+			}
+			else{
+				player.bulletCounter = bullets;
+				
+			} 
+			Destroy (gameObject);
+		}
 	}
 }

@@ -21,5 +21,11 @@ public class ScoreOrbs : MonoBehaviour {
 			ScoreManager.UpScore(pointsWorth);
 			Destroy (gameObject);
 		}
+
+		if(other.tag == "Player2"){
+			GetComponent<AudioSource>().Play();
+			ScoreManager.UpScore(pointsWorth);
+			Destroy (gameObject);
+		}
 	}
 }

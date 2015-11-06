@@ -47,8 +47,10 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\BulletBar.cs" />
+     <Compile Include="Assets\Scripts\BulletBar2.cs" />
      <Compile Include="Assets\Scripts\BulletController.cs" />
      <Compile Include="Assets\Scripts\CheckGround.cs" />
+     <Compile Include="Assets\Scripts\CheckGround2.cs" />
      <Compile Include="Assets\Scripts\EnemyController.cs" />
      <Compile Include="Assets\Scripts\EnemyDamageToPlayer.cs" />
      <Compile Include="Assets\Scripts\EnemyDrops.cs" />
@@ -59,9 +61,11 @@
      <Compile Include="Assets\Scripts\Gun2Pickup.cs" />
      <Compile Include="Assets\Scripts\HealthPickup.cs" />
      <Compile Include="Assets\Scripts\HealthUI.cs" />
+     <Compile Include="Assets\Scripts\HealthUI2.cs" />
      <Compile Include="Assets\Scripts\LevelManager.cs" />
      <Compile Include="Assets\Scripts\LifePickup.cs" />
      <Compile Include="Assets\Scripts\LivesUI.cs" />
+     <Compile Include="Assets\Scripts\LivesUI2.cs" />
      <Compile Include="Assets\Scripts\Menu.cs" />
      <Compile Include="Assets\Scripts\NonLethalHazard.cs" />
      <Compile Include="Assets\Scripts\OrbSpawn.cs" />
@@ -70,6 +74,7 @@
      <Compile Include="Assets\Scripts\PlayerController2.cs" />
      <Compile Include="Assets\Scripts\PlayerHealthManager.cs" />
      <Compile Include="Assets\Scripts\PlayerLance.cs" />
+     <Compile Include="Assets\Scripts\PlayerTwoHealthManager.cs" />
      <Compile Include="Assets\Scripts\ScoreManager.cs" />
      <Compile Include="Assets\Scripts\ScoreOrbs.cs" />
      <Compile Include="Assets\Scripts\WallTrigger.cs" />

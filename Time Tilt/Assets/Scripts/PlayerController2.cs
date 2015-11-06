@@ -73,19 +73,19 @@ public class PlayerController2 : MonoBehaviour {
 	void Update () {
 		
 		//Input for flap
-		if(Input.GetButtonDown(flapbutton) || Input.GetKeyDown(KeyCode.R) || Input.GetKeyDown (KeyCode.T))
+		if(Input.GetButtonDown(flapbutton) || Input.GetKeyDown(KeyCode.R) || Input.GetKeyDown (KeyCode.F))
 		{
 			GetComponent<Rigidbody2D>().AddForce(Vector2.up * flapforce, forceMode);
 		}
 		
 		//Face Left
-		if(Input.GetKeyDown (KeyCode.A)){
+		if(Input.GetKeyDown (KeyCode.A) && !Input.GetKey(KeyCode.S)){
 			transform.localScale = new Vector3(-1f, 1f, 1f);
 			facingDirection = 0;
 		}
 		
 		//Face Right
-		if(Input.GetKeyDown (KeyCode.D)){
+		if(Input.GetKeyDown (KeyCode.D) && !Input.GetKey(KeyCode.S)){
 			transform.localScale = new Vector3(1f, 1f, 1f);
 			facingDirection = 1;
 		}
@@ -110,7 +110,7 @@ public class PlayerController2 : MonoBehaviour {
 			//GetComponent<Rigidbody2D>().velocity = new Vector2(-speed, GetComponent<Rigidbody2D>().velocity.y);
 		} 
 		
-		if (Input.GetKey (KeyCode.D) && !Input.GetKey(KeyCode.S)) 
+		if (Input.GetKey (KeyCode.D) && !Input.GetKey(KeyCode.S) && facingDirection == 1) 
 		{
 			//MoveRight
 			

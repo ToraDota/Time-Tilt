@@ -22,5 +22,11 @@ public class LifePickup : MonoBehaviour {
 			ScoreManager.UpScore(pointsWorth);
 			Destroy (gameObject);
 		}
+
+		if(other.tag == "Player2"){
+			PlayerTwoHealthManager.AddLife();
+			ScoreManager.UpScore(pointsWorth);
+			Destroy (gameObject);
+		}
 	}
 }

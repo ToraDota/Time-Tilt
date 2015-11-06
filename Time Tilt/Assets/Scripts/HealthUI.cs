@@ -20,6 +20,7 @@ public class HealthUI : MonoBehaviour {
 
 		healthBar = GetComponent<Slider>();
 		
+
 		healthCount = PlayerHealthManager.playerHealth;
 
 		maxHealth = healthManager.maxPlayerHealth;

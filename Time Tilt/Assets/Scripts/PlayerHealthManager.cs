@@ -13,6 +13,8 @@ public class PlayerHealthManager : MonoBehaviour {
 
 	public bool isDead;
 
+	private string whichPlayer;
+
 
 	public static float takeDamageAgain; //how long until they can be hit again
 	public static bool recovering;
@@ -30,6 +32,8 @@ public class PlayerHealthManager : MonoBehaviour {
 
 		recovering = false;
 		takeDamageAgain = 0;
+
+		whichPlayer = "player1";
 	}
 	
 	// Update is called once per frame
@@ -37,15 +41,13 @@ public class PlayerHealthManager : MonoBehaviour {
 		if(playerLives > -1 && !isDead){
 			if(playerHealth <= 0){ 
 				playerHealth = 0;
-				levelManager.RespawnPlayer(); //player dies and respawns from the same function
+				levelManager.RespawnPlayer(whichPlayer); //player dies and respawns from the same function
 				GetComponent<AudioSource>().Play (); //plays death sound effect
 				RemoveLife ();
 				isDead = true;
 			}
 		}
 		else if (playerLives == -1 && !isDead){
-			//Debug.Log ("Game Over");//Run some sort of function from the level manager to remove character. Game over should run somewhere in the level Manager not here.
-			Application.LoadLevel("Menu");
 			isDead = true;
 		}
 

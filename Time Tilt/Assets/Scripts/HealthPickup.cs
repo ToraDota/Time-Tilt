@@ -25,5 +25,13 @@ public class HealthPickup : MonoBehaviour {
 			}
 			Destroy (gameObject);
 		}
+
+		if(other.tag == "Player2"){
+			if(PlayerTwoHealthManager.player2Health < health.maxPlayerHealth){
+				
+				PlayerTwoHealthManager.player2Health++;
+			}
+			Destroy (gameObject);
+		}
 	}
 }
