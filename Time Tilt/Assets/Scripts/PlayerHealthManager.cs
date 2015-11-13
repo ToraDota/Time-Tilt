@@ -48,6 +48,7 @@ public class PlayerHealthManager : MonoBehaviour {
 			}
 		}
 		else if (playerLives == -1 && !isDead){
+			//possibly disable renders
 			isDead = true;
 		}
 

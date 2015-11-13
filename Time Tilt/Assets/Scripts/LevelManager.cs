@@ -8,6 +8,7 @@ public class LevelManager : MonoBehaviour {
 	private PlayerHealthManager health;
 	private PlayerTwoHealthManager health2;
 
+	public GameObject player1Canvas;
 	public GameObject secondPlayer;
 	public GameObject player2Canvas;
 
@@ -221,13 +222,20 @@ public class LevelManager : MonoBehaviour {
 			playerTwoHasSpawned = true;
 		}
 
-		//Game Over function
-		if(gameOver == false && playerTwoHasSpawned == false && PlayerHealthManager.playerLives < 0){//only for player 1
-
-		}
-		else if(gameOver == false && playerTwoHasSpawned == true && PlayerHealthManager.playerLives < 0 && PlayerTwoHealthManager.player2Lives < 0){//when two players exist
-
-		}
+//		//Game Over check
+//		if(gameOver == false && playerTwoHasSpawned == false && PlayerHealthManager.playerLives < 0){//only for player 1
+//			player1Canvas.SetActive	(false);
+//			player2Canvas.SetActive (false);
+//			//set canvas to indicate game over true
+//			//start coroutine to throw the player to main menu(maybe score screen) after 5 or so seconds
+//			//game keeps playing in the background but player control is completely lost - should be okay
+//			//create separate function to disable player renders since the respawn function disables then reenables.
+//			//also make a script to keep player two across all levels once they have spawned.
+//			gameOver = true;
+//		}
+//		else if(gameOver == false && playerTwoHasSpawned == true && PlayerHealthManager.playerLives < 0 && PlayerTwoHealthManager.player2Lives < 0){//when two players exist
+//
+//		}
 	}
 
 	public void RespawnPlayer(string whichPlayer){
@@ -307,8 +315,10 @@ public class LevelManager : MonoBehaviour {
 //	}
 //
 //	public IEnumerator StartGameOver(){
-//		//Enable hud element to indicate game over
+//
+//	
 //		//Kick player back to main menu or possibly a save screen after x amount of seconds
+//
 //	}
 
 

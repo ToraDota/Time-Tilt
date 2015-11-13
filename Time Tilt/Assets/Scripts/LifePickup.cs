@@ -3,12 +3,15 @@ using System.Collections;
 
 public class LifePickup : MonoBehaviour {
 
-	private PlayerHealthManager health;
 	public int pointsWorth;
+
+	private bool canPickUp;
 
 	// Use this for initialization
 	void Start () {
 		GetComponent<AudioSource>().Play ();
+		canPickUp = false;
+		CallTouchDelay ();
 	}
 	
 	// Update is called once per frame
@@ -17,16 +20,31 @@ public class LifePickup : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D(Collider2D other){
-		if(other.tag == "Player"){
-			PlayerHealthManager.AddLife();
-			ScoreManager.UpScore(pointsWorth);
-			Destroy (gameObject);
-		}
+		if (canPickUp == true) {
+			if (other.tag == "Player") {
+				PlayerHealthManager.AddLife ();
+				ScoreManager.UpScore (pointsWorth);
+				Destroy (gameObject);
+			}
 
-		if(other.tag == "Player2"){
-			PlayerTwoHealthManager.AddLife();
-			ScoreManager.UpScore(pointsWorth);
-			Destroy (gameObject);
+			if (other.tag == "Player2") {
+				PlayerTwoHealthManager.AddLife ();
+				ScoreManager.UpScore (pointsWorth);
+				Destroy (gameObject);
+			}
+		} 
+		else {
+			Physics2D.IgnoreLayerCollision(0, 8, true);
 		}
+	}
+
+	public void CallTouchDelay(){
+		StartCoroutine ("TouchDelay");
+	}
+	
+	public IEnumerator TouchDelay(){
+		yield return new WaitForSeconds(2.0f);
+		canPickUp = true;
+		Physics2D.IgnoreLayerCollision(0, 8, false);
 	}
 }
