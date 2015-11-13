@@ -20,6 +20,7 @@ public class EnemyDamageToPlayer : MonoBehaviour {
 	//This is on the enemies Lance
 	void OnTriggerEnter2D (Collider2D other)
 	{
+		if(other.tag == "PlayerParts"){
 		//put this on enemy bullets? just have this be else .
 			if (other.name == "Body") {
 				PlayerHealthManager.HurtPlayer (2);
@@ -46,5 +47,25 @@ public class EnemyDamageToPlayer : MonoBehaviour {
 				PlayerHealthManager.BouncePlayer (other, gameObject);
 				GetComponent<AudioSource> ().Play (); //plays bounceback when the player clashes with the enemy lance
 			}
+		}
+		else if(other.name == "Body2"){
+			PlayerTwoHealthManager.HurtPlayer(2);
+			PlayerTwoHealthManager.BouncePlayer(other, gameObject);
+			GetComponent<AudioSource>().Play();
+		}
+		else if(other.name == "Head2"){
+			PlayerTwoHealthManager.HurtPlayer(3);
+			PlayerTwoHealthManager.BouncePlayer(other, gameObject);
+			GetComponent<AudioSource>().Play();
+		}
+		else if(other.name == "Bottom2"){
+			PlayerTwoHealthManager.HurtPlayer(1);
+			PlayerTwoHealthManager.BouncePlayer(other, gameObject);
+			GetComponent<AudioSource>().Play();
+		}
+		else if(other.name == "Lance2"){
+			PlayerTwoHealthManager.BouncePlayer(other, gameObject);
+			GetComponent<AudioSource> ().Play ();
+		}
 	}
 }

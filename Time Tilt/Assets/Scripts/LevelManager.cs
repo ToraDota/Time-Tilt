@@ -74,8 +74,6 @@ public class LevelManager : MonoBehaviour {
 	void Start () {
 		player = FindObjectOfType<PlayerController>();
 		health = FindObjectOfType<PlayerHealthManager>();
-		player2 = FindObjectOfType<PlayerController2>();
-		health2 = FindObjectOfType<PlayerTwoHealthManager>();
 
 		hasWaveStarted = false;
 		waveCompleted = false;
@@ -215,7 +213,11 @@ public class LevelManager : MonoBehaviour {
 			bottom2 = GameObject.FindGameObjectWithTag("P2Bottom");
 			head2 = GameObject.FindGameObjectWithTag("P2Head");
 			gun1_2 = GameObject.FindGameObjectWithTag("P2Gun1");
+			gun1_2.SetActive(false);
 			gun2_2 = GameObject.FindGameObjectWithTag("P2Gun2");
+			gun2_2.SetActive(false);
+			player2 = FindObjectOfType<PlayerController2>();
+			health2 = FindObjectOfType<PlayerTwoHealthManager>();
 			playerTwoHasSpawned = true;
 		}
 
@@ -300,9 +302,14 @@ public class LevelManager : MonoBehaviour {
 	}
 
 
-	public void ChangeRespawnLocation(){
-
-	}
+//	public void CallGameOver(){
+//
+//	}
+//
+//	public IEnumerator StartGameOver(){
+//		//Enable hud element to indicate game over
+//		//Kick player back to main menu or possibly a save screen after x amount of seconds
+//	}
 
 
 	public void CallSpawnEnemy(){
