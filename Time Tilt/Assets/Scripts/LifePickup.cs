@@ -16,7 +16,12 @@ public class LifePickup : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+		if(canPickUp == false){
+			Physics2D.IgnoreLayerCollision(0, 8, true);
+		}
+		else{
+			Physics2D.IgnoreLayerCollision(0, 8, false);
+		}
 	}
 
 	void OnTriggerEnter2D(Collider2D other){
@@ -33,9 +38,22 @@ public class LifePickup : MonoBehaviour {
 				Destroy (gameObject);
 			}
 		} 
-		else {
-			Physics2D.IgnoreLayerCollision(0, 8, true);
-		}
+	}
+
+	void OnTriggerStay2D(Collider2D other){
+		if (canPickUp == true) {
+			if (other.tag == "Player") {
+				PlayerHealthManager.AddLife ();
+				ScoreManager.UpScore (pointsWorth);
+				Destroy (gameObject);
+			}
+			
+			if (other.tag == "Player2") {
+				PlayerTwoHealthManager.AddLife ();
+				ScoreManager.UpScore (pointsWorth);
+				Destroy (gameObject);
+			}
+		} 
 	}
 
 	public void CallTouchDelay(){
@@ -43,7 +61,7 @@ public class LifePickup : MonoBehaviour {
 	}
 	
 	public IEnumerator TouchDelay(){
-		yield return new WaitForSeconds(2.0f);
+		yield return new WaitForSeconds(0.5f);
 		canPickUp = true;
 		Physics2D.IgnoreLayerCollision(0, 8, false);
 	}

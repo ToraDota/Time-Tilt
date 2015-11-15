@@ -11,24 +11,23 @@ public class ScoreManager : MonoBehaviour {
 	void Start(){
 		text = GetComponent<Text>();
 
-		score = 0;
+		//score = 0;
+		score = PlayerPrefs.GetInt("CurrentScore");
 	}
 
 	void Update(){
-		if (score < 0){
-			score = 0;
-		}
 
 		text.text = "" + score;
 	}
 
 	public static void UpScore(int pointsToAdd){
 		score += pointsToAdd;
+		PlayerPrefs.GetInt("CurrentScore", score);
 	}
 
 	public static void Reset(){
 		//call when game over happens
-		score = 0;
+		score = PlayerPrefs.GetInt ("CurrentScore", 0);
 	}
 
 }

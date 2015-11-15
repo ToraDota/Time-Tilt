@@ -1,0 +1,176 @@
+fileFormatVersion: 2
+guid: 0d7bc5584b8a132458fbddcebbb18203
+timeCreated: 1447563670
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: TakeOff_0
+    21300002: TakeOff_1
+    21300004: TakeOff_2
+    21300006: TakeOff_3
+    21300008: TakeOff_4
+    21300010: TakeOff_5
+    21300012: TakeOff_6
+    21300014: TakeOff_7
+    21300016: TakeOff_8
+    21300018: TakeOff_9
+    21300020: TakeOff_10
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 400
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: TakeOff_0
+      rect:
+        serializedVersion: 2
+        x: 93
+        y: 1568
+        width: 390
+        height: 382
+      alignment: 4
+      pivot: {x: 0, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: TakeOff_1
+      rect:
+        serializedVersion: 2
+        x: 93
+        y: 1568
+        width: 390
+        height: 382
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: TakeOff_2
+      rect:
+        serializedVersion: 2
+        x: 577
+        y: 1571
+        width: 390
+        height: 382
+      alignment: 4
+      pivot: {x: 0, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: TakeOff_3
+      rect:
+        serializedVersion: 2
+        x: 1117
+        y: 1569
+        width: 487
+        height: 382
+      alignment: 4
+      pivot: {x: 0, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: TakeOff_4
+      rect:
+        serializedVersion: 2
+        x: 137
+        y: 1106
+        width: 483
+        height: 382
+      alignment: 4
+      pivot: {x: 0, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: TakeOff_5
+      rect:
+        serializedVersion: 2
+        x: 658
+        y: 1109
+        width: 483
+        height: 382
+      alignment: 4
+      pivot: {x: 0, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: TakeOff_6
+      rect:
+        serializedVersion: 2
+        x: 1160
+        y: 1107
+        width: 483
+        height: 382
+      alignment: 4
+      pivot: {x: 0, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: TakeOff_7
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 553
+        width: 483
+        height: 382
+      alignment: 4
+      pivot: {x: 0, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: TakeOff_8
+      rect:
+        serializedVersion: 2
+        x: 650
+        y: 555
+        width: 483
+        height: 382
+      alignment: 4
+      pivot: {x: 0, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: TakeOff_9
+      rect:
+        serializedVersion: 2
+        x: 1154
+        y: 553
+        width: 483
+        height: 482
+      alignment: 4
+      pivot: {x: 0, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: TakeOff_10
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 24
+        width: 443
+        height: 466
+      alignment: 4
+      pivot: {x: 0, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

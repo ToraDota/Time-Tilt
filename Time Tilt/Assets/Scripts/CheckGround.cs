@@ -13,13 +13,21 @@ public class CheckGround : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(player.grounded == true){
-			//Debug.Log("ajslda;lkskd;la");
-		}
+//		if(player.grounded == true){
+//			Debug.Log("ajslda;lkskd;la");
+//		}
 	
 	}
 
 	void OnTriggerEnter2D(Collider2D other){
+		
+		if(other.tag == "Platform")
+		{
+			player.grounded = true;
+		}
+	}
+
+	void OnTriggerStay2D(Collider2D other){
 
 		if(other.tag == "Platform")
 		{

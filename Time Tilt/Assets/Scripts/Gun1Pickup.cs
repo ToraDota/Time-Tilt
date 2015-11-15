@@ -19,7 +19,12 @@ public class Gun1Pickup : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+		if(canPickUp == false){
+			Physics2D.IgnoreLayerCollision(0, 8, true);
+		}
+		else{
+			Physics2D.IgnoreLayerCollision(0, 8, false);
+		}
 	}
 
 	void OnTriggerEnter2D(Collider2D other){
@@ -65,18 +70,61 @@ public class Gun1Pickup : MonoBehaviour {
 				Destroy (gameObject);
 			}
 		}
-		else{
-			//Ignore layer?
-			Physics2D.IgnoreLayerCollision(0, 8, true);
+	}
+
+	void OnTriggerStay2D(Collider2D other){
+		
+		if (canPickUp == true) {
+			if (other.tag == "Player") {
+				var player = other.GetComponent<PlayerController> ();
+				
+				ScoreManager.UpScore (pointsWorth);
+				
+				if (player.gunNumber > 1) {
+					//Ignores this object and just destroys it
+					Destroy (gameObject);
+				} else if (player.gunNumber < 1) {
+					
+					player.gunNumber = 1;
+					player.bulletCounter = bullets;
+					
+				} else {
+					player.bulletCounter = bullets;
+					
+				} 
+				Destroy (gameObject);
+			}
+			
+			if (other.tag == "Player2") {
+				var player = other.GetComponent<PlayerController2> ();
+				
+				ScoreManager.UpScore (pointsWorth);
+				
+				if (player.gunNumber > 1) {
+					//Ignores this object and just destroys it
+					Destroy (gameObject);
+				} else if (player.gunNumber < 1) {
+					
+					player.gunNumber = 1;
+					player.bulletCounter = bullets;
+					
+				} else {
+					player.bulletCounter = bullets;
+					
+				} 
+				Destroy (gameObject);
+			}
 		}
 	}
+
+
 
 	public void CallTouchDelay(){
 		StartCoroutine ("TouchDelay");
 	}
 
 	public IEnumerator TouchDelay(){
-		yield return new WaitForSeconds(2.0f);
+		yield return new WaitForSeconds(0.5f);
 		canPickUp = true;
 		Physics2D.IgnoreLayerCollision(0, 8, false);
 	}

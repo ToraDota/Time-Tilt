@@ -155,7 +155,7 @@ public class PlayerController : MonoBehaviour {
 		}
 
 		//Lance Aiming and Dive Bomb
-		if(Input.GetKey(KeyCode.DownArrow) && !grounded){
+		if(Input.GetKey(KeyCode.DownArrow) && grounded == false){
 			facingDown = true;
 			facingUp = false;
 			if(facingDirection == 0)
@@ -168,7 +168,7 @@ public class PlayerController : MonoBehaviour {
 			}
 		}
 
-		else if(Input.GetKey (KeyCode.UpArrow) && !grounded){
+		else if(Input.GetKey (KeyCode.UpArrow) && grounded == false){
 			facingDown = false;
 			facingUp = true;
 			if(facingDirection == 0)

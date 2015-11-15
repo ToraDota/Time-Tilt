@@ -67,8 +67,12 @@ public class LevelManager : MonoBehaviour {
 	private int oldRnd;
 	private int rnd;
 
-	private bool playerTwoHasSpawned;
+	//checks for if a second player is in the game
+	public static int playerTwoHasSpawned; //used as a persistent check using player prefs
+	public bool playerTwoThisLevel; //used in each individual level to spawn the player. 
+	//Makes it so that if playerTwoHasSpawned is true, this can become true to stop contiuous player two instantiation
 
+	public GameObject GameOverGraphic;
 	private bool gameOver;
 		
 	// Use this for initialization
@@ -76,10 +80,12 @@ public class LevelManager : MonoBehaviour {
 		player = FindObjectOfType<PlayerController>();
 		health = FindObjectOfType<PlayerHealthManager>();
 
+		playerTwoHasSpawned = PlayerPrefs.GetInt("PlayerTwoHasSpawned");
+		playerTwoThisLevel = false;
+
 		hasWaveStarted = false;
 		waveCompleted = false;
 		anEnemyHasSpawned = false;
-		playerTwoHasSpawned = false;
 		gameOver = false;
 		CallDelayLevelStart();
 	}
@@ -206,7 +212,7 @@ public class LevelManager : MonoBehaviour {
 			break;
 		}
 		//spawnplayer two check
-		if(playerTwoHasSpawned == false && Input.GetKeyDown (KeyCode.Alpha2)){
+		if(playerTwoHasSpawned == 0 && playerTwoThisLevel == false && Input.GetKeyDown (KeyCode.Alpha2)){
 			Instantiate (secondPlayer, respawnLocation.position, respawnLocation.rotation);
 			player2Canvas.SetActive(true);
 			body2 = GameObject.FindGameObjectWithTag("P2Body");
@@ -219,23 +225,73 @@ public class LevelManager : MonoBehaviour {
 			gun2_2.SetActive(false);
 			player2 = FindObjectOfType<PlayerController2>();
 			health2 = FindObjectOfType<PlayerTwoHealthManager>();
-			playerTwoHasSpawned = true;
+			PlayerPrefs.SetInt("PlayerTwoHasSpawned", 1); //This will now be true for the rest of the play session..
+			playerTwoHasSpawned = PlayerPrefs.GetInt("PlayerTwoHasSpawned");
+			playerTwoThisLevel = true;
+		}
+		else if(playerTwoHasSpawned == 1 && playerTwoThisLevel == false){  //automatically spawns player 2 into the next level when it loads.
+			Instantiate (secondPlayer, respawnLocation.position, respawnLocation.rotation);
+			player2Canvas.SetActive(true);
+			body2 = GameObject.FindGameObjectWithTag("P2Body");
+			lance2 = GameObject.FindGameObjectWithTag("P2Lance");
+			bottom2 = GameObject.FindGameObjectWithTag("P2Bottom");
+			head2 = GameObject.FindGameObjectWithTag("P2Head");
+			gun1_2 = GameObject.FindGameObjectWithTag("P2Gun1");
+			gun1_2.SetActive(false);
+			gun2_2 = GameObject.FindGameObjectWithTag("P2Gun2");
+			gun2_2.SetActive(false);
+			player2 = FindObjectOfType<PlayerController2>();
+			health2 = FindObjectOfType<PlayerTwoHealthManager>();
+			playerTwoThisLevel = true;
 		}
 
+
 //		//Game Over check
-//		if(gameOver == false && playerTwoHasSpawned == false && PlayerHealthManager.playerLives < 0){//only for player 1
-//			player1Canvas.SetActive	(false);
-//			player2Canvas.SetActive (false);
-//			//set canvas to indicate game over true
-//			//start coroutine to throw the player to main menu(maybe score screen) after 5 or so seconds
-//			//game keeps playing in the background but player control is completely lost - should be okay
-//			//create separate function to disable player renders since the respawn function disables then reenables.
-//			//also make a script to keep player two across all levels once they have spawned.
-//			gameOver = true;
-//		}
-//		else if(gameOver == false && playerTwoHasSpawned == true && PlayerHealthManager.playerLives < 0 && PlayerTwoHealthManager.player2Lives < 0){//when two players exist
-//
-//		}
+		if(gameOver == false && playerTwoHasSpawned == 0 && PlayerHealthManager.playerLives < 0){//only for player 1
+			player1Canvas.SetActive	(false);
+			player2Canvas.SetActive (false);
+			player.enabled = false;
+			player.GetComponent<Renderer>().enabled = false;
+			player.GetComponent<Rigidbody2D>().velocity = Vector2.zero; //haults movement
+			body.SetActive(false);
+			head.SetActive(false);
+			lance.SetActive(false);
+			bottom.SetActive(false);
+			gun1.SetActive(false);
+			gun2.SetActive(false);
+			//disable more guns if needed
+			CallGameOver (); //game keeps playing in the background but player control is completely lost - should be okay
+			gameOver = true;
+		}
+		else if(gameOver == false && playerTwoHasSpawned == 1 && PlayerHealthManager.playerLives < 0 && PlayerTwoHealthManager.player2Lives < 0){//when two players exist
+			player1Canvas.SetActive	(false);
+			player2Canvas.SetActive (false);
+
+			//disable player one renders and ability to move just like when respawning
+			player.enabled = false;
+			player.GetComponent<Renderer>().enabled = false;
+			player.GetComponent<Rigidbody2D>().velocity = Vector2.zero; //haults movement
+			body.SetActive(false);
+			head.SetActive(false);
+			lance.SetActive(false);
+			bottom.SetActive(false);
+			gun1.SetActive(false);
+			gun2.SetActive(false);
+			//disable player two renders and ability to move just like when respawning
+			player2.enabled = false;
+			player2.GetComponent<Renderer>().enabled = false;
+			player2.GetComponent<Rigidbody2D>().velocity = Vector2.zero; //haults movement
+			body2.SetActive(false);
+			head2.SetActive(false);
+			lance2.SetActive(false);
+			bottom2.SetActive(false);
+			gun1_2.SetActive(false);
+			gun2_2.SetActive(false);
+
+			//disable more guns if needed
+			CallGameOver (); //game keeps playing in the background but player control is completely lost - should be okay
+			gameOver = true;
+		}
 	}
 
 	public void RespawnPlayer(string whichPlayer){
@@ -310,16 +366,17 @@ public class LevelManager : MonoBehaviour {
 	}
 
 
-//	public void CallGameOver(){
-//
-//	}
-//
-//	public IEnumerator StartGameOver(){
-//
-//	
-//		//Kick player back to main menu or possibly a save screen after x amount of seconds
-//
-//	}
+	public void CallGameOver(){
+		StartCoroutine("StartGameOver");
+	}
+
+	public IEnumerator StartGameOver(){
+		GameOverGraphic.SetActive(true);
+		yield return new WaitForSeconds (5f);
+		Application.LoadLevel("Menu");
+		//Kick player back to main menu or possibly a save screen after x amount of seconds
+
+	}
 
 
 	public void CallSpawnEnemy(){

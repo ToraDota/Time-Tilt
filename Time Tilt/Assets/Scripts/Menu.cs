@@ -7,6 +7,9 @@ public class Menu : MonoBehaviour {
     public Button startText;
     public Button exitText;
 
+	public int player1Lives;
+	public int player2Lives;
+	public int currentScore;
 
 	// Use this for initialization
 	void Start () {
@@ -31,6 +34,13 @@ public class Menu : MonoBehaviour {
     public void StartLevel()
     {
         Application.LoadLevel("prototype");
+
+		//sets each characters lives value to an initial amount and creates the pref to carry over between loads.
+		//players share a score counter.
+		PlayerPrefs.SetInt ("Player1Lives", player1Lives);
+		PlayerPrefs.SetInt ("Player2Lives", player2Lives);
+		PlayerPrefs.SetInt("CurrentScore", currentScore);
+		PlayerPrefs.SetInt("PlayerTwoHasSpawned", 0); //player two has not spawned. 0 = not spawned, 1 = has spawned.
     }
 
     public void ExitGame()

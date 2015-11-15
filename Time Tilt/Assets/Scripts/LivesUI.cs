@@ -11,18 +11,19 @@ public class LivesUI : MonoBehaviour {
 	void Start(){
 		text = GetComponent<Text>();
 		
-		livesCount = PlayerHealthManager.playerLives;
+		//livesCount = PlayerHealthManager.playerLives;
+		livesCount = PlayerPrefs.GetInt("Player1Lives");
 	}
 	
 	void Update(){
 		
-		livesCount = PlayerHealthManager.playerLives;
+		livesCount = PlayerPrefs.GetInt("Player1Lives");
 		
 		text.text = "" + livesCount;
 	}
 	
-	public void ResetLivesCounter(){
+	public void ResetLivesCounter(){ //might be useless if the player just gets kicked back to the main menu 
 		//call when game over happens
-		livesCount = PlayerHealthManager.playerLives;
+		livesCount = PlayerPrefs.GetInt("Player1Lives");
 	}
 }

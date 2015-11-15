@@ -11,18 +11,19 @@ public class LivesUI2 : MonoBehaviour {
 	void Start(){
 		text = GetComponent<Text>();
 		
-		livesCount = PlayerTwoHealthManager.player2Lives;
+		//livesCount = PlayerTwoHealthManager.player2Lives;
+		livesCount = PlayerPrefs.GetInt("Player2Lives");
 	}
 	
 	void Update(){
 		
-		livesCount = PlayerTwoHealthManager.player2Lives;
+		livesCount = PlayerPrefs.GetInt("Player2Lives");
 		
 		text.text = "" + livesCount;
 	}
 	
 	public void ResetLivesCounter(){
 		//call when game over happens
-		livesCount = PlayerTwoHealthManager.player2Lives;
+		livesCount = PlayerPrefs.GetInt("Player2Lives");
 	}
 }

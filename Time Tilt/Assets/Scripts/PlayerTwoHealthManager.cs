@@ -25,7 +25,7 @@ public class PlayerTwoHealthManager : MonoBehaviour {
 		
 		player2Health = maxPlayerHealth;
 		
-		player2Lives = initialLives;
+		player2Lives = PlayerPrefs.GetInt("Player2Lives");
 		
 		isDead = false;
 		
@@ -111,9 +111,11 @@ public class PlayerTwoHealthManager : MonoBehaviour {
 	
 	public static void AddLife(){
 		player2Lives++;
+		PlayerPrefs.SetInt("Player2Lives", player2Lives);
 	}
 	
 	public static void RemoveLife(){
 		player2Lives--;
+		PlayerPrefs.SetInt("Player2Lives", player2Lives);
 	}
 }
