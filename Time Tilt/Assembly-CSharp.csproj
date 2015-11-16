@@ -74,6 +74,9 @@
      <Compile Include="Assets\Scripts\PlayerController2.cs" />
      <Compile Include="Assets\Scripts\PlayerHealthManager.cs" />
      <Compile Include="Assets\Scripts\PlayerLance.cs" />
+     <Compile Include="Assets\Scripts\PlayerLance2.cs" />
+     <Compile Include="Assets\Scripts\PlayerStomp.cs" />
+     <Compile Include="Assets\Scripts\PlayerStomp2.cs" />
      <Compile Include="Assets\Scripts\PlayerTwoHealthManager.cs" />
      <Compile Include="Assets\Scripts\ScoreManager.cs" />
      <Compile Include="Assets\Scripts\ScoreOrbs.cs" />

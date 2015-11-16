@@ -12,7 +12,7 @@ public class Gun2Pickup : MonoBehaviour {
 	void Start () {
 		GetComponent<AudioSource>().Play ();
 		canPickUp = false;
-
+		CallTouchDelay();
 	}
 	
 	// Update is called once per frame

@@ -27,13 +27,13 @@ public class ScoreOrbs : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D other){
 		if (canPickUp == true) {
 			if (other.tag == "Player") {
-				GetComponent<AudioSource> ().Play ();
+				//GetComponent<AudioSource> ().Play ();
 				ScoreManager.UpScore (pointsWorth);
 				Destroy (gameObject);
 			}
 
 			if (other.tag == "Player2") {
-				GetComponent<AudioSource> ().Play ();
+				//GetComponent<AudioSource> ().Play ();
 				ScoreManager.UpScore (pointsWorth);
 				Destroy (gameObject);
 			}
@@ -43,13 +43,13 @@ public class ScoreOrbs : MonoBehaviour {
 	void OnTriggerStay2D(Collider2D other){
 		if (canPickUp == true) {
 			if (other.tag == "Player") {
-				GetComponent<AudioSource> ().Play ();
+				//GetComponent<AudioSource> ().Play ();
 				ScoreManager.UpScore (pointsWorth);
 				Destroy (gameObject);
 			}
 			
 			if (other.tag == "Player2") {
-				GetComponent<AudioSource> ().Play ();
+				//GetComponent<AudioSource> ().Play ();
 				ScoreManager.UpScore (pointsWorth);
 				Destroy (gameObject);
 			}

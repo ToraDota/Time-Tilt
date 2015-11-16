@@ -4,14 +4,21 @@ using System.Collections;
 public class HealthPickup : MonoBehaviour {
 
 	private PlayerHealthManager health;
+	private PlayerTwoHealthManager health2;
 
 	private bool canPickUp;
+	private int p2Check;
 
 	// Use this for initialization
 	void Start () {
 		health = FindObjectOfType<PlayerHealthManager>();
 		GetComponent<AudioSource>().Play ();
 		canPickUp = false;
+		p2Check = PlayerPrefs.GetInt("PlayerTwoHasSpawned");
+		if(p2Check == 1){
+			health2 = FindObjectOfType<PlayerTwoHealthManager>();
+		}
+		CallTouchDelay();
 	}
 	
 	// Update is called once per frame
@@ -35,7 +42,7 @@ public class HealthPickup : MonoBehaviour {
 			}
 
 			if (other.tag == "Player2") {
-				if (PlayerTwoHealthManager.player2Health < health.maxPlayerHealth) {
+				if (PlayerTwoHealthManager.player2Health < health2.maxPlayerHealth) {
 					
 					PlayerTwoHealthManager.player2Health++;
 				}
@@ -55,7 +62,7 @@ public class HealthPickup : MonoBehaviour {
 			}
 			
 			if (other.tag == "Player2") {
-				if (PlayerTwoHealthManager.player2Health < health.maxPlayerHealth) {
+				if (PlayerTwoHealthManager.player2Health < health2.maxPlayerHealth) {
 					
 					PlayerTwoHealthManager.player2Health++;
 				}

@@ -12,11 +12,9 @@ public class EnemyStomp : MonoBehaviour {
 			//Debug.Log("Head");
 		}
 
-//		if(other.name == "Enemy"){
-//			other.GetComponentInParent<EnemyHealthManager>().HurtEnemy(1);
-//			other.GetComponentInParent<EnemyHealthManager>().knockBackEnemySides(other, gameObject.transform);
-//			Debug.Log ("worked");
-//		}
+		if(other.name == "Head2"){
+			PlayerTwoHealthManager.HurtPlayer(1);
+			PlayerTwoHealthManager.BouncePlayer(other, gameObject);
+		}
 	}
-
 }

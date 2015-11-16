@@ -1,12 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PlayerLance : MonoBehaviour {
+public class PlayerLance2 : MonoBehaviour {
 
 	public int bodyDamage;
 	public int headDamage;
 	//public int bottomDamage;
-
+	
 	void OnTriggerEnter2D (Collider2D other)
 	{
 		if(other.name == "EnemyBody"){
@@ -14,7 +14,7 @@ public class PlayerLance : MonoBehaviour {
 			other.GetComponentInParent<EnemyHealthManager>().knockBackEnemySides(other, gameObject.transform);
 			GetComponent<AudioSource>().Play ();
 			PlayerHealthManager.BouncePlayer(this.GetComponent<Collider2D>(), other.gameObject);
-
+			
 			//Debug.Log("Enemy Body");
 		}
 		
@@ -26,13 +26,13 @@ public class PlayerLance : MonoBehaviour {
 			//Debug.Log("Enemy Head");
 		}
 		
-//		else if(other.name == "EnemyBottom"){
-//			other.GetComponentInParent<EnemyHealthManager>().HurtEnemy(bottomDamage);
-//			other.GetComponentInParent<EnemyHealthManager>().knockBackEnemySides(other, gameObject.transform);
-//			GetComponent<AudioSource>().Play ();
-//			//Debug.Log ("Enemy Bottom");
-//		}
-
+		//		else if(other.name == "EnemyBottom"){
+		//			other.GetComponentInParent<EnemyHealthManager>().HurtEnemy(bottomDamage);
+		//			other.GetComponentInParent<EnemyHealthManager>().knockBackEnemySides(other, gameObject.transform);
+		//			GetComponent<AudioSource>().Play ();
+		//			//Debug.Log ("Enemy Bottom");
+		//		}
+		
 		else if(other.name == "EnemyLance"){
 			//bounce back happens here
 			other.GetComponentInParent<EnemyHealthManager>().knockBackEnemySides(other, gameObject.transform);

@@ -41,6 +41,7 @@ public class EnemyHealthManager : MonoBehaviour {
 
 		if(recovering == true && Time.time > takeDamageAgain){
 			recovering = false;
+			//disable lance?
 		}
 
 	}
