@@ -49,6 +49,8 @@
      <Compile Include="Assets\Scripts\BulletBar.cs" />
      <Compile Include="Assets\Scripts\BulletBar2.cs" />
      <Compile Include="Assets\Scripts\BulletController.cs" />
+     <Compile Include="Assets\Scripts\BulletControllerShotgun.cs" />
+     <Compile Include="Assets\Scripts\BulletControllerSniper.cs" />
      <Compile Include="Assets\Scripts\CheckGround.cs" />
      <Compile Include="Assets\Scripts\CheckGround2.cs" />
      <Compile Include="Assets\Scripts\EnemyController.cs" />
@@ -59,6 +61,8 @@
      <Compile Include="Assets\Scripts\FinishMenu.cs" />
      <Compile Include="Assets\Scripts\Gun1Pickup.cs" />
      <Compile Include="Assets\Scripts\Gun2Pickup.cs" />
+     <Compile Include="Assets\Scripts\Gun3Pickup.cs" />
+     <Compile Include="Assets\Scripts\Gun4Pickup.cs" />
      <Compile Include="Assets\Scripts\HealthPickup.cs" />
      <Compile Include="Assets\Scripts\HealthUI.cs" />
      <Compile Include="Assets\Scripts\HealthUI2.cs" />

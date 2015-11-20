@@ -22,6 +22,8 @@ public class LevelManager : MonoBehaviour {
 	public GameObject bottom;
 	public GameObject gun1;
 	public GameObject gun2;
+	public GameObject gun3;
+	public GameObject gun4;
 
 	//renders to disable for player 2
 	public GameObject body2;
@@ -30,6 +32,8 @@ public class LevelManager : MonoBehaviour {
 	public GameObject bottom2;
 	public GameObject gun1_2;
 	public GameObject gun2_2;
+//	public GameObject gun2_3;
+//	public GameObject gun2_4;
 
 	//Wave control
 	public int waveCount;
@@ -259,6 +263,8 @@ public class LevelManager : MonoBehaviour {
 			bottom.SetActive(false);
 			gun1.SetActive(false);
 			gun2.SetActive(false);
+			gun3.SetActive(false);
+			gun4.SetActive(false);
 			//disable more guns if needed
 			CallGameOver (); //game keeps playing in the background but player control is completely lost - should be okay
 			gameOver = true;
@@ -277,6 +283,8 @@ public class LevelManager : MonoBehaviour {
 			bottom.SetActive(false);
 			gun1.SetActive(false);
 			gun2.SetActive(false);
+			gun3.SetActive(false);
+			gun4.SetActive(false);
 			//disable player two renders and ability to move just like when respawning
 			player2.enabled = false;
 			player2.GetComponent<Renderer>().enabled = false;
@@ -287,6 +295,8 @@ public class LevelManager : MonoBehaviour {
 			bottom2.SetActive(false);
 			gun1_2.SetActive(false);
 			gun2_2.SetActive(false);
+			//gun2_3.SetActive(false);
+			//gun2_4.SetActive(false);
 
 			//disable more guns if needed
 			CallGameOver (); //game keeps playing in the background but player control is completely lost - should be okay
@@ -314,6 +324,8 @@ public class LevelManager : MonoBehaviour {
 		bottom.SetActive(false);
 		gun1.SetActive(false);
 		gun2.SetActive(false);
+		gun3.SetActive(false);
+		gun4.SetActive(false);
 		//Debug.Log ("Waiting to Respawn");
 		yield return new WaitForSeconds (respawnDelay);
 		player.transform.position = respawnLocation.transform.position;
@@ -345,6 +357,8 @@ public class LevelManager : MonoBehaviour {
 		bottom2.SetActive(false);
 		gun1_2.SetActive(false);
 		gun2_2.SetActive(false);
+		//gun2_3.SetActive(false);
+		//gun2_4.SetActive(false);
 		//Debug.Log ("Waiting to Respawn");
 		yield return new WaitForSeconds (respawnDelay);
 		player2.transform.position = respawnLocation.transform.position;
@@ -399,7 +413,7 @@ public class LevelManager : MonoBehaviour {
 			enemySpawnHere = spawnPoint1;
 
 		Instantiate (enemy, enemySpawnHere.position, enemySpawnHere.rotation);
-		Debug.Log ("Enemy Spawned");
+		//Debug.Log ("Enemy Spawned");
 		enemiesToSpawn[waveCount - 1]--;
 	}
 
@@ -408,7 +422,7 @@ public class LevelManager : MonoBehaviour {
 	}
 	public IEnumerator EndWave(){
 		yield return new WaitForSeconds (timeTillNextWave);
-		Debug.Log ("New Wave Starting");
+		//Debug.Log ("New Wave Starting");
 		hasWaveStarted = false;
 		waveCompleted = false;
 		anEnemyHasSpawned = false;
@@ -438,7 +452,7 @@ public class LevelManager : MonoBehaviour {
 	}
 
 	public IEnumerator DelayLevelStart(){
-		yield return new WaitForSeconds(5.0f);
+		yield return new WaitForSeconds(5f);
 		waveCount = 1;
 	}
 }

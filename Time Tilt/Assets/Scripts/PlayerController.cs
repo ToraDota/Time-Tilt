@@ -37,11 +37,20 @@ public class PlayerController : MonoBehaviour {
 	public int gunNumber; //used to check what gun is active and enabled
 	public GameObject gun1;
 	public GameObject gun2;
+	public GameObject gun3;
+	public GameObject gun4;
+
 	public int bulletCounter; //current amount of bullets. When zero set gunNumber to zero; Set from pickup 
 	public int currentMaxBullets;
+
 	public GameObject bullet;
 	public GameObject strongBullet;
+	public GameObject shotgunBullet;
+	public GameObject sniperBullet;
+
 	public Transform firepoint;
+	public Transform firepointUp;
+	public Transform firepointDown;
 
 	public float gun1FireRate;
 	private float gun1NextFire;
@@ -49,8 +58,16 @@ public class PlayerController : MonoBehaviour {
 	public float gun2FireRate;
 	private float gun2NextFire;
 
+	public float gun3FireRate;
+	private float gun3NextFire;
+
+	public float gun4FireRate;
+	private float gun4NextFire;
+
 	private Gun1Pickup gun1PickUp;
 	private Gun2Pickup gun2PickUp;
+	private Gun3Pickup gun3PickUp;
+	private Gun4Pickup gun4PickUp;
 
 	public float recoveryRate; //time unable to be hit 
 
@@ -189,7 +206,7 @@ public class PlayerController : MonoBehaviour {
 		EquipWhatGun(gunNumber); // renders proper weapon
 
 		//Shooting controls
-		if(gunNumber == 1){
+		if(gunNumber == 1){ //semiauto
 			if(bulletCounter > -1){
 				if((Input.GetKeyDown (KeyCode.K) || Input.GetKeyDown(KeyCode.I)) && Time.time > gun1NextFire){ //semi auto
 					gun1NextFire = Time.time + gun1FireRate;
@@ -203,11 +220,41 @@ public class PlayerController : MonoBehaviour {
 				gunNumber = 0;
 			}
 		}
-		if(gunNumber == 2){
+		if(gunNumber == 2){ //automatic
 			if(bulletCounter > -1){
 				if((Input.GetKeyDown (KeyCode.K) || Input.GetKeyDown(KeyCode.I)) && Time.time > gun2NextFire){ //rapid fire
 					gun2NextFire = Time.time + gun2FireRate;
 					Instantiate (bullet, firepoint.position, firepoint.rotation);
+					BulletController.firedFromPlayer1 = true;
+					GetComponent<AudioSource>().Play ();
+					bulletCounter--;
+				}
+			}
+			else{
+				gunNumber = 0;
+			}
+		}
+		if(gunNumber == 3){ //shotgun
+			if(bulletCounter > -1){
+				if((Input.GetKeyDown (KeyCode.K) || Input.GetKeyDown(KeyCode.I)) && Time.time > gun3NextFire){ //rapid fire
+					gun3NextFire = Time.time + gun3FireRate;
+					Instantiate (shotgunBullet, firepoint.position, firepoint.rotation);
+					Instantiate (shotgunBullet, firepointUp.position, firepointUp.rotation);
+					Instantiate (shotgunBullet, firepointDown.position, firepointDown.rotation);
+					BulletController.firedFromPlayer1 = true;
+					GetComponent<AudioSource>().Play ();
+					bulletCounter--;
+				}
+			}
+			else{
+				gunNumber = 0;
+			}
+		}
+		if(gunNumber == 4){ //sniper
+			if(bulletCounter > -1){
+				if((Input.GetKeyDown (KeyCode.K) || Input.GetKeyDown(KeyCode.I)) && Time.time > gun4NextFire){ //rapid fire
+					gun4NextFire = Time.time + gun4FireRate;
+					Instantiate (sniperBullet, firepoint.position, firepoint.rotation);
 					BulletController.firedFromPlayer1 = true;
 					GetComponent<AudioSource>().Play ();
 					bulletCounter--;
@@ -225,15 +272,33 @@ public class PlayerController : MonoBehaviour {
 			//Debug.Log ("has gun");
 			gun1.SetActive(true);
 			gun2.SetActive(false);
+			gun3.SetActive(false);
+			gun4.SetActive(false);
 			break;
 		case 2:
 			//Debug.Log ("has gun 2");
 			gun1.SetActive(false);
 			gun2.SetActive(true);
+			gun3.SetActive(false);
+			gun4.SetActive(false);
+			break;
+		case 3:
+			gun1.SetActive(false);
+			gun2.SetActive(false);
+			gun3.SetActive(true);
+			gun4.SetActive(false);
+			break;
+		case 4: 
+			gun1.SetActive(false);
+			gun2.SetActive(false);
+			gun3.SetActive(false);
+			gun4.SetActive(true);
 			break;
 		default: //disable all guns
 			gun1.SetActive(false);
 			gun2.SetActive(false);
+			gun3.SetActive(false);
+			gun4.SetActive(false);
 			break;
 		}
 	}
