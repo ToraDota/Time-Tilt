@@ -90,8 +90,7 @@ public class BulletControllerSniper : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D other){
 		
 		if(other.tag == "Enemy"){
-			other.GetComponentInParent<EnemyHealthManager>().HurtEnemy(thisBulletDamage);
-			other.GetComponentInParent<EnemyHealthManager>().knockBackEnemySides(other, playerPosition);
+			Destroy(other);
 		}
 		if(other.tag == "TopWall" || other.tag == "Platform" || other.tag == "Hazard"){
 			Destroy (gameObject);

@@ -1,0 +1,165 @@
+fileFormatVersion: 2
+guid: 97c4e773950097841aee8b9fdccf1ecd
+timeCreated: 1448661810
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: GriffinWalk_0
+    21300002: GriffinWalk_1
+    21300004: GriffinWalk_2
+    21300006: GriffinWalk_3
+    21300008: GriffinWalk_4
+    21300010: GriffinWalk_5
+    21300012: GriffinWalk_6
+    21300014: GriffinWalk_7
+    21300016: GriffinWalk_8
+    21300018: GriffinWalk_9
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 400
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: GriffinWalk_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 821
+        width: 400
+        height: 383
+      alignment: 7
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: GriffinWalk_1
+      rect:
+        serializedVersion: 2
+        x: 416
+        y: 828
+        width: 363
+        height: 376
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: GriffinWalk_2
+      rect:
+        serializedVersion: 2
+        x: 800
+        y: 828
+        width: 364
+        height: 376
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: GriffinWalk_3
+      rect:
+        serializedVersion: 2
+        x: 1200
+        y: 828
+        width: 362
+        height: 376
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: GriffinWalk_4
+      rect:
+        serializedVersion: 2
+        x: 75
+        y: 468
+        width: 375
+        height: 353
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: GriffinWalk_5
+      rect:
+        serializedVersion: 2
+        x: 470
+        y: 468
+        width: 361
+        height: 354
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: GriffinWalk_6
+      rect:
+        serializedVersion: 2
+        x: 834
+        y: 468
+        width: 358
+        height: 353
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: GriffinWalk_7
+      rect:
+        serializedVersion: 2
+        x: 1197
+        y: 466
+        width: 358
+        height: 355
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: GriffinWalk_8
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 99
+        width: 365
+        height: 347
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: GriffinWalk_9
+      rect:
+        serializedVersion: 2
+        x: 474
+        y: 97
+        width: 370
+        height: 347
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

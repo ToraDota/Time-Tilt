@@ -50,27 +50,6 @@ public class EnemyController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(knockbackCount <=  0){ //Regular movement
-			anim.SetBool("knockedBack", false);
-			if(facingRight){ //move right
-				this.transform.localScale = new Vector3(-1f, 1f, 1f);
-				GetComponent<Rigidbody2D>().velocity = new Vector2 (enemySpeed, GetComponent<Rigidbody2D>().velocity.y);
-			}
-			else{ //move left
-				transform.localScale = new Vector3(1f, 1f, 1f);
-				GetComponent<Rigidbody2D>().velocity = new Vector2 (-enemySpeed, GetComponent<Rigidbody2D>().velocity.y);
-			}
-		}
-		else{
-			anim.SetBool("knockedBack", true);
-			if(knockFromRight){
-				GetComponent<Rigidbody2D>().velocity = new Vector2(-knockback, GetComponent<Rigidbody2D>().velocity.y);
-			}
-			if(!knockFromRight){
-				GetComponent<Rigidbody2D>().velocity = new Vector2(knockback, GetComponent<Rigidbody2D>().velocity.y);
-			}
-			knockbackCount -= Time.deltaTime;
-		}
 
 		//change depending on what it hits. Random the direction on start up those
 
@@ -100,6 +79,28 @@ public class EnemyController : MonoBehaviour {
 				else
 					anim.SetBool ("isFlapping", false);
 			}
+		}
+
+		if(knockbackCount <=  0){ //Regular movement
+			anim.SetBool("knockedBack", false);
+			if(facingRight){ //move right
+				this.transform.localScale = new Vector3(-1f, 1f, 1f);
+				GetComponent<Rigidbody2D>().velocity = new Vector2 (enemySpeed, GetComponent<Rigidbody2D>().velocity.y);
+			}
+			else{ //move left
+				transform.localScale = new Vector3(1f, 1f, 1f);
+				GetComponent<Rigidbody2D>().velocity = new Vector2 (-enemySpeed, GetComponent<Rigidbody2D>().velocity.y);
+			}
+		}
+		else{
+			anim.SetBool("knockedBack", true);
+			if(knockFromRight){
+				GetComponent<Rigidbody2D>().velocity = new Vector2(-knockback, GetComponent<Rigidbody2D>().velocity.y);
+			}
+			if(!knockFromRight){
+				GetComponent<Rigidbody2D>().velocity = new Vector2(knockback, GetComponent<Rigidbody2D>().velocity.y);
+			}
+			knockbackCount -= Time.deltaTime;
 		}
 	}
 

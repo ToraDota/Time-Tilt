@@ -41,5 +41,15 @@ public class BulletBar : MonoBehaviour {
 			bulletBar.maxValue = 10;
 			bulletBar.value = player.bulletCounter;
 		}
+		else if(player.gunNumber == 3){
+			bulletBar.gameObject.SetActive(true);
+			bulletBar.maxValue = 3;
+			bulletBar.value = player.bulletCounter;
+		}
+		else if(player.gunNumber == 4){
+			bulletBar.gameObject.SetActive(true);
+			bulletBar.maxValue = 1;
+			bulletBar.value = player.bulletCounter;
+		}
 	}
 }

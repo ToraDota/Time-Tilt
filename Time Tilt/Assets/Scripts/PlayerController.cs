@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour {
 	public float groundCheckRadius;
 	public LayerMask whatIsGround;
 	public bool grounded;
+	public bool onPlatform;
 
 	public string flapbutton; //Fire1
 	public float flapforce; 
@@ -73,6 +74,8 @@ public class PlayerController : MonoBehaviour {
 
 	private Animator anim;
 
+	private bool aiming;
+
 	// Use this for initialization
 	void Start () {
 		isDiving = false;
@@ -88,6 +91,21 @@ public class PlayerController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
+		//Debug.Log(onPlatform);
+		//Debug.Log(aiming);
+
+
+		if((Mathf.Abs(GetComponent<Rigidbody2D>().velocity.y) < 0.5f) && (aiming == true) && (onPlatform == false)){
+			grounded = false;
+
+		}
+		else if((Mathf.Abs(GetComponent<Rigidbody2D>().velocity.y) < 0.5f) || (onPlatform == true)){
+			grounded = true;
+
+		}
+		else
+			grounded = false;
 
 		//Input for flap
 		if(Input.GetButtonDown(flapbutton) || Input.GetKeyDown(KeyCode.J) || Input.GetKeyDown (KeyCode.U))
@@ -173,6 +191,7 @@ public class PlayerController : MonoBehaviour {
 
 		//Lance Aiming and Dive Bomb
 		if(Input.GetKey(KeyCode.DownArrow) && grounded == false){
+			aiming = true;
 			facingDown = true;
 			facingUp = false;
 			if(facingDirection == 0)
@@ -188,6 +207,7 @@ public class PlayerController : MonoBehaviour {
 		else if(Input.GetKey (KeyCode.UpArrow) && grounded == false){
 			facingDown = false;
 			facingUp = true;
+			aiming = true;
 			if(facingDirection == 0)
 				transform.localEulerAngles = new Vector3 (0, 0, 270);
 			else if(facingDirection == 1)
@@ -197,6 +217,7 @@ public class PlayerController : MonoBehaviour {
 			transform.localEulerAngles = new Vector3 (0, 0, 0);
 			facingDown = false;
 			facingUp = false;
+			aiming = false;
 		}
 
 		anim.SetFloat("xSpeed" , Mathf.Abs(GetComponent<Rigidbody2D>().velocity.x));
@@ -263,6 +284,23 @@ public class PlayerController : MonoBehaviour {
 			else{
 				gunNumber = 0;
 			}
+		}
+	}
+
+	void OnTriggerEnter2D(Collider2D other){
+		if(other.tag == "Platform"){
+			onPlatform = true;
+		}
+		else {
+			onPlatform = false;
+		}
+		
+		//enemy bullet damage applied here
+	}
+
+	void OnTriggerExit2D(Collider2D other){
+		if(other.tag == "Platform"){
+			onPlatform = false;
 		}
 	}
 

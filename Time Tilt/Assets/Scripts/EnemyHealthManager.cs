@@ -8,12 +8,18 @@ public class EnemyHealthManager : MonoBehaviour {
 	public GameObject orb;
 	public GameObject gun1;
 	public GameObject gun2;
+	public GameObject gun3;
+	public GameObject gun4;
 	public GameObject life;
 	public GameObject health;
 
 	public float lifeChance;
+
+	public float gun4Chance;
+	public float gun3Chance;
 	public float gun2Chance;
 	public float gun1Chance;
+
 	public float healthChance;
 	public float orbChance;
 
@@ -23,10 +29,13 @@ public class EnemyHealthManager : MonoBehaviour {
 	private float takeDamageAgain; //how long until they can be hit again
 	public bool recovering;
 
+	public GameObject enemyLance;
+
 	// Use this for initialization
 	void Start () {
 		recovering = false;
 		takeDamageAgain = 0;
+
 	}
 	
 	// Update is called once per frame
@@ -41,7 +50,12 @@ public class EnemyHealthManager : MonoBehaviour {
 
 		if(recovering == true && Time.time > takeDamageAgain){
 			recovering = false;
-			//disable lance?
+			//anim.SetBool ("takingDamage", true);
+			enemyLance.SetActive(false);
+		}
+		else{
+			//anim.SetBool("takingDamage", false);
+			enemyLance.SetActive(true);
 		}
 
 	}
@@ -74,16 +88,22 @@ public class EnemyHealthManager : MonoBehaviour {
 		if(chanceNumber <= lifeChance){ //Lives 5% 1-5
 			Instantiate (life, new Vector2(gameObject.transform.position.x, gameObject.transform.position.y), Quaternion.identity);
 		}
-		else if(chanceNumber > lifeChance && chanceNumber <= gun2Chance){ // gun2 - 10% 6 - 15
+		else if(chanceNumber > lifeChance && chanceNumber <= gun4Chance){ // gun4 - 5% 6 - 10
+			Instantiate (gun4, new Vector2(gameObject.transform.position.x, gameObject.transform.position.y), Quaternion.identity);
+		}
+		else if(chanceNumber > gun4Chance && chanceNumber <= gun3Chance){ // gun3 - 8% 11 - 18
+			Instantiate (gun3, new Vector2(gameObject.transform.position.x, gameObject.transform.position.y), Quaternion.identity);
+		}
+		else if(chanceNumber > gun3Chance && chanceNumber <= gun2Chance){ // gun2 - 12% 19 - 30
 			Instantiate (gun2, new Vector2(gameObject.transform.position.x, gameObject.transform.position.y), Quaternion.identity);
 		}
-		else if(chanceNumber > gun2Chance && chanceNumber <= gun1Chance){ // gun1 - 15% 16 - 30
+		else if(chanceNumber > gun2Chance && chanceNumber <= gun1Chance){ // gun1 - 15% 31 - 45
 			Instantiate (gun1, new Vector2(gameObject.transform.position.x, gameObject.transform.position.y), Quaternion.identity);
 		}
-		else if(chanceNumber > gun1Chance && chanceNumber <= healthChance){ // Health - 25% 31 - 55
+		else if(chanceNumber > gun1Chance && chanceNumber <= healthChance){ // Health - 20% 46 - 65
 			Instantiate (health, new Vector2(gameObject.transform.position.x, gameObject.transform.position.y), Quaternion.identity);
 		}
-		else if(chanceNumber > healthChance && chanceNumber <= orbChance){ //Scorbs  45 % 55 - 99
+		else if(chanceNumber > healthChance && chanceNumber <= orbChance){ //Scorbs  45 % 65 - 99
 			Instantiate (orb, new Vector2(gameObject.transform.position.x, gameObject.transform.position.y), Quaternion.identity);
 		}
 	}
