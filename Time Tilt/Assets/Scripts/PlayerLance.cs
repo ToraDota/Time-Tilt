@@ -12,7 +12,7 @@ public class PlayerLance : MonoBehaviour {
 		if(other.name == "EnemyBody"){
 			other.GetComponentInParent<EnemyHealthManager>().HurtEnemy(bodyDamage);//GetComponenetInParent grabs the actual enemy game object rather than the individual hit boxes
 			other.GetComponentInParent<EnemyHealthManager>().knockBackEnemySides(other, gameObject.transform);
-			GetComponent<AudioSource>().Play ();
+			//GetComponent<AudioSource>().Play ();
 			PlayerHealthManager.BouncePlayer(this.GetComponent<Collider2D>(), other.gameObject);
 
 			//Debug.Log("Enemy Body");
@@ -21,7 +21,7 @@ public class PlayerLance : MonoBehaviour {
 		else if(other.name == "EnemyHead"){
 			other.GetComponentInParent<EnemyHealthManager>().HurtEnemy(headDamage);
 			other.GetComponentInParent<EnemyHealthManager>().knockBackEnemySides(other, gameObject.transform);
-			GetComponent<AudioSource>().Play ();
+			//GetComponent<AudioSource>().Play ();
 			PlayerHealthManager.BouncePlayer(this.GetComponent<Collider2D>(), other.gameObject);
 			//Debug.Log("Enemy Head");
 		}

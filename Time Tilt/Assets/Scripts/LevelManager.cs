@@ -32,8 +32,8 @@ public class LevelManager : MonoBehaviour {
 	public GameObject bottom2;
 	public GameObject gun1_2;
 	public GameObject gun2_2;
-//	public GameObject gun2_3;
-//	public GameObject gun2_4;
+	public GameObject gun2_3;
+	public GameObject gun2_4;
 
 	//Wave control
 	public int waveCount;
@@ -227,6 +227,10 @@ public class LevelManager : MonoBehaviour {
 			gun1_2.SetActive(false);
 			gun2_2 = GameObject.FindGameObjectWithTag("P2Gun2");
 			gun2_2.SetActive(false);
+			gun2_3 = GameObject.FindGameObjectWithTag("P2Gun3");
+			gun2_3.SetActive(false);
+			gun2_4 = GameObject.FindGameObjectWithTag("P2Gun4");
+			gun2_4.SetActive(false);
 			player2 = FindObjectOfType<PlayerController2>();
 			health2 = FindObjectOfType<PlayerTwoHealthManager>();
 			PlayerPrefs.SetInt("PlayerTwoHasSpawned", 1); //This will now be true for the rest of the play session..

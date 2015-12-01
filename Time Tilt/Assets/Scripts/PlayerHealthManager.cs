@@ -19,6 +19,11 @@ public class PlayerHealthManager : MonoBehaviour {
 	public static float takeDamageAgain; //how long until they can be hit again
 	public static bool recovering;
 
+	public AudioSource[] audioSources;
+	public static AudioSource hit1;
+	public static AudioSource hit2;
+	public static AudioSource hit3;
+
 
 	// Use this for initialization
 	void Start () {
@@ -35,6 +40,11 @@ public class PlayerHealthManager : MonoBehaviour {
 		takeDamageAgain = 0;
 
 		whichPlayer = "player1";
+
+		audioSources = GetComponents<AudioSource>();
+		hit1 = audioSources[1];
+		hit2 = audioSources[2];
+		hit3 = audioSources[3];
 	}
 	
 	// Update is called once per frame
@@ -64,6 +74,16 @@ public class PlayerHealthManager : MonoBehaviour {
 
 		if(recovering == false){
 			playerHealth -= damage; //actual damage
+			if(damage == 1){
+				hit1.Play();
+			}
+			else if(damage == 2){
+				hit2.Play();
+			}
+			else if(damage == 3){
+				hit3.Play();
+			}
+
 			takeDamageAgain = Time.time +  player.recoveryRate;
 			recovering = true;
 		}

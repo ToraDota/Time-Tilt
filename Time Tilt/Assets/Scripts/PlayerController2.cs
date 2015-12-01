@@ -17,6 +17,7 @@ public class PlayerController2 : MonoBehaviour {
 	public float groundCheckRadius;
 	public LayerMask whatIsGround;
 	public bool grounded;
+	public bool onPlatform;
 	
 	public string flapbutton; //Fire1
 	public float flapforce; 
@@ -37,24 +38,43 @@ public class PlayerController2 : MonoBehaviour {
 	public int gunNumber; //used to check what gun is active and enabled
 	public GameObject gun1;
 	public GameObject gun2;
+	public GameObject gun3;
+	public GameObject gun4;
+
 	public int bulletCounter; //current amount of bullets. When zero set gunNumber to zero; Set from pickup 
 	public int currentMaxBullets;
+
 	public GameObject bullet;
 	public GameObject strongBullet;
+	public GameObject shotgunBullet;
+	public GameObject sniperBullet;
+	
 	public Transform firepoint;
+	public Transform firepointUp;
+	public Transform firepointDown;
 	
 	public float gun1FireRate;
 	private float gun1NextFire;
 	
 	public float gun2FireRate;
 	private float gun2NextFire;
+
+	public float gun3FireRate;
+	private float gun3NextFire;
+
+	public float gun4FireRate;
+	private float gun4NextFire;
 	
 	private Gun1Pickup gun1PickUp;
 	private Gun2Pickup gun2PickUp;
+	private Gun3Pickup gun3PickUp;
+	private Gun4Pickup gun4PickUp;
 	
 	public float recoveryRate; //time unable to be hit 
 	
 	private Animator anim;
+
+	private bool aiming;
 	
 	// Use this for initialization
 	void Start () {
@@ -71,6 +91,17 @@ public class PlayerController2 : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
+		if((Mathf.Abs(GetComponent<Rigidbody2D>().velocity.y) < 0.5f) && (aiming == true) && (onPlatform == false)){
+			grounded = false;
+			
+		}
+		else if((Mathf.Abs(GetComponent<Rigidbody2D>().velocity.y) < 0.5f) || (onPlatform == true)){
+			grounded = true;
+			
+		}
+		else
+			grounded = false;
 		
 		//Input for flap
 		if(Input.GetButtonDown(flapbutton) || Input.GetKeyDown(KeyCode.R) || Input.GetKeyDown (KeyCode.F))
@@ -155,7 +186,8 @@ public class PlayerController2 : MonoBehaviour {
 		}
 		
 		//Lance Aiming and Dive Bomb
-		if(Input.GetKey (KeyCode.S) && !grounded){
+		if(Input.GetKey (KeyCode.S) && grounded == false){
+			aiming = true;
 			facingDown = true;
 			facingUp = false;
 			if(facingDirection == 0)
@@ -168,9 +200,10 @@ public class PlayerController2 : MonoBehaviour {
 			}
 		}
 		
-		else if((Input.GetKey (KeyCode.W) && !grounded)){
+		else if((Input.GetKey (KeyCode.W) && grounded == false)){
 			facingDown = false;
 			facingUp = true;
+			aiming = true;
 			if(facingDirection == 0)
 				transform.localEulerAngles = new Vector3 (0, 0, 270);
 			else if(facingDirection == 1)
@@ -180,6 +213,7 @@ public class PlayerController2 : MonoBehaviour {
 			transform.localEulerAngles = new Vector3 (0, 0, 0);
 			facingDown = false;
 			facingUp = false;
+			aiming = false;
 		}
 		
 		anim.SetFloat("xSpeed" , Mathf.Abs(GetComponent<Rigidbody2D>().velocity.x));
@@ -217,7 +251,55 @@ public class PlayerController2 : MonoBehaviour {
 				gunNumber = 0;
 			}
 		}
+		if(gunNumber == 3){ //shotgun
+			if(bulletCounter > -1){
+				if((Input.GetKeyDown (KeyCode.T) || Input.GetKeyDown(KeyCode.G)) && Time.time > gun3NextFire){ //rapid fire
+					gun3NextFire = Time.time + gun3FireRate;
+					Instantiate (shotgunBullet, firepoint.position, firepoint.rotation);
+					Instantiate (shotgunBullet, firepointUp.position, firepointUp.rotation);
+					Instantiate (shotgunBullet, firepointDown.position, firepointDown.rotation);
+					BulletController.firedFromPlayer1 = false;
+					GetComponent<AudioSource>().Play ();
+					bulletCounter--;
+				}
+			}
+			else{
+				gunNumber = 0;
+			}
+		}
+		if(gunNumber == 4){ //sniper
+			if(bulletCounter > -1){
+				if((Input.GetKeyDown (KeyCode.T) || Input.GetKeyDown(KeyCode.G)) && Time.time > gun4NextFire){ //rapid fire
+					gun4NextFire = Time.time + gun4FireRate;
+					Instantiate (sniperBullet, firepoint.position, firepoint.rotation);
+					BulletController.firedFromPlayer1 = false;
+					GetComponent<AudioSource>().Play ();
+					bulletCounter--;
+				}
+			}
+			else{
+				gunNumber = 0;
+			}
+		}
 	}
+
+	void OnTriggerEnter2D(Collider2D other){
+		if(other.tag == "Platform"){
+			onPlatform = true;
+		}
+		else {
+			onPlatform = false;
+		}
+		
+		//enemy bullet damage applied here
+	}
+
+	void OnTriggerExit2D(Collider2D other){
+		if(other.tag == "Platform"){
+			onPlatform = false;
+		}
+	}
+
 	
 	public void EquipWhatGun(int gun){ //sets what is enabled; no firing functionality
 		switch(gun){
@@ -225,15 +307,33 @@ public class PlayerController2 : MonoBehaviour {
 			//Debug.Log ("has gun");
 			gun1.SetActive(true);
 			gun2.SetActive(false);
+			gun3.SetActive(false);
+			gun4.SetActive(false);
 			break;
 		case 2:
 			//Debug.Log ("has gun 2");
 			gun1.SetActive(false);
 			gun2.SetActive(true);
+			gun3.SetActive(false);
+			gun4.SetActive(false);
+			break;
+		case 3:
+			gun1.SetActive(false);
+			gun2.SetActive(false);
+			gun3.SetActive(true);
+			gun4.SetActive(false);
+			break;
+		case 4: 
+			gun1.SetActive(false);
+			gun2.SetActive(false);
+			gun3.SetActive(false);
+			gun4.SetActive(true);
 			break;
 		default: //disable all guns
 			gun1.SetActive(false);
 			gun2.SetActive(false);
+			gun3.SetActive(false);
+			gun4.SetActive(false);
 			break;
 		}
 	}

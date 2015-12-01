@@ -66,7 +66,10 @@ public class EnemyHealthManager : MonoBehaviour {
 			enemyHealth -= damage;
 			takeDamageAgain = Time.time + recoveryRate;
 			recovering = true;
+			GetComponent<AudioSource>().Play();
 		}
+
+		//GetComponent<Animator>().get
 		//enemy bounce back here. probably clean up enemy movement then do this.
 		//Debug.Log("Enemy Health " + enemyHealth);
 	}

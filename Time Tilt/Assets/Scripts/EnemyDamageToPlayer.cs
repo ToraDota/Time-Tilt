@@ -25,21 +25,21 @@ public class EnemyDamageToPlayer : MonoBehaviour {
 			if (other.name == "Body") {
 				PlayerHealthManager.HurtPlayer (2);
 				PlayerHealthManager.BouncePlayer (other, gameObject);
-				GetComponent<AudioSource> ().Play ();
+				//GetComponent<AudioSource> ().Play ();
 				//Debug.Log("Body");
 			}
 
 			if (other.name == "Head") {
 				PlayerHealthManager.HurtPlayer (3);
 				PlayerHealthManager.BouncePlayer (other, gameObject);
-				GetComponent<AudioSource> ().Play ();
+				//GetComponent<AudioSource> ().Play ();
 				//Debug.Log("Head");
 			}
 
 			if (other.name == "Bottom") {
 				PlayerHealthManager.HurtPlayer (1);
 				PlayerHealthManager.BouncePlayer (other, gameObject);
-				GetComponent<AudioSource> ().Play ();
+				//GetComponent<AudioSource> ().Play ();
 				//Debug.Log ("Bottom");
 			}
 			if (other.name == "Lance") {
@@ -48,22 +48,22 @@ public class EnemyDamageToPlayer : MonoBehaviour {
 				GetComponent<AudioSource> ().Play (); //plays bounceback when the player clashes with the enemy lance
 			}
 		}
-		else if(other.name == "Body2"){
+		else if(other.tag == "P2Body"){
 			PlayerTwoHealthManager.HurtPlayer(2);
 			PlayerTwoHealthManager.BouncePlayer(other, gameObject);
-			GetComponent<AudioSource>().Play();
+			//GetComponent<AudioSource>().Play();
 		}
-		else if(other.name == "Head2"){
+		else if(other.tag == "P2Head"){
 			PlayerTwoHealthManager.HurtPlayer(3);
 			PlayerTwoHealthManager.BouncePlayer(other, gameObject);
-			GetComponent<AudioSource>().Play();
+			//GetComponent<AudioSource>().Play();
 		}
-		else if(other.name == "Bottom2"){
+		else if(other.tag == "P2Bottom"){
 			PlayerTwoHealthManager.HurtPlayer(1);
 			PlayerTwoHealthManager.BouncePlayer(other, gameObject);
-			GetComponent<AudioSource>().Play();
+			//GetComponent<AudioSource>().Play();
 		}
-		else if(other.name == "Lance2"){
+		else if(other.tag == "P2Lance"){
 			PlayerTwoHealthManager.BouncePlayer(other, gameObject);
 			GetComponent<AudioSource> ().Play ();
 		}

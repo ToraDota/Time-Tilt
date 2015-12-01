@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 006e22763d833dc4ead039d8e299a055
-timeCreated: 1447564090
+timeCreated: 1448946559
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -67,8 +67,8 @@ TextureImporter:
         y: 1332
         width: 426
         height: 459
-      alignment: 4
-      pivot: {x: 0, y: .5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: DinoFlight_1
       rect:
@@ -77,18 +77,18 @@ TextureImporter:
         y: 1334
         width: 426
         height: 352
-      alignment: 4
-      pivot: {x: 0, y: .5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: DinoFlight_2
       rect:
         serializedVersion: 2
-        x: 942
-        y: 1332
+        x: 945
+        y: 1337
         width: 426
         height: 349
-      alignment: 4
-      pivot: {x: 0, y: .5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: DinoFlight_3
       rect:
@@ -97,8 +97,8 @@ TextureImporter:
         y: 943
         width: 426
         height: 353
-      alignment: 4
-      pivot: {x: 0, y: .5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: DinoFlight_4
       rect:
@@ -107,8 +107,8 @@ TextureImporter:
         y: 942
         width: 426
         height: 353
-      alignment: 4
-      pivot: {x: 0, y: .5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: DinoFlight_5
       rect:
@@ -117,8 +117,8 @@ TextureImporter:
         y: 946
         width: 429
         height: 353
-      alignment: 4
-      pivot: {x: 0, y: .5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: DinoFlight_6
       rect:
@@ -127,8 +127,8 @@ TextureImporter:
         y: 480
         width: 426
         height: 353
-      alignment: 4
-      pivot: {x: 0, y: .5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: DinoFlight_7
       rect:
@@ -137,8 +137,8 @@ TextureImporter:
         y: 480
         width: 426
         height: 353
-      alignment: 4
-      pivot: {x: 0, y: .5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: DinoFlight_8
       rect:
@@ -147,8 +147,8 @@ TextureImporter:
         y: 481
         width: 426
         height: 353
-      alignment: 4
-      pivot: {x: 0, y: .5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: DinoFlight_9
       rect:
@@ -157,8 +157,8 @@ TextureImporter:
         y: 0
         width: 426
         height: 353
-      alignment: 4
-      pivot: {x: 0, y: .5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: DinoFlight_10
       rect:
@@ -167,8 +167,8 @@ TextureImporter:
         y: 0
         width: 426
         height: 459
-      alignment: 4
-      pivot: {x: 0, y: .5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
   spritePackingTag: 
   userData: 

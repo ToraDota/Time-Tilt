@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 0d7bc5584b8a132458fbddcebbb18203
-timeCreated: 1447563670
+timeCreated: 1448946459
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -67,8 +67,8 @@ TextureImporter:
         y: 1568
         width: 390
         height: 382
-      alignment: 4
-      pivot: {x: 0, y: .5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: TakeOff_1
       rect:
@@ -87,8 +87,8 @@ TextureImporter:
         y: 1571
         width: 390
         height: 382
-      alignment: 4
-      pivot: {x: 0, y: .5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: TakeOff_3
       rect:
@@ -97,18 +97,18 @@ TextureImporter:
         y: 1569
         width: 487
         height: 382
-      alignment: 4
-      pivot: {x: 0, y: .5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: TakeOff_4
       rect:
         serializedVersion: 2
-        x: 137
+        x: 140
         y: 1106
         width: 483
         height: 382
-      alignment: 4
-      pivot: {x: 0, y: .5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: TakeOff_5
       rect:
@@ -117,8 +117,8 @@ TextureImporter:
         y: 1109
         width: 483
         height: 382
-      alignment: 4
-      pivot: {x: 0, y: .5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: TakeOff_6
       rect:
@@ -127,8 +127,8 @@ TextureImporter:
         y: 1107
         width: 483
         height: 382
-      alignment: 4
-      pivot: {x: 0, y: .5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: TakeOff_7
       rect:
@@ -137,8 +137,8 @@ TextureImporter:
         y: 553
         width: 483
         height: 382
-      alignment: 4
-      pivot: {x: 0, y: .5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: TakeOff_8
       rect:
@@ -147,8 +147,8 @@ TextureImporter:
         y: 555
         width: 483
         height: 382
-      alignment: 4
-      pivot: {x: 0, y: .5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: TakeOff_9
       rect:
@@ -157,8 +157,8 @@ TextureImporter:
         y: 553
         width: 483
         height: 482
-      alignment: 4
-      pivot: {x: 0, y: .5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: TakeOff_10
       rect:
@@ -167,8 +167,8 @@ TextureImporter:
         y: 24
         width: 443
         height: 466
-      alignment: 4
-      pivot: {x: 0, y: .5}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
   spritePackingTag: 
   userData: 
