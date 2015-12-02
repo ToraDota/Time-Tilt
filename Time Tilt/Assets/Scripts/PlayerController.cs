@@ -102,6 +102,7 @@ public class PlayerController : MonoBehaviour {
 		}
 		else if((Mathf.Abs(GetComponent<Rigidbody2D>().velocity.y) < 0.5f) || (onPlatform == true)){
 			grounded = true;
+			isDiving = false;
 
 		}
 		else
@@ -228,7 +229,7 @@ public class PlayerController : MonoBehaviour {
 
 		//Shooting controls
 		if(gunNumber == 1){ //semiauto
-			if(bulletCounter > -1){
+			if(bulletCounter > 0){
 				if((Input.GetKeyDown (KeyCode.K) || Input.GetKeyDown(KeyCode.I)) && Time.time > gun1NextFire){ //semi auto
 					gun1NextFire = Time.time + gun1FireRate;
 					Instantiate (strongBullet, firepoint.position, firepoint.rotation);
@@ -242,7 +243,7 @@ public class PlayerController : MonoBehaviour {
 			}
 		}
 		if(gunNumber == 2){ //automatic
-			if(bulletCounter > -1){
+			if(bulletCounter > 0){
 				if((Input.GetKeyDown (KeyCode.K) || Input.GetKeyDown(KeyCode.I)) && Time.time > gun2NextFire){ //rapid fire
 					gun2NextFire = Time.time + gun2FireRate;
 					Instantiate (bullet, firepoint.position, firepoint.rotation);
@@ -256,7 +257,7 @@ public class PlayerController : MonoBehaviour {
 			}
 		}
 		if(gunNumber == 3){ //shotgun
-			if(bulletCounter > -1){
+			if(bulletCounter > 0){
 				if((Input.GetKeyDown (KeyCode.K) || Input.GetKeyDown(KeyCode.I)) && Time.time > gun3NextFire){ //rapid fire
 					gun3NextFire = Time.time + gun3FireRate;
 					Instantiate (shotgunBullet, firepoint.position, firepoint.rotation);
@@ -272,11 +273,11 @@ public class PlayerController : MonoBehaviour {
 			}
 		}
 		if(gunNumber == 4){ //sniper
-			if(bulletCounter > -1){
+			if(bulletCounter > 0){
 				if((Input.GetKeyDown (KeyCode.K) || Input.GetKeyDown(KeyCode.I)) && Time.time > gun4NextFire){ //rapid fire
 					gun4NextFire = Time.time + gun4FireRate;
 					Instantiate (sniperBullet, firepoint.position, firepoint.rotation);
-					BulletController.firedFromPlayer1 = true;
+					BulletControllerSniper.firedFromPlayer1 = true;
 					GetComponent<AudioSource>().Play ();
 					bulletCounter--;
 				}

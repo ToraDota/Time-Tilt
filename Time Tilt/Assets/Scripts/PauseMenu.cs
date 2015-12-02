@@ -23,6 +23,20 @@ public class PauseMenu : MonoBehaviour {
 		if(Input.GetKeyDown(KeyCode.Escape)){
 			isPaused = !isPaused;
 		}
+
+		if(isPaused == true){
+			if(Input.GetKeyDown(KeyCode.U) || Input.GetKeyDown(KeyCode.J) || Input.GetKeyDown(KeyCode.R) || Input.GetKeyDown(KeyCode.F)){
+				Resume ();
+			}
+
+			if(Input.GetKeyDown(KeyCode.I) || Input.GetKeyDown(KeyCode.K) || Input.GetKeyDown(KeyCode.T) || Input.GetKeyDown(KeyCode.G)){
+				MainMenu();
+			}
+
+			if(Input.GetKeyDown(KeyCode.O) || Input.GetKeyDown(KeyCode.L) || Input.GetKeyDown(KeyCode.Y) || Input.GetKeyDown(KeyCode.H)){
+				Quit ();
+			}
+		}
 	}
 
 	public void Resume(){

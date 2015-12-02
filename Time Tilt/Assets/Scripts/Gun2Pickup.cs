@@ -19,9 +19,11 @@ public class Gun2Pickup : MonoBehaviour {
 	void Update () {
 		if(canPickUp == false){
 			Physics2D.IgnoreLayerCollision(0, 8, true);
+			Physics2D.IgnoreLayerCollision(8, 14, true);
 		}
 		else{
 			Physics2D.IgnoreLayerCollision(0, 8, false);
+			Physics2D.IgnoreLayerCollision(8, 14, false);
 		}
 	}
 

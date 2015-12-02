@@ -5,6 +5,7 @@ public class NonLethalHazard : MonoBehaviour {
 
 	public int hazardDamage;
 	private PlayerHealthManager health;
+	private PlayerTwoHealthManager health2;
 	private EnemyHealthManager enemy;
 
 	// Use this for initialization
@@ -24,5 +25,10 @@ public class NonLethalHazard : MonoBehaviour {
 			PlayerHealthManager.BouncePlayer(other, gameObject);
 		}
 
+		if (other.tag == "Player2"){
+			PlayerTwoHealthManager.HurtPlayer(hazardDamage);
+			PlayerTwoHealthManager.BouncePlayer(other, gameObject);
+		}
+		//Debug.Log("sajldhlakjsd");
 	}
 }

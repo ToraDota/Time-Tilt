@@ -90,7 +90,7 @@ public class BulletControllerSniper : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D other){
 		
 		if(other.tag == "Enemy"){
-			Destroy(other);
+			Destroy(other.gameObject);
 		}
 		if(other.tag == "TopWall" || other.tag == "Platform" || other.tag == "Hazard"){
 			Destroy (gameObject);

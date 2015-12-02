@@ -15,6 +15,8 @@ public class LevelManager : MonoBehaviour {
 	public float respawnDelay;
 	public Transform respawnLocation;
 
+	public Transform player2Spawn;
+
 	//renders to disable for player 1
 	public GameObject body;
 	public GameObject head;
@@ -92,6 +94,7 @@ public class LevelManager : MonoBehaviour {
 		anEnemyHasSpawned = false;
 		gameOver = false;
 		CallDelayLevelStart();
+		Cursor.visible = false;
 	}
 	
 	// Update is called once per frame
@@ -217,7 +220,7 @@ public class LevelManager : MonoBehaviour {
 		}
 		//spawnplayer two check
 		if(playerTwoHasSpawned == 0 && playerTwoThisLevel == false && Input.GetKeyDown (KeyCode.Alpha2)){
-			Instantiate (secondPlayer, respawnLocation.position, respawnLocation.rotation);
+			Instantiate (secondPlayer, player2Spawn.position, player2Spawn.rotation);
 			player2Canvas.SetActive(true);
 			body2 = GameObject.FindGameObjectWithTag("P2Body");
 			lance2 = GameObject.FindGameObjectWithTag("P2Lance");
@@ -238,7 +241,7 @@ public class LevelManager : MonoBehaviour {
 			playerTwoThisLevel = true;
 		}
 		else if(playerTwoHasSpawned == 1 && playerTwoThisLevel == false){  //automatically spawns player 2 into the next level when it loads.
-			Instantiate (secondPlayer, respawnLocation.position, respawnLocation.rotation);
+			Instantiate (secondPlayer, player2Spawn.position, player2Spawn.rotation);
 			player2Canvas.SetActive(true);
 			body2 = GameObject.FindGameObjectWithTag("P2Body");
 			lance2 = GameObject.FindGameObjectWithTag("P2Lance");
@@ -430,7 +433,7 @@ public class LevelManager : MonoBehaviour {
 		hasWaveStarted = false;
 		waveCompleted = false;
 		anEnemyHasSpawned = false;
-		PlayerHealthManager.playerHealth = health.maxPlayerHealth;
+		//PlayerHealthManager.playerHealth = health.maxPlayerHealth;
 		waveCount++;
 	}
 

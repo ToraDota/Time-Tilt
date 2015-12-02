@@ -43,6 +43,16 @@ public class Menu : MonoBehaviour {
 		PlayerPrefs.SetInt("PlayerTwoHasSpawned", 0); //player two has not spawned. 0 = not spawned, 1 = has spawned.
     }
 
+	public void StartLevelTwoPlayers(){
+		Application.LoadLevel("prototype");
+
+		PlayerPrefs.SetInt ("Player1Lives", player1Lives);
+		PlayerPrefs.SetInt ("Player2Lives", player2Lives);
+		PlayerPrefs.SetInt("CurrentScore", currentScore);
+		PlayerPrefs.SetInt("PlayerTwoHasSpawned", 1); //player two has not spawned. 0 = not spawned, 1 = has spawned.
+
+	}
+
     public void ExitGame()
     {
         Application.Quit();
@@ -50,11 +60,15 @@ public class Menu : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(Input.GetKeyDown(KeyCode.J) || Input.GetKeyDown(KeyCode.U)|| Input.GetKeyDown(KeyCode.Alpha1)){
+		if(Input.GetKeyDown(KeyCode.Alpha1)){
 			StartLevel();
 		}
 
-		if(Input.GetKeyDown (KeyCode.Escape)){
+		if(Input.GetKeyDown(KeyCode.Alpha2)){
+			StartLevelTwoPlayers();
+		}
+
+		if(Input.GetKeyDown (KeyCode.Escape) || Input.GetKeyDown(KeyCode.Alpha3)){
 			ExitGame ();
 		}
 	}

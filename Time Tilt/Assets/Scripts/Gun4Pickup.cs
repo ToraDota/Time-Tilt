@@ -19,9 +19,11 @@ public class Gun4Pickup : MonoBehaviour {
 	void Update () {
 		if(canPickUp == false){
 			Physics2D.IgnoreLayerCollision(0, 8, true);
+			Physics2D.IgnoreLayerCollision(8, 14, true);
 		}
 		else{
 			Physics2D.IgnoreLayerCollision(0, 8, false);
+			Physics2D.IgnoreLayerCollision(8, 14, false);
 		}
 	}
 	
@@ -31,8 +33,7 @@ public class Gun4Pickup : MonoBehaviour {
 				var player = other.GetComponent<PlayerController> ();
 				
 				ScoreManager.UpScore (pointsWorth);
-				
-				
+
 				if (player.gunNumber > 4) {
 					//Ignores this object and just destroys it
 					Destroy (gameObject);

@@ -35,7 +35,6 @@ public class EnemyHealthManager : MonoBehaviour {
 	void Start () {
 		recovering = false;
 		takeDamageAgain = 0;
-
 	}
 	
 	// Update is called once per frame
@@ -69,7 +68,6 @@ public class EnemyHealthManager : MonoBehaviour {
 			GetComponent<AudioSource>().Play();
 		}
 
-		//GetComponent<Animator>().get
 		//enemy bounce back here. probably clean up enemy movement then do this.
 		//Debug.Log("Enemy Health " + enemyHealth);
 	}
