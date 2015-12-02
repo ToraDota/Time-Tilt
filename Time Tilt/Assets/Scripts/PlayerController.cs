@@ -116,13 +116,26 @@ public class PlayerController : MonoBehaviour {
 
 		//Face Left
 		if(Input.GetKeyDown (KeyCode.LeftArrow) && !Input.GetKey(KeyCode.DownArrow)){
-			transform.localScale = new Vector3(-1f, 1f, 1f);
+			//transform.localScale = new Vector3(-1f, 1f, 1f);
+			if(facingDirection == 1){
+				transform.localScale = new Vector3(((GetComponent<Transform>().localScale.x)*-1), 1f, 1f);
+			}
+			else // might need a direction check if it clashes with how stuff works midair 
+				transform.localScale = new Vector3(GetComponent<Transform>().localScale.x, 1f, 1f);
+
 			facingDirection = 0;
 		}
 		
 		//Face Right
 		if(Input.GetKeyDown (KeyCode.RightArrow) && !Input.GetKey(KeyCode.DownArrow)){
-			transform.localScale = new Vector3(1f, 1f, 1f);
+			//transform.localScale = new Vector3(1f, 1f, 1f);
+
+			if(facingDirection == 0){
+				transform.localScale = new Vector3(((GetComponent<Transform>().localScale.x)*-1), 1f, 1f);
+			}
+			else // might need a direction check if it clashes with how stuff works midair 
+				transform.localScale = new Vector3(GetComponent<Transform>().localScale.x, 1f, 1f);
+
 			facingDirection = 1;
 		}
 

@@ -57,6 +57,7 @@
      <Compile Include="Assets\Scripts\EnemyDamageToPlayer.cs" />
      <Compile Include="Assets\Scripts\EnemyDrops.cs" />
      <Compile Include="Assets\Scripts\EnemyHealthManager.cs" />
+     <Compile Include="Assets\Scripts\EnemyShootController.cs" />
      <Compile Include="Assets\Scripts\EnemyStomp.cs" />
      <Compile Include="Assets\Scripts\FinishMenu.cs" />
      <Compile Include="Assets\Scripts\Gun1Pickup.cs" />
