@@ -57,7 +57,7 @@ public class EnemyController : MonoBehaviour {
 			anim.SetBool("isGrounded", true); // move animation along the ground should play
 
 			if(Time.time > timeTillNextAction){
-				timeTillNextAction = Time.time + actionRate;
+				timeTillNextAction = Time.time + actionRate; // action rate detertimes how long until this condition statement runs again  (seconds)
 				int random = Random.Range(0,5);
 				if(random >  2){
 					GetComponent<Rigidbody2D>().velocity = new Vector2(GetComponent<Rigidbody2D>().velocity.x, flapForce);
@@ -113,7 +113,11 @@ public class EnemyController : MonoBehaviour {
 			other.GetComponent<EnemyHealthManager>().knockBackEnemySides(other, gameObject.transform);
 		}
 	}
-	
+
+	public bool GetFacingRight(){
+		return facingRight;
+	}
+
 }
 
 	

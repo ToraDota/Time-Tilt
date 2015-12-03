@@ -53,9 +53,11 @@
      <Compile Include="Assets\Scripts\BulletControllerSniper.cs" />
      <Compile Include="Assets\Scripts\CheckGround.cs" />
      <Compile Include="Assets\Scripts\CheckGround2.cs" />
+     <Compile Include="Assets\Scripts\EnemyBulletController.cs" />
      <Compile Include="Assets\Scripts\EnemyController.cs" />
      <Compile Include="Assets\Scripts\EnemyDamageToPlayer.cs" />
      <Compile Include="Assets\Scripts\EnemyDrops.cs" />
+     <Compile Include="Assets\Scripts\EnemyGun.cs" />
      <Compile Include="Assets\Scripts\EnemyHealthManager.cs" />
      <Compile Include="Assets\Scripts\EnemyShootController.cs" />
      <Compile Include="Assets\Scripts\EnemyStomp.cs" />

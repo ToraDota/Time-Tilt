@@ -44,6 +44,8 @@ public class LevelManager : MonoBehaviour {
 	private bool hasWaveStarted; //start spawning in enemies if the wave has started
 	public EnemyController[] enemyCount; //array to count how many enemies are present
 	public GameObject enemy;
+	public GameObject shootEnemy;
+	private GameObject enemyToSpawn;
 
 	//places the enemy can spawn and the place the enemy will spawn after a random roll
 	public Transform spawnPoint1;
@@ -116,7 +118,7 @@ public class LevelManager : MonoBehaviour {
 
 			if(enemyCount.Length < 1 && hasWaveStarted && !waveCompleted && anEnemyHasSpawned){
 				//end the wave - some graphic might want to pop up here - just enable then disable it from the EndWave function
-				Debug.Log("Wave Completed");
+				//Debug.Log("Wave Completed");
 				waveCompleted = true;
 				CallEndWave (); //called once, as the last enemy dies
 			}
@@ -419,7 +421,16 @@ public class LevelManager : MonoBehaviour {
 		else
 			enemySpawnHere = spawnPoint1;
 
-		Instantiate (enemy, enemySpawnHere.position, enemySpawnHere.rotation);
+		//random which enemy spawns here.
+
+		var enemyRnd = Random.Range (0,10); //0-9; 10 values
+		if(enemyRnd > 8){ // 10% chance for a shooting enemy to spawn
+			enemyToSpawn = shootEnemy;
+		}
+		else
+			enemyToSpawn = enemy;
+
+		Instantiate (enemyToSpawn, enemySpawnHere.position, enemySpawnHere.rotation);
 		//Debug.Log ("Enemy Spawned");
 		enemiesToSpawn[waveCount - 1]--;
 	}
