@@ -14,13 +14,14 @@ public class PauseMenu : MonoBehaviour {
 		if(isPaused){
 			pauseMenuCanvas.SetActive(true); //if paused then the menu is active
 			Time.timeScale = 0f;
+			Cursor.visible = false; // change to true for pc builds and also disable it when leaving the menu.
 		}
 		else{
 			pauseMenuCanvas.SetActive(false);
 			Time.timeScale = 1f;
 		}
 
-		if(Input.GetKeyDown(KeyCode.Escape)){
+		if(Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.O) || Input.GetKeyDown(KeyCode.L) || Input.GetKeyDown(KeyCode.Y) || Input.GetKeyDown(KeyCode.H)){
 			isPaused = !isPaused;
 		}
 
@@ -33,9 +34,10 @@ public class PauseMenu : MonoBehaviour {
 				MainMenu();
 			}
 
-			if(Input.GetKeyDown(KeyCode.O) || Input.GetKeyDown(KeyCode.L) || Input.GetKeyDown(KeyCode.Y) || Input.GetKeyDown(KeyCode.H)){
-				Quit ();
-			}
+//			if(Input.GetKeyDown(KeyCode.O) || Input.GetKeyDown(KeyCode.L) || Input.GetKeyDown(KeyCode.Y) || Input.GetKeyDown(KeyCode.H)){
+//				//Quit (); put back in for pc
+//				Resume ();
+//			}
 		}
 	}
 

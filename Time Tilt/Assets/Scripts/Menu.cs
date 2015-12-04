@@ -33,7 +33,7 @@ public class Menu : MonoBehaviour {
 
     public void StartLevel()
     {
-        Application.LoadLevel("prototype");
+        Application.LoadLevel("ControlScreen");
 
 		//sets each characters lives value to an initial amount and creates the pref to carry over between loads.
 		//players share a score counter.
@@ -44,7 +44,7 @@ public class Menu : MonoBehaviour {
     }
 
 	public void StartLevelTwoPlayers(){
-		Application.LoadLevel("prototype");
+		Application.LoadLevel("ControlScreen");
 
 		PlayerPrefs.SetInt ("Player1Lives", player1Lives);
 		PlayerPrefs.SetInt ("Player2Lives", player2Lives);

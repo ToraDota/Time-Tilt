@@ -99,6 +99,7 @@ public class PlayerController2 : MonoBehaviour {
 		else if((Mathf.Abs(GetComponent<Rigidbody2D>().velocity.y) < 0.5f) || (onPlatform == true)){
 			grounded = true;
 			isDiving = false;
+			aiming = false;
 			
 		}
 		else
@@ -111,7 +112,7 @@ public class PlayerController2 : MonoBehaviour {
 		}
 		
 		//Face Left
-		if(Input.GetKeyDown (KeyCode.LeftArrow) && !Input.GetKey(KeyCode.DownArrow)){
+		if(Input.GetKeyDown (KeyCode.A) && !Input.GetKey(KeyCode.S)){
 			//transform.localScale = new Vector3(-1f, 1f, 1f);
 			if(facingDirection == 1){
 				transform.localScale = new Vector3(((GetComponent<Transform>().localScale.x)*-1), 1f, 1f);
@@ -123,7 +124,7 @@ public class PlayerController2 : MonoBehaviour {
 		}
 		
 		//Face Right
-		if(Input.GetKeyDown (KeyCode.RightArrow) && !Input.GetKey(KeyCode.DownArrow)){
+		if(Input.GetKeyDown (KeyCode.D) && !Input.GetKey(KeyCode.S)){
 			//transform.localScale = new Vector3(1f, 1f, 1f);
 			
 			if(facingDirection == 0){

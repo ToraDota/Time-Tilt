@@ -103,6 +103,7 @@ public class PlayerController : MonoBehaviour {
 		else if((Mathf.Abs(GetComponent<Rigidbody2D>().velocity.y) < 0.5f) || (onPlatform == true)){
 			grounded = true;
 			isDiving = false;
+			aiming = false;
 
 		}
 		else

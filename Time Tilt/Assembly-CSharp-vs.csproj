@@ -53,6 +53,7 @@
      <Compile Include="Assets\Scripts\BulletControllerSniper.cs" />
      <Compile Include="Assets\Scripts\CheckGround.cs" />
      <Compile Include="Assets\Scripts\CheckGround2.cs" />
+     <Compile Include="Assets\Scripts\ControlScreen.cs" />
      <Compile Include="Assets\Scripts\EnemyBulletController.cs" />
      <Compile Include="Assets\Scripts\EnemyController.cs" />
      <Compile Include="Assets\Scripts\EnemyDamageToPlayer.cs" />

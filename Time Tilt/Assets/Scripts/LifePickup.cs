@@ -42,21 +42,21 @@ public class LifePickup : MonoBehaviour {
 		} 
 	}
 
-	void OnTriggerStay2D(Collider2D other){
-		if (canPickUp == true) {
-			if (other.tag == "Player") {
-				PlayerHealthManager.AddLife ();
-				ScoreManager.UpScore (pointsWorth);
-				Destroy (gameObject);
-			}
-			
-			if (other.tag == "Player2") {
-				PlayerTwoHealthManager.AddLife ();
-				ScoreManager.UpScore (pointsWorth);
-				Destroy (gameObject);
-			}
-		} 
-	}
+//	void OnTriggerStay2D(Collider2D other){
+//		if (canPickUp == true) {
+//			if (other.tag == "Player") {
+//				PlayerHealthManager.AddLife ();
+//				ScoreManager.UpScore (pointsWorth);
+//				Destroy (gameObject);
+//			}
+//			
+//			if (other.tag == "Player2") {
+//				PlayerTwoHealthManager.AddLife ();
+//				ScoreManager.UpScore (pointsWorth);
+//				Destroy (gameObject);
+//			}
+//		} 
+//	}
 
 	public void CallTouchDelay(){
 		StartCoroutine ("TouchDelay");

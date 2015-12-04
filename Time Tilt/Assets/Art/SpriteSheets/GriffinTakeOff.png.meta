@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 9901898da3aafaa47ab775fca4e63083
-timeCreated: 1448661212
+timeCreated: 1449166436
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -69,18 +69,18 @@ TextureImporter:
         y: 1420
         width: 353
         height: 355
-      alignment: 7
-      pivot: {x: .5, y: 0}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: GriffinTakeOff_1
       rect:
         serializedVersion: 2
-        x: 414
+        x: 417
         y: 1419
         width: 354
         height: 354
-      alignment: 7
-      pivot: {x: .5, y: 0}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: GriffinTakeOff_2
       rect:
@@ -89,8 +89,8 @@ TextureImporter:
         y: 1418
         width: 357
         height: 355
-      alignment: 7
-      pivot: {x: .5, y: 0}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: GriffinTakeOff_3
       rect:
@@ -99,8 +99,8 @@ TextureImporter:
         y: 934
         width: 353
         height: 348
-      alignment: 7
-      pivot: {x: .5, y: 0}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: GriffinTakeOff_4
       rect:
@@ -109,8 +109,8 @@ TextureImporter:
         y: 932
         width: 345
         height: 351
-      alignment: 7
-      pivot: {x: .5, y: 0}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: GriffinTakeOff_5
       rect:
@@ -119,8 +119,8 @@ TextureImporter:
         y: 933
         width: 340
         height: 348
-      alignment: 7
-      pivot: {x: .5, y: 0}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: GriffinTakeOff_6
       rect:
@@ -129,8 +129,8 @@ TextureImporter:
         y: 536
         width: 343
         height: 329
-      alignment: 7
-      pivot: {x: .5, y: 0}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: GriffinTakeOff_7
       rect:
@@ -139,8 +139,8 @@ TextureImporter:
         y: 536
         width: 343
         height: 328
-      alignment: 7
-      pivot: {x: .5, y: 0}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: GriffinTakeOff_8
       rect:
@@ -149,8 +149,8 @@ TextureImporter:
         y: 536
         width: 347
         height: 328
-      alignment: 7
-      pivot: {x: .5, y: 0}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: GriffinTakeOff_9
       rect:
@@ -159,8 +159,8 @@ TextureImporter:
         y: 143
         width: 356
         height: 337
-      alignment: 7
-      pivot: {x: .5, y: 0}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: GriffinTakeOff_10
       rect:
@@ -169,8 +169,8 @@ TextureImporter:
         y: 536
         width: 345
         height: 329
-      alignment: 7
-      pivot: {x: .5, y: 0}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: GriffinTakeOff_11
       rect:
@@ -179,8 +179,8 @@ TextureImporter:
         y: 936
         width: 345
         height: 466
-      alignment: 7
-      pivot: {x: .5, y: 0}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: GriffinTakeOff_12
       rect:
@@ -189,8 +189,8 @@ TextureImporter:
         y: 1418
         width: 357
         height: 353
-      alignment: 7
-      pivot: {x: .5, y: 0}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
   spritePackingTag: 
   userData: 

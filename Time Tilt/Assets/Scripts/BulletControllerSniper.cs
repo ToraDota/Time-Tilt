@@ -20,6 +20,10 @@ public class BulletControllerSniper : MonoBehaviour {
 	private Transform playerPosition;
 	
 	public static bool firedFromPlayer1;
+
+	public AudioSource[] audioSources;
+	public AudioSource sniperDestroy;
+
 	
 	// Use this for initialization
 	void Start () {
@@ -68,6 +72,9 @@ public class BulletControllerSniper : MonoBehaviour {
 				directionWhenFired = 2;
 			}
 		}
+
+		audioSources = GetComponents<AudioSource>();
+		sniperDestroy = audioSources[1];
 	}
 	
 	// Update is called once per frame
@@ -91,8 +98,9 @@ public class BulletControllerSniper : MonoBehaviour {
 		
 		if(other.tag == "Enemy"){
 			Destroy(other.gameObject);
+			sniperDestroy.Play();
 		}
-		if(other.tag == "TopWall" || other.tag == "Platform" || other.tag == "Hazard"){
+		if(other.tag == "TopWall" ){
 			Destroy (gameObject);
 		}
 	}

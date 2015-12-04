@@ -38,7 +38,7 @@ public class HealthPickup : MonoBehaviour {
 			if (other.tag == "Player") {
 				if (PlayerHealthManager.playerHealth < health.maxPlayerHealth) {
 
-					PlayerHealthManager.playerHealth++;
+					PlayerHealthManager.playerHealth+=2;
 				}
 				Destroy (gameObject);
 			}
@@ -46,32 +46,32 @@ public class HealthPickup : MonoBehaviour {
 			if (other.tag == "Player2") {
 				if (PlayerTwoHealthManager.player2Health < health2.maxPlayerHealth) {
 					
-					PlayerTwoHealthManager.player2Health++;
+					PlayerTwoHealthManager.player2Health+=2;
 				}
 				Destroy (gameObject);
 			}
 		}
 	}
 
-	void OnTriggerStay2D(Collider2D other){
-		if (canPickUp == true) {
-			if (other.tag == "Player") {
-				if (PlayerHealthManager.playerHealth < health.maxPlayerHealth) {
-					
-					PlayerHealthManager.playerHealth++;
-				}
-				Destroy (gameObject);
-			}
-			
-			if (other.tag == "Player2") {
-				if (PlayerTwoHealthManager.player2Health < health2.maxPlayerHealth) {
-					
-					PlayerTwoHealthManager.player2Health++;
-				}
-				Destroy (gameObject);
-			}
-		}
-	}
+//	void OnTriggerStay2D(Collider2D other){
+//		if (canPickUp == true) {
+//			if (other.tag == "Player") {
+//				if (PlayerHealthManager.playerHealth < health.maxPlayerHealth) {
+//					
+//					PlayerHealthManager.playerHealth++;
+//				}
+//				Destroy (gameObject);
+//			}
+//			
+//			if (other.tag == "Player2") {
+//				if (PlayerTwoHealthManager.player2Health < health2.maxPlayerHealth) {
+//					
+//					PlayerTwoHealthManager.player2Health++;
+//				}
+//				Destroy (gameObject);
+//			}
+//		}
+//	}
 
 	public void CallTouchDelay(){
 		StartCoroutine ("TouchDelay");

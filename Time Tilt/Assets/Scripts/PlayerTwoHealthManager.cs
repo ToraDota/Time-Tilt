@@ -40,9 +40,9 @@ public class PlayerTwoHealthManager : MonoBehaviour {
 		if(player2Lives > -1 && !isDead){
 			if(player2Health <= 0){ 
 				player2Health = 0;
+				RemoveLife ();
 				levelManager.RespawnPlayer(whichPlayer); //player dies and respawns from the same function
 				GetComponent<AudioSource>().Play (); //plays death sound effect
-				RemoveLife ();
 				isDead = true;
 			}
 		}

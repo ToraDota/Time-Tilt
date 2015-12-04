@@ -1,0 +1,176 @@
+fileFormatVersion: 2
+guid: 7845afca8015b054ea88e1c730a8b97d
+timeCreated: 1449190658
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: walkingRaptor_0
+    21300002: walkingRaptor_1
+    21300004: walkingRaptor_2
+    21300006: walkingRaptor_3
+    21300008: walkingRaptor_4
+    21300010: walkingRaptor_5
+    21300012: walkingRaptor_6
+    21300014: walkingRaptor_7
+    21300016: walkingRaptor_8
+    21300018: walkingRaptor_9
+    21300020: walkingRaptor_10
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 6
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 400
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: walkingRaptor_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1380
+        width: 371
+        height: 383
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: walkingRaptor_1
+      rect:
+        serializedVersion: 2
+        x: 519
+        y: 1385
+        width: 371
+        height: 375
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: walkingRaptor_2
+      rect:
+        serializedVersion: 2
+        x: 1059
+        y: 1380
+        width: 371
+        height: 384
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: walkingRaptor_3
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 922
+        width: 463
+        height: 353
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: walkingRaptor_4
+      rect:
+        serializedVersion: 2
+        x: 534
+        y: 919
+        width: 401
+        height: 359
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: walkingRaptor_5
+      rect:
+        serializedVersion: 2
+        x: 1079
+        y: 927
+        width: 451
+        height: 351
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: walkingRaptor_6
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 453
+        width: 448
+        height: 351
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: walkingRaptor_7
+      rect:
+        serializedVersion: 2
+        x: 534
+        y: 454
+        width: 445
+        height: 351
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: walkingRaptor_8
+      rect:
+        serializedVersion: 2
+        x: 1079
+        y: 449
+        width: 445
+        height: 355
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: walkingRaptor_9
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 0
+        width: 473
+        height: 362
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: walkingRaptor_10
+      rect:
+        serializedVersion: 2
+        x: 627
+        y: 26
+        width: 432
+        height: 357
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

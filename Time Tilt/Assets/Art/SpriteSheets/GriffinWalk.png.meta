@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 97c4e773950097841aee8b9fdccf1ecd
-timeCreated: 1448661810
+timeCreated: 1449166467
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -59,16 +59,6 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     sprites:
-    - name: GriffinWalk_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 821
-        width: 400
-        height: 383
-      alignment: 7
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
     - name: GriffinWalk_1
       rect:
         serializedVersion: 2
@@ -76,8 +66,8 @@ TextureImporter:
         y: 828
         width: 363
         height: 376
-      alignment: 7
-      pivot: {x: .5, y: 0}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: GriffinWalk_2
       rect:
@@ -86,8 +76,8 @@ TextureImporter:
         y: 828
         width: 364
         height: 376
-      alignment: 7
-      pivot: {x: .5, y: 0}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: GriffinWalk_3
       rect:
@@ -96,8 +86,8 @@ TextureImporter:
         y: 828
         width: 362
         height: 376
-      alignment: 7
-      pivot: {x: .5, y: 0}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: GriffinWalk_4
       rect:
@@ -106,8 +96,8 @@ TextureImporter:
         y: 468
         width: 375
         height: 353
-      alignment: 7
-      pivot: {x: .5, y: 0}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: GriffinWalk_5
       rect:
@@ -116,8 +106,8 @@ TextureImporter:
         y: 468
         width: 361
         height: 354
-      alignment: 7
-      pivot: {x: .5, y: 0}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: GriffinWalk_6
       rect:
@@ -126,8 +116,8 @@ TextureImporter:
         y: 468
         width: 358
         height: 353
-      alignment: 7
-      pivot: {x: .5, y: 0}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: GriffinWalk_7
       rect:
@@ -136,8 +126,8 @@ TextureImporter:
         y: 466
         width: 358
         height: 355
-      alignment: 7
-      pivot: {x: .5, y: 0}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: GriffinWalk_8
       rect:
@@ -146,8 +136,8 @@ TextureImporter:
         y: 99
         width: 365
         height: 347
-      alignment: 7
-      pivot: {x: .5, y: 0}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: GriffinWalk_9
       rect:
@@ -156,8 +146,8 @@ TextureImporter:
         y: 97
         width: 370
         height: 347
-      alignment: 7
-      pivot: {x: .5, y: 0}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
   spritePackingTag: 
   userData: 

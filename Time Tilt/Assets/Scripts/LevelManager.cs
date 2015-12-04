@@ -34,8 +34,8 @@ public class LevelManager : MonoBehaviour {
 	public GameObject bottom2;
 	public GameObject gun1_2;
 	public GameObject gun2_2;
-	public GameObject gun2_3;
-	public GameObject gun2_4;
+	public GameObject gun3_2;
+	public GameObject gun4_2;
 
 	//Wave control
 	public int waveCount;
@@ -82,6 +82,8 @@ public class LevelManager : MonoBehaviour {
 
 	public GameObject GameOverGraphic;
 	private bool gameOver;
+
+	public GameObject[] WaveGraphic;
 		
 	// Use this for initialization
 	void Start () {
@@ -214,12 +216,14 @@ public class LevelManager : MonoBehaviour {
 		case 6: //once reaching this the next level is called
 				if(!hasWaveStarted && !waveCompleted)
 				{
+				WaveGraphic[5].SetActive(true);
 				CallNextLevel();
 				hasWaveStarted = true;
 				waveCompleted = true;
 				}
 			break;
 		}
+
 		//spawnplayer two check
 		if(playerTwoHasSpawned == 0 && playerTwoThisLevel == false && Input.GetKeyDown (KeyCode.Alpha2)){
 			Instantiate (secondPlayer, player2Spawn.position, player2Spawn.rotation);
@@ -232,10 +236,10 @@ public class LevelManager : MonoBehaviour {
 			gun1_2.SetActive(false);
 			gun2_2 = GameObject.FindGameObjectWithTag("P2Gun2");
 			gun2_2.SetActive(false);
-			gun2_3 = GameObject.FindGameObjectWithTag("P2Gun3");
-			gun2_3.SetActive(false);
-			gun2_4 = GameObject.FindGameObjectWithTag("P2Gun4");
-			gun2_4.SetActive(false);
+			gun3_2 = GameObject.FindGameObjectWithTag("P2Gun3");
+			gun3_2.SetActive(false);
+			gun4_2 = GameObject.FindGameObjectWithTag("P2Gun4");
+			gun4_2.SetActive(false);
 			player2 = FindObjectOfType<PlayerController2>();
 			health2 = FindObjectOfType<PlayerTwoHealthManager>();
 			PlayerPrefs.SetInt("PlayerTwoHasSpawned", 1); //This will now be true for the rest of the play session..
@@ -253,6 +257,10 @@ public class LevelManager : MonoBehaviour {
 			gun1_2.SetActive(false);
 			gun2_2 = GameObject.FindGameObjectWithTag("P2Gun2");
 			gun2_2.SetActive(false);
+			gun3_2 = GameObject.FindGameObjectWithTag("P2Gun3");
+			gun3_2.SetActive(false);
+			gun4_2 = GameObject.FindGameObjectWithTag("P2Gun4");
+			gun4_2.SetActive(false);
 			player2 = FindObjectOfType<PlayerController2>();
 			health2 = FindObjectOfType<PlayerTwoHealthManager>();
 			playerTwoThisLevel = true;
@@ -304,8 +312,8 @@ public class LevelManager : MonoBehaviour {
 			bottom2.SetActive(false);
 			gun1_2.SetActive(false);
 			gun2_2.SetActive(false);
-			//gun2_3.SetActive(false);
-			//gun2_4.SetActive(false);
+			gun3_2.SetActive(false);
+			gun4_2.SetActive(false);
 
 			//disable more guns if needed
 			CallGameOver (); //game keeps playing in the background but player control is completely lost - should be okay
@@ -336,23 +344,26 @@ public class LevelManager : MonoBehaviour {
 		gun3.SetActive(false);
 		gun4.SetActive(false);
 		//Debug.Log ("Waiting to Respawn");
-		yield return new WaitForSeconds (respawnDelay);
-		player.transform.position = respawnLocation.transform.position;
-		GetComponent<AudioSource>().Play ();//plays on respawn
-		player.enabled = true;
-		player.GetComponent<Renderer>().enabled = true;
-		player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-		player.knockbackCount = 0;
-		player.knockFromWhere = -1;
-		player.bulletCounter = 0;
-		player.gunNumber = 0;
-		GetComponent<AudioSource>().Play(); // play respawn sound
-		body.SetActive(true);
-		head.SetActive(true);
-		lance.SetActive(true);
-		bottom.SetActive(true);
-		PlayerHealthManager.playerHealth = health.maxPlayerHealth;
-		health.isDead = false;
+		if(PlayerHealthManager.playerLives > -1){
+			yield return new WaitForSeconds (respawnDelay);
+			PlayerHealthManager.recovering = true;
+			player.transform.position = respawnLocation.transform.position;
+			GetComponent<AudioSource>().Play ();//plays on respawn
+			player.enabled = true;
+			player.GetComponent<Renderer>().enabled = true;
+			player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+			player.knockbackCount = 0;
+			player.knockFromWhere = -1;
+			player.bulletCounter = 0;
+			player.gunNumber = 0;
+			GetComponent<AudioSource>().Play(); // play respawn sound
+			body.SetActive(true);
+			head.SetActive(true);
+			lance.SetActive(true);
+			bottom.SetActive(true);
+			PlayerHealthManager.playerHealth = health.maxPlayerHealth;
+			health.isDead = false;
+		}
 	}
 
 	public IEnumerator RespawnPlayer2(){
@@ -366,26 +377,29 @@ public class LevelManager : MonoBehaviour {
 		bottom2.SetActive(false);
 		gun1_2.SetActive(false);
 		gun2_2.SetActive(false);
-		//gun2_3.SetActive(false);
-		//gun2_4.SetActive(false);
+		gun3_2.SetActive(false);
+		gun4_2.SetActive(false);
 		//Debug.Log ("Waiting to Respawn");
-		yield return new WaitForSeconds (respawnDelay);
-		player2.transform.position = respawnLocation.transform.position;
-		GetComponent<AudioSource>().Play ();//plays on respawn
-		player2.enabled = true;
-		player2.GetComponent<Renderer>().enabled = true;
-		player2.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-		player2.knockbackCount = 0;
-		player2.knockFromWhere = -1;
-		player2.bulletCounter = 0;
-		player2.gunNumber = 0;
-		GetComponent<AudioSource>().Play(); // play respawn sound
-		body2.SetActive(true);
-		head2.SetActive(true);
-		lance2.SetActive(true);
-		bottom2.SetActive(true);
-		PlayerTwoHealthManager.player2Health = health2.maxPlayerHealth;
-		health2.isDead = false;
+		if(PlayerTwoHealthManager.player2Lives > -1){
+			PlayerTwoHealthManager.recovering = true;
+			yield return new WaitForSeconds (respawnDelay);
+			player2.transform.position = respawnLocation.transform.position;
+			GetComponent<AudioSource>().Play ();//plays on respawn
+			player2.enabled = true;
+			player2.GetComponent<Renderer>().enabled = true;
+			player2.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+			player2.knockbackCount = 0;
+			player2.knockFromWhere = -1;
+			player2.bulletCounter = 0;
+			player2.gunNumber = 0;
+			GetComponent<AudioSource>().Play(); // play respawn sound
+			body2.SetActive(true);
+			head2.SetActive(true);
+			lance2.SetActive(true);
+			bottom2.SetActive(true);
+			PlayerTwoHealthManager.player2Health = health2.maxPlayerHealth;
+			health2.isDead = false;
+		}
 	}
 
 
@@ -439,12 +453,14 @@ public class LevelManager : MonoBehaviour {
 		StartCoroutine("EndWave");
 	}
 	public IEnumerator EndWave(){
+		WaveGraphic[waveCount].SetActive(true);
 		yield return new WaitForSeconds (timeTillNextWave);
 		//Debug.Log ("New Wave Starting");
 		hasWaveStarted = false;
 		waveCompleted = false;
 		anEnemyHasSpawned = false;
 		//PlayerHealthManager.playerHealth = health.maxPlayerHealth;
+		WaveGraphic[waveCount].SetActive(false);
 		waveCount++;
 	}
 
@@ -452,6 +468,14 @@ public class LevelManager : MonoBehaviour {
 		StartCoroutine("NextLevel");
 	}
 	public IEnumerator NextLevel(){ //calls the next level
+		if(playerTwoHasSpawned == 1){
+			PlayerHealthManager.AddLife();
+			PlayerTwoHealthManager.AddLife();
+		}
+		else{
+			PlayerHealthManager.AddLife();
+		}
+
 		yield return new WaitForSeconds (timeTillNextLevel);
 		Application.LoadLevel(levelToLoad);
 	}
@@ -470,7 +494,9 @@ public class LevelManager : MonoBehaviour {
 	}
 
 	public IEnumerator DelayLevelStart(){
+		WaveGraphic[0].SetActive(true);
 		yield return new WaitForSeconds(5f);
+		WaveGraphic[0].SetActive(false);
 		waveCount = 1;
 	}
 }

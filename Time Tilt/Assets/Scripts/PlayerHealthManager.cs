@@ -49,16 +49,16 @@ public class PlayerHealthManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(playerLives > -1 && !isDead){
+		if(playerLives > -1 && isDead == false){
 			if(playerHealth <= 0){ 
 				playerHealth = 0;
+				RemoveLife ();
 				levelManager.RespawnPlayer(whichPlayer); //player dies and respawns from the same function
 				GetComponent<AudioSource>().Play (); //plays death sound effect
-				RemoveLife ();
 				isDead = true;
 			}
 		}
-		else if (playerLives == -1 && !isDead){
+		else if (playerLives == -1 && isDead == false){
 			//possibly disable renders
 			isDead = true;
 		}
