@@ -1,12 +1,13 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Menu.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\EnemyBulletController.cs">
     <Files>
-      <File FileName="Assets\Scripts\Menu.cs" Line="47" Column="39" />
-      <File FileName="Assets\Scripts\EnemyController.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\LevelManager.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\FinishMenu.cs" Line="16" Column="69" />
-      <File FileName="Assets\Scripts\ControlScreen.cs" Line="17" Column="34" />
+      <File FileName="Assets\Scripts\LevelManager.cs" Line="101" Column="26" />
+      <File FileName="Assets\Scripts\FinishMenu.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\ControlScreen.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\BulletController.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\PlayerController.cs" Line="296" Column="22" />
+      <File FileName="Assets\Scripts\EnemyBulletController.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

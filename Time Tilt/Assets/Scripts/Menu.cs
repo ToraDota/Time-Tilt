@@ -16,6 +16,7 @@ public class Menu : MonoBehaviour {
 	
         startText = startText.GetComponent<Button>();
         exitText = exitText.GetComponent<Button>();
+		Cursor.visible = false;
 
 	}
 
