@@ -63,7 +63,7 @@ public class PlayerHealthManager : MonoBehaviour {
 			isDead = true;
 		}
 
-		if(isDead == true){
+		if(isDead == true && playerLives < 0){
 			levelManager.RespawnPlayer(whichPlayer);
 		}
 

@@ -18,9 +18,14 @@ public class FinishMenu : MonoBehaviour {
 			MainMenu ();
 
 		}
+
+		if(Input.GetKeyDown(KeyCode.Escape)){
+			Quit ();
+		}
+
 	}
 	
-//	public void Quit(){
-//		Application.Quit();
-//	}
+	public void Quit(){
+		Application.Quit();
+	}
 }

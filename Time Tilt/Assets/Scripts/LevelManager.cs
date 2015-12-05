@@ -104,10 +104,6 @@ public class LevelManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		if(Input.GetKeyDown(KeyCode.Alpha3)){
-			Application.Quit();
-		}
-
 		enemyCount = FindObjectsOfType<EnemyController>();//checks how many enemies are on the screen at any given time
 
 		switch(waveCount){

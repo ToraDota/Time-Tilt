@@ -50,7 +50,7 @@ public class PlayerTwoHealthManager : MonoBehaviour {
 			isDead = true;
 		}
 
-		if(isDead == true){
+		if(isDead == true && player2Lives < 0){
 			levelManager.RespawnPlayer(whichPlayer);
 		}
 		

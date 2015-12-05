@@ -110,13 +110,13 @@ public class PlayerController : MonoBehaviour {
 			grounded = false;
 
 		//Input for flap
-		if(Input.GetButtonDown(flapbutton) || Input.GetKeyDown(KeyCode.J) || Input.GetKeyDown (KeyCode.U))
+		if(Input.GetButtonDown(flapbutton) || Input.GetKeyDown(KeyCode.F))
 		{
 			GetComponent<Rigidbody2D>().AddForce(Vector2.up * flapforce, forceMode);
 		}
 
 		//Face Left
-		if((Input.GetKeyDown (KeyCode.LeftArrow) || (Input.GetKeyDown (KeyCode.UpArrow) && Input.GetKeyDown (KeyCode.LeftArrow))) && !Input.GetKey(KeyCode.DownArrow)){
+		if((Input.GetKeyDown (KeyCode.A) || (Input.GetKeyDown (KeyCode.W) && Input.GetKeyDown (KeyCode.A))) && !Input.GetKey(KeyCode.S)){
 			//transform.localScale = new Vector3(-1f, 1f, 1f);
 			if(facingDirection == 1){
 				transform.localScale = new Vector3(((GetComponent<Transform>().localScale.x)*-1), 1f, 1f);
@@ -128,7 +128,7 @@ public class PlayerController : MonoBehaviour {
 		}
 		
 		//Face Right
-		if((Input.GetKeyDown (KeyCode.RightArrow) || (Input.GetKeyDown (KeyCode.UpArrow) && Input.GetKeyDown (KeyCode.RightArrow))) && !Input.GetKey(KeyCode.DownArrow)){
+		if((Input.GetKeyDown (KeyCode.D) || (Input.GetKeyDown (KeyCode.W) && Input.GetKeyDown (KeyCode.D))) && !Input.GetKey(KeyCode.S)){
 			//transform.localScale = new Vector3(1f, 1f, 1f);
 
 			if(facingDirection == 0){
@@ -142,7 +142,7 @@ public class PlayerController : MonoBehaviour {
 
 		//Momentum after landing
 		if(moveVelocity > 0.1f || moveVelocity < -0.1f){
-			if(!Input.GetKey (KeyCode.LeftArrow)&& !Input.GetKey (KeyCode.RightArrow)){
+			if(!Input.GetKey (KeyCode.A)&& !Input.GetKey (KeyCode.D)){
 				if(facingDirection == 0){
 					moveVelocity += stopVelocity;
 				}
@@ -153,14 +153,14 @@ public class PlayerController : MonoBehaviour {
 		}
 
 		//Movement Left and Right
-		if (Input.GetKey (KeyCode.LeftArrow) && !Input.GetKey(KeyCode.DownArrow) && facingDirection == 0) 
+		if (Input.GetKey (KeyCode.A) && !Input.GetKey(KeyCode.S) && facingDirection == 0) 
 		{
 			//MoveLeft
 			moveVelocity = -speed;
 			//GetComponent<Rigidbody2D>().velocity = new Vector2(-speed, GetComponent<Rigidbody2D>().velocity.y);
 		} 
 		
-		if (Input.GetKey (KeyCode.RightArrow) && !Input.GetKey(KeyCode.DownArrow) && facingDirection == 1) 
+		if (Input.GetKey (KeyCode.D) && !Input.GetKey(KeyCode.S) && facingDirection == 1) 
 		{
 			//MoveRight
 			
@@ -197,7 +197,7 @@ public class PlayerController : MonoBehaviour {
 			else if(facingDirection == 1)
 				transform.localEulerAngles = new Vector3 (0, 0, 270);
 
-			if(Input.GetButtonDown(flapbutton) || Input.GetKeyDown(KeyCode.J) || Input.GetKeyDown (KeyCode.U)){
+			if(Input.GetButtonDown(flapbutton) || Input.GetKeyDown(KeyCode.F)){
 				GetComponent<Rigidbody2D>().velocity = new Vector2(GetComponent<Rigidbody2D>().velocity.x, counterForce);
 				isDiving = false;
 				transform.localEulerAngles = new Vector3 (0, 0, 0);
@@ -205,7 +205,7 @@ public class PlayerController : MonoBehaviour {
 		}
 
 		//Lance Aiming and Dive Bomb
-		if(Input.GetKey(KeyCode.DownArrow) && grounded == false){
+		if(Input.GetKey(KeyCode.S) && grounded == false){
 			aiming = true;
 			facingDown = true;
 			facingUp = false;
@@ -213,13 +213,13 @@ public class PlayerController : MonoBehaviour {
 				transform.localEulerAngles = new Vector3 (0, 0, 90);
 			else if(facingDirection == 1)
 				transform.localEulerAngles = new Vector3 (0, 0, 270);
-			if(Input.GetKeyDown (KeyCode.K) || Input.GetKeyDown(KeyCode.I)){
+			if(Input.GetKeyDown (KeyCode.G)){
 				GetComponent<Rigidbody2D>().velocity = new Vector2(GetComponent<Rigidbody2D>().velocity.x, diveSpeed);
 				isDiving = true;
 			}
 		}
 
-		else if(Input.GetKey (KeyCode.UpArrow) && !Input.GetKey(KeyCode.RightArrow) && !Input.GetKey (KeyCode.LeftArrow) && grounded == false){
+		else if(Input.GetKey (KeyCode.W) && !Input.GetKey(KeyCode.D) && !Input.GetKey (KeyCode.A) && grounded == false){
 			facingDown = false;
 			facingUp = true;
 			aiming = true;
@@ -244,7 +244,7 @@ public class PlayerController : MonoBehaviour {
 		//Shooting controls
 		if(gunNumber == 1){ //semiauto
 			if(bulletCounter > 0){
-				if((Input.GetKeyDown (KeyCode.K) || Input.GetKeyDown(KeyCode.I)) && Time.time > gun1NextFire){ //semi auto
+				if(Input.GetKeyDown (KeyCode.G) && Time.time > gun1NextFire){ //semi auto
 					gun1NextFire = Time.time + gun1FireRate;
 					Instantiate (strongBullet, firepoint.position, firepoint.rotation);
 					BulletController.firedFromPlayer1 = true;
@@ -258,7 +258,7 @@ public class PlayerController : MonoBehaviour {
 		}
 		if(gunNumber == 2){ //automatic
 			if(bulletCounter > 0){
-				if((Input.GetKeyDown (KeyCode.K) || Input.GetKeyDown(KeyCode.I)) && Time.time > gun2NextFire){ //rapid fire
+				if(Input.GetKeyDown (KeyCode.G) && Time.time > gun2NextFire){ //rapid fire
 					gun2NextFire = Time.time + gun2FireRate;
 					Instantiate (bullet, firepoint.position, firepoint.rotation);
 					BulletController.firedFromPlayer1 = true;
@@ -272,7 +272,7 @@ public class PlayerController : MonoBehaviour {
 		}
 		if(gunNumber == 3){ //shotgun
 			if(bulletCounter > 0){
-				if((Input.GetKeyDown (KeyCode.K) || Input.GetKeyDown(KeyCode.I)) && Time.time > gun3NextFire){ //rapid fire
+				if(Input.GetKeyDown (KeyCode.G) && Time.time > gun3NextFire){ //rapid fire
 					gun3NextFire = Time.time + gun3FireRate;
 					Instantiate (shotgunBullet, firepoint.position, firepoint.rotation);
 					Instantiate (shotgunBullet, firepointUp.position, firepointUp.rotation);
@@ -288,7 +288,7 @@ public class PlayerController : MonoBehaviour {
 		}
 		if(gunNumber == 4){ //sniper
 			if(bulletCounter > 0){
-				if((Input.GetKeyDown (KeyCode.K) || Input.GetKeyDown(KeyCode.I)) && Time.time > gun4NextFire){ //rapid fire
+				if(Input.GetKeyDown (KeyCode.G) && Time.time > gun4NextFire){ //rapid fire
 					gun4NextFire = Time.time + gun4FireRate;
 					Instantiate (sniperBullet, firepoint.position, firepoint.rotation);
 					BulletControllerSniper.firedFromPlayer1 = true;

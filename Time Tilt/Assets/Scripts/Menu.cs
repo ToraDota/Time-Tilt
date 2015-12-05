@@ -16,7 +16,7 @@ public class Menu : MonoBehaviour {
 	
         startText = startText.GetComponent<Button>();
         exitText = exitText.GetComponent<Button>();
-		Cursor.visible = false;
+		Cursor.visible = true;
 
 	}
 
@@ -61,11 +61,11 @@ public class Menu : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(Input.GetKeyDown(KeyCode.Alpha1)){
+		if(Input.GetKeyDown(KeyCode.F)){
 			StartLevel();
 		}
 
-		if(Input.GetKeyDown(KeyCode.Alpha2)){
+		if(Input.GetKeyDown(KeyCode.LeftArrow)){
 			StartLevelTwoPlayers();
 		}
 
