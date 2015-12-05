@@ -116,7 +116,7 @@ public class PlayerController : MonoBehaviour {
 		}
 
 		//Face Left
-		if(Input.GetKeyDown (KeyCode.LeftArrow) && !Input.GetKey(KeyCode.DownArrow)){
+		if((Input.GetKeyDown (KeyCode.LeftArrow) || (Input.GetKeyDown (KeyCode.UpArrow) && Input.GetKeyDown (KeyCode.LeftArrow))) && !Input.GetKey(KeyCode.DownArrow)){
 			//transform.localScale = new Vector3(-1f, 1f, 1f);
 			if(facingDirection == 1){
 				transform.localScale = new Vector3(((GetComponent<Transform>().localScale.x)*-1), 1f, 1f);
@@ -128,7 +128,7 @@ public class PlayerController : MonoBehaviour {
 		}
 		
 		//Face Right
-		if(Input.GetKeyDown (KeyCode.RightArrow) && !Input.GetKey(KeyCode.DownArrow)){
+		if((Input.GetKeyDown (KeyCode.RightArrow) || (Input.GetKeyDown (KeyCode.UpArrow) && Input.GetKeyDown (KeyCode.RightArrow))) && !Input.GetKey(KeyCode.DownArrow)){
 			//transform.localScale = new Vector3(1f, 1f, 1f);
 
 			if(facingDirection == 0){
@@ -219,7 +219,7 @@ public class PlayerController : MonoBehaviour {
 			}
 		}
 
-		else if(Input.GetKey (KeyCode.UpArrow) && grounded == false){
+		else if(Input.GetKey (KeyCode.UpArrow) && !Input.GetKey(KeyCode.RightArrow) && !Input.GetKey (KeyCode.LeftArrow) && grounded == false){
 			facingDown = false;
 			facingUp = true;
 			aiming = true;

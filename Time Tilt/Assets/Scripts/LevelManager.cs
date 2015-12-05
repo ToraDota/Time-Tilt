@@ -104,6 +104,10 @@ public class LevelManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
+		if(Input.GetKeyDown(KeyCode.Alpha3)){
+			Application.Quit();
+		}
+
 		enemyCount = FindObjectsOfType<EnemyController>();//checks how many enemies are on the screen at any given time
 
 		switch(waveCount){
@@ -364,6 +368,9 @@ public class LevelManager : MonoBehaviour {
 			PlayerHealthManager.playerHealth = health.maxPlayerHealth;
 			health.isDead = false;
 		}
+		else{
+			player1Canvas.SetActive(false);
+		}
 	}
 
 	public IEnumerator RespawnPlayer2(){
@@ -399,6 +406,9 @@ public class LevelManager : MonoBehaviour {
 			bottom2.SetActive(true);
 			PlayerTwoHealthManager.player2Health = health2.maxPlayerHealth;
 			health2.isDead = false;
+		}
+		else{
+			player2Canvas.SetActive(false);
 		}
 	}
 

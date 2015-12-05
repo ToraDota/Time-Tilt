@@ -6,18 +6,11 @@ public class ScoreOrbs : MonoBehaviour {
 	public int pointsWorth;
 
 	private bool canPickUp;
-
-	private PlayerHealthManager health;
-	private PlayerTwoHealthManager health2;
+	
 	private int p2Check;
 
 	// Use this for initialization
 	void Start () {
-		health = FindObjectOfType<PlayerHealthManager>();
-		p2Check = PlayerPrefs.GetInt("PlayerTwoHasSpawned");
-		if(p2Check == 1){
-			health2 = FindObjectOfType<PlayerTwoHealthManager>();
-		}
 		GetComponent<AudioSource>().Play ();
 		canPickUp = false;
 		CallTouchDelay ();
@@ -38,10 +31,6 @@ public class ScoreOrbs : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D other){
 		if (canPickUp == true) {
 			if (other.tag == "Player") {
-				if (PlayerHealthManager.playerHealth < health.maxPlayerHealth) {
-					
-					PlayerHealthManager.playerHealth++;
-				}
 				//GetComponent<AudioSource> ().Play ();
 				ScoreManager.UpScore (pointsWorth);
 				
@@ -49,10 +38,6 @@ public class ScoreOrbs : MonoBehaviour {
 			}
 
 			if (other.tag == "Player2") {
-				if (PlayerTwoHealthManager.player2Health < health2.maxPlayerHealth) {
-					
-					PlayerTwoHealthManager.player2Health++;
-				}
 				//GetComponent<AudioSource> ().Play ();
 				ScoreManager.UpScore (pointsWorth);
 				Destroy (gameObject);

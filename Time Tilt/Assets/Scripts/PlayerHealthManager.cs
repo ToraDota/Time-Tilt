@@ -63,6 +63,10 @@ public class PlayerHealthManager : MonoBehaviour {
 			isDead = true;
 		}
 
+		if(isDead == true){
+			levelManager.RespawnPlayer(whichPlayer);
+		}
+
 		if(recovering == true && Time.time > takeDamageAgain){
 			recovering = false;
 		}

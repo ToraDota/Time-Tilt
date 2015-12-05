@@ -215,8 +215,8 @@ public class PlayerController2 : MonoBehaviour {
 				isDiving = true;
 			}
 		}
-		
-		else if((Input.GetKey (KeyCode.W) && grounded == false)){
+
+		else if((Input.GetKey (KeyCode.W) && !Input.GetKey(KeyCode.D) && !Input.GetKey (KeyCode.A) && grounded == false)){
 			facingDown = false;
 			facingUp = true;
 			aiming = true;

@@ -23,11 +23,13 @@ public class NonLethalHazard : MonoBehaviour {
 		if(other.tag == "Player"){
 			PlayerHealthManager.HurtPlayer(hazardDamage);
 			PlayerHealthManager.BouncePlayer(other, gameObject);
+			GetComponent<AudioSource>().Play();
 		}
 
 		if (other.tag == "Player2"){
 			PlayerTwoHealthManager.HurtPlayer(hazardDamage);
 			PlayerTwoHealthManager.BouncePlayer(other, gameObject);
+			GetComponent<AudioSource>().Play();
 		}
 		//Debug.Log("sajldhlakjsd");
 	}
