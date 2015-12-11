@@ -1,4 +1,5 @@
 ﻿<Properties>
+<<<<<<< HEAD
   <MonoDevelop.Ide.Workspace />
   <MonoDevelop.Ide.Workbench ActiveDocument="..\..\..\DIG 4720C\TimeTiltArcadeProject\Time-Tilt\Time Tilt\Assets\Scripts\PlayerTwoHealthManager.cs">
     <Files>
@@ -6,6 +7,10 @@
       <File FileName="..\..\..\DIG 4720C\TimeTiltArcadeProject\Time-Tilt\Time Tilt\Assets\Scripts\PlayerTwoHealthManager.cs" Line="53" Column="31" />
     </Files>
   </MonoDevelop.Ide.Workbench>
+=======
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench />
+>>>>>>> a4abb9fd243fa6e2435a6fbadced2b1f6f6338d9
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
